@@ -1,0 +1,28 @@
+.work.page-wrapper {
+  --primary-color: var(--default-primary);
+  --secondary-color: var(--default-secondary);
+}
+
+.work-hero-container {
+  @include section-container();
+  height: 100vh;
+  background-color: var(--primary-color);
+  color: #fff;
+  .texture-pull-right {
+    position: absolute;
+    right: -30%;
+    top: 0;
+    @include clip-edge($edge: left, $height: 100vh);
+    width: 50%;
+    height: 100vh;
+    background-color: var(--secondary-color);
+  }
+}
+
+.work-hero-content {
+  @include content-block($padding: standard, $justify: center, $align: center);
+  height: 100%;
+  &.hide {
+    opacity: 0;
+  }
+}

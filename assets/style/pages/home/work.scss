@@ -1,0 +1,64 @@
+.work__container {
+  @include section-container() {
+    background: #eaeaea;
+    color: #000;
+  }
+}
+.work-texture-bg.full-width {
+  background: #eaeaea;
+  @include abs100();
+  height: 130%;
+  .inner-texture {
+    background: url("~/assets/tex-worms.jpg") repeat 0/300px;
+    opacity: 1;
+  }
+}
+.work-texture-bg {
+  @include abs100();
+  height: 260vh;
+  width: 100%;
+  background: tint($brown, 80%);
+
+  &.pull-right {
+    left: 50%;
+    clip-path: polygon(
+      calc(0.36397023426 * 260vh) 0,
+      100% 0,
+      100% 100%,
+      0 100%
+    );
+  }
+  &.pull-left {
+    left: -80%;
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      calc(100% - (0.36397023426 * 260vh)) 100%,
+      0 100%
+    );
+  }
+  .inner-texture {
+    background: url("~/assets/tex-hex.jpg") repeat 0/300px;
+    mix-blend-mode: overlay;
+  }
+}
+
+.work__content {
+  @include content-block(extra) {
+    position: relative;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.work__body {
+  position: relative;
+  margin-top: 5vh;
+  @include bp(1024) {
+    margin-top: 15vh;
+  }
+  .cta-link {
+    display: inline-block;
+    margin-top: 2rem;
+  }
+}

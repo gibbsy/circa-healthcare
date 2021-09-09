@@ -1,0 +1,120 @@
+@mixin section-container($flex: row, $justify: flex-start, $align: flex-start) {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: $flex;
+  align-items: $align;
+  justify-content: $justify;
+  overflow: hidden;
+}
+
+@mixin standard-padding() {
+  padding: 30px;
+
+  @include bp(1024) {
+    padding: 5vh 5%;
+  }
+  @include bp(1200) {
+    padding: 12vh 7%;
+  }
+  @include bp(1400) {
+    padding: 12vh 10%;
+  }
+}
+@mixin extra-padding() {
+  padding: 60px 30px;
+  @include bp(768) {
+    padding: 60px;
+  }
+  @include bp(1024) {
+    padding: 7vh 5%;
+  }
+  @include bp(1200) {
+    padding: 12vh 7%;
+  }
+  @include bp(1400) {
+    padding: 20vh 10%;
+  }
+}
+
+@mixin content-block(
+  $padding: 0,
+  $flex: row,
+  $justify: flex-start,
+  $align: flex-start
+) {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: $flex;
+  align-items: $align;
+  justify-content: $justify;
+  @if $padding== "standard" {
+    @include standard-padding();
+  }
+  @if $padding== "extra" {
+    @include extra-padding();
+  }
+}
+
+@mixin generic__container() {
+  @include section-container();
+  // height: 130vh;
+  background: #eaeaea;
+  color: #000;
+  a {
+    color: $darkTeal;
+    &:hover {
+      text-decoration: underline;
+    }
+    &:visited {
+      color: $darkBlue;
+    }
+  }
+  .generic-texture-bg.full-width {
+    background: #eaeaea;
+    @include abs100();
+    height: 130%;
+    .inner-texture {
+      background: url("~/assets/tex-worms.jpg") repeat 0/300px;
+      opacity: 1;
+    }
+  }
+  .generic-texture-bg {
+    @include abs100();
+    height: 260vh;
+    width: 100%;
+    background: tint($brown, 80%);
+
+    &.pull-right {
+      left: 50%;
+      clip-path: polygon(
+        calc(0.36397023426 * 260vh) 0,
+        100% 0,
+        100% 100%,
+        0 100%
+      );
+    }
+    &.pull-left {
+      left: -80%;
+      clip-path: polygon(
+        0 0,
+        100% 0,
+        calc(100% - (0.36397023426 * 260vh)) 100%,
+        0 100%
+      );
+    }
+    .inner-texture {
+      background: url("~/assets/tex-hex.jpg") repeat 0/300px;
+      mix-blend-mode: overlay;
+    }
+  }
+}
+
+@mixin generic__content() {
+  @include content-block();
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+}

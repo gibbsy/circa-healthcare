@@ -1,0 +1,38 @@
+/* Buttons styles start */
+.btn {
+  display: inline-block;
+  padding: 0.75rem;
+  margin: 0;
+  margin-left: 1rem;
+  text-decoration: none;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  text-align: center;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  @include bp(375) {
+    padding: 1rem;
+  }
+  @include bp(768) {
+    margin-left: 1.5rem;
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+  }
+  @include bp(1200) {
+    font-size: 1.2rem;
+  }
+  @include bp(1400) {
+    font-size: 1.3rem;
+  }
+  &:first-child {
+    margin-left: 0;
+  }
+  &:hover {
+    background: #fff;
+  }
+  &:focus {
+    outline: 1px solid #fff;
+  }
+}
