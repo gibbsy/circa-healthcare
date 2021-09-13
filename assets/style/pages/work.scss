@@ -4,7 +4,6 @@
 }
 
 .work-hero-container {
-  @include section-container();
   height: 100vh;
   background-color: var(--primary-color);
   color: #fff;
@@ -22,7 +21,4 @@
 .work-hero-content {
   @include content-block($padding: standard, $justify: center, $align: center);
   height: 100%;
-  &.hide {
-    opacity: 0;
-  }
 }

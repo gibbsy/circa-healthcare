@@ -18,7 +18,7 @@ export default {
               trigger: el,
               start,
               end: "bottom top",
-              scrub: 0.1,
+              scrub: 0.2,
             },
             x: `${xDist}px`,
             y: `${yDist}px`,
@@ -28,10 +28,14 @@ export default {
       });
       gsap.utils.toArray("[data-scroll-reveal]").forEach((el, i) => {
         const once = !el.getAttribute("data-scroll-repeat");
+        const start =
+          el.getAttribute("data-reveal-start") || "top bottom-=100px";
+        const end = el.getAttribute("data-reveal-end") || "bottom top";
         gsap.set(el, {
           scrollTrigger: {
             trigger: el,
-            start: "top bottom-=100px",
+            start,
+            end,
             toggleClass: "is-inview",
             once,
           },

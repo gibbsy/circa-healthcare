@@ -1,5 +1,5 @@
 <template>
-  <div class="nav-full-screen-container">
+  <div class="nav-full-screen-container" :style="cssVars">
     <div class="nav-content">
       <ul>
         <li>
@@ -18,6 +18,7 @@
           class="nav-contacts-item"
         >
           <h3>{{ location.name }}</h3>
+          <block-content :blocks="location.address"></block-content>
         </div>
         <div class="nav-contacts-item">
           <h3>Social</h3>
@@ -51,7 +52,15 @@ export default {
       default: () => [],
     },
   },
-
+  computed: {
+    cssVars() {
+      return {
+        "--primary-color": "anthracite",
+        "--secondary-color": "slate",
+        "--bg-texture": `var(--tex-default);`,
+      };
+    },
+  },
   mounted() {
     console.log(this.links);
   },

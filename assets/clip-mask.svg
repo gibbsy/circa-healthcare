@@ -1,0 +1,14 @@
+ <svg
+      id="clipping-mask"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 1767.57 900"
+    >
+      <defs>
+        <clipPath id="clip">
+          <polygon
+            points="1440 900 0 900 327.57 0 1767.57 0 1440 900"
+            style="fill: #ccc"
+          />
+        </clipPath>
+      </defs>
+    </svg>

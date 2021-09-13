@@ -1,10 +1,22 @@
 <template>
   <div class="work page-wrapper" :style="cssVars">
-    <div class="work-hero-container">
-      <div class="texture-pull-right"></div>
+    <div class="page-hero-container">
+      <div
+        :class="['inner-texture', theme.texture]"
+        data-scroll-parallax
+        data-scroll-speed="0.5"
+      ></div>
+      <div class="texture-pull-right">
+        <div
+          :class="['inner-texture', theme.texture]"
+          data-scroll-parallax
+          data-scroll-speed="0.5"
+        ></div>
+      </div>
       <div class="work-hero-content">
         <h1>{{ heroHeadline }}</h1>
       </div>
+      <scroll-prompt></scroll-prompt>
     </div>
     <transition appear name="fade">
       <div
@@ -41,7 +53,10 @@
 <script>
 import sanityClient from "../sanityClient";
 import { workQuery as query } from "../data/queries";
+import Logo from "~/assets/circa_logo_nofill.svg?inline";
+
 export default {
+  components: [Logo],
   async asyncData() {
     const pageData = await sanityClient.fetch(query);
     console.log(pageData.theme);
@@ -54,6 +69,7 @@ export default {
       return {
         "--primary-color": this.theme.primaryColor.value,
         "--secondary-color": this.theme.secondaryColor.value,
+        "--bg-texture": `var(--tex-${this.theme.texture});`,
       };
     },
   },

@@ -1,0 +1,34 @@
+.wwd-services {
+  .texture-pull-left {
+    background-color: var(--secondary-color);
+    transform: translateX(-200px);
+  }
+  .texture-pull-right {
+    background-color: var(--primary-color);
+    @include reveal-slide-up-fade();
+    transform: translateX(200px);
+  }
+  .texture-pull-left,
+  .texture-pull-right {
+    transition: opacity 1.2s $easing, transform 1.2s $easing;
+    opacity: 0;
+    &.is-inview {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  .section-label {
+    color: var(--secondary-color);
+    &:after {
+      border-color: var(--secondary-color);
+    }
+  }
+  .wwd-services-content {
+    > * {
+      margin-bottom: 80px;
+    }
+  }
+  .callout {
+    color: var(--primary-color);
+  }
+}

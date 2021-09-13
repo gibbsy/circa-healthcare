@@ -11,7 +11,7 @@ export const homeQuery = /* groq */ `{
    aboutTheme, aboutHeadline, aboutImages, aboutStats[]
   },
   "whyCirca": {
-    whyLabel, whySections[]{title, text}
+    whyLabel, whySections[]{title, text}, whyCta{title, "slug": route->slug.current} 
   },
   "work": {
     workTheme, workLabel, workHeadline, workImage, workBody, workCta{title, "slug": route->slug.current} 

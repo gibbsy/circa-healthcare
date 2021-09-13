@@ -2,15 +2,7 @@
   <div>
     <div :id="containerId" data-scroll-container>
       <Nuxt />
-      <transition name="slide-in">
-        <main-nav
-          v-show="navOn"
-          :links="mainNav"
-          :contact-details="config.contactDetails"
-          :socials="config.socials"
-          :click-fn="navToggle"
-        ></main-nav>
-      </transition>
+
       <transition name="fade" appear>
         <cookie-panel
           v-show="!cookiesOk"
@@ -23,6 +15,20 @@
           <span></span>
         </button>
       </div>
+      <app-footer
+        :links="mainNav"
+        :contact-details="config.contactDetails"
+        :socials="config.socials"
+      ></app-footer>
+      <transition name="slide-in">
+        <main-nav
+          v-show="navOn"
+          :links="mainNav"
+          :contact-details="config.contactDetails"
+          :socials="config.socials"
+          :click-fn="navToggle"
+        ></main-nav>
+      </transition>
     </div>
   </div>
 </template>

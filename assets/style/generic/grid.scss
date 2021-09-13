@@ -1,0 +1,57 @@
+// ==========================================================================
+// Responsive grid https://www.toptal.com/sass/css3-flexbox-sass-grid-tutorial
+// ==========================================================================
+
+// number of grid columns and breakpoints
+$grid__cols: 12;
+$grid__bp-sm: 576;
+$grid__bp-md: 768;
+$grid__bp-lg: 992;
+$grid__bp-xl: 1200;
+$map-grid-props: (
+  "": 0,
+  "-sm": $grid__bp-sm,
+  "-md": $grid__bp-md,
+  "-lg": $grid__bp-lg,
+  "-xl": $grid__bp-xl,
+);
+
+// dynamically create a media query
+@mixin create-mq($breakpoint) {
+  @if ($breakpoint == 0) {
+    @content;
+  } @else {
+    @media screen and (min-width: $breakpoint *1px) {
+      @content;
+    }
+  }
+}
+
+//  create column classes
+@mixin create-col-classes($modifier, $grid__cols, $breakpoint) {
+  @include create-mq($breakpoint) {
+    @for $i from 1 through $grid__cols {
+      .flex-col#{$modifier}-#{$i} {
+        flex-basis: (100 / ($grid__cols / $i)) * 1%;
+        @if $i < $grid__cols {
+          padding: 0 10px;
+        }
+      }
+      .col#{$modifier}-#{$i} {
+        width: (100 / ($grid__cols / $i)) * 1%;
+      }
+      .offset#{$modifier}-#{$i} {
+        margin-left: (100 / ($grid__cols / $i)) * 1%;
+      }
+    }
+  }
+}
+
+@each $modifier, $breakpoint in $map-grid-props {
+  @include create-col-classes($modifier, $grid__cols, $breakpoint);
+}
+
+.flex-grid-container {
+  display: flex;
+  flex-wrap: wrap;
+}

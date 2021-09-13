@@ -1,23 +1,45 @@
 :root {
-  --default-primary: #eaeaea;
-  --default-secondary: #d1d1d1;
-  --tex-beehive: url("~/assets/tex-beehive.jpg") repeat 0/300px;
-  --tex-fossil: url("~/assets/tex-fossil.jpg") repeat 0/300px;
+  --dark-blue: #00304d;
+  --teal: #039fa0;
+  --dark-teal: #00787c;
+  --bright-green: #c8c143;
+  --violet: #71266c;
+  --dark-orange: #e23d2a;
+  --anthracite: #212a33;
+  --slate: #477e9f;
+  --midnight: #000846;
+  --brown: #b05120;
+  --tex-beehive: url("~/assets/tex-beehive.jpg") repeat 0/130px;
+  --tex-fossil: url("~/assets/tex-fossil.jpg") repeat 0/175px;
   --tex-fusion: url("~/assets/tex-fusion.jpg") repeat 0/300px;
-  --tex-cells: url("~/assets/tex-cells.jpg") repeat 0/300px;
-  --tex-circuit: url("~/assets/tex-circuit.png") repeat 0/300px;
+  --tex-cells: url("~/assets/tex-cells.jpg") repeat 0/180px;
+  --tex-circuit: url("~/assets/tex-circuit.jpg") repeat 0/150px;
   --tex-herringbone: url("~/assets/tex-herringbone.jpg") repeat 0/300px;
-  --tex-leaf: url("~/assets/tex-leaf.png") repeat 0/300px;
-  --tex-waves: url("~/assets/tex-waves.png") repeat 0/300px;
-  --tex-worms: url("~/assets/tex-worms.svg") repeat 0/300px;
-  /*   --default-texture: var(--tex-beehive);
-  --bg-texture: var(--default-texture); */
+  --tex-leaf: url("~/assets/tex-leaf.jpg") repeat 0/130px;
+  --tex-waves: url("~/assets/tex-waves.jpg") repeat 0/120px;
+  --default-texture: var(--tex-beehive);
+  --bg-texture: var(--default-texture);
+  --default-primary: var(--dark-blue);
+  --default-secondary: var(--teal);
+  --primary-color: var(--default-primary);
+  --secondary-color: var(--default-secondary);
 }
+
+// ==========================================================================
+// grid
+// ==========================================================================
 
 html,
 body {
   width: 100%;
 }
+
+// trying svg mask. No perf improvements
+/* #clipping-mask {
+  position: absolute;
+  display: hidden;
+  width: 100%;
+} */
 .page-wrapper {
   position: relative;
   width: 100%;
@@ -33,6 +55,80 @@ body {
   max-width: 100%;
 }
 
+.section-container {
+  @include section-container();
+  &.full-color {
+    background-color: var(--primary-color);
+    color: #fff;
+  }
+}
+
+.page-hero-container {
+  @include section-container();
+  height: 100vh;
+  background-color: var(--primary-color);
+  color: #fff;
+  .texture-pull-right {
+    position: absolute;
+    right: -30%;
+    top: 0;
+    @include clip-edge($edge: left, $height: 100vh);
+    width: 50%;
+    height: 100vh;
+    background-color: var(--secondary-color);
+  }
+  > .inner-texture {
+    opacity: 0.5;
+  }
+  &.x2-h {
+    flex-direction: column;
+    height: 200vh;
+    .texture-pull-right {
+      position: absolute;
+      right: -20%;
+      top: auto;
+      bottom: 0;
+      @include clip-edge($edge: left, $height: 200vh);
+      width: 50%;
+      height: 200vh;
+      background-color: var(--secondary-color);
+    }
+  }
+}
+.content-block {
+  @include content-block($padding: standard, $align: center);
+  height: var(--block-height);
+}
+.content-block--column {
+  @include content-block($padding: standard, $flex: column, $justify: center);
+  height: var(--block-height);
+}
+.headline-container {
+  position: relative;
+}
+.title-reveal {
+  position: relative;
+  .copy-line {
+    overflow: hidden;
+  }
+  .word {
+    display: inline-block;
+    opacity: 0;
+  }
+  &.is-inview .word {
+    animation: slide-in-words 0.8s $easing both;
+    animation-delay: calc(20ms * var(--word-index));
+  }
+}
+
+.cta-centred-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
 .clip-right {
   @include clip-edge(right);
 }
@@ -45,29 +141,58 @@ body {
 .white-bg {
   background: #fff;
 }
+
+.inner-texture {
+  position: absolute;
+  width: 120%;
+  height: 150%;
+  left: -10%;
+  right: -10%;
+  top: -50%;
+  bottom: 0;
+  background: var(--bg-texture);
+  mix-blend-mode: screen;
+  transform: translateZ(0);
+  will-change: transform;
+}
 .texture-pull-left {
   position: absolute;
   left: -90%;
   top: 0;
-  background: var(--bg-texture);
-  // background-color: var(--primary-color);
   @include clip-edge($edge: right, $height: 100vh);
   width: 100%;
   height: 100vh;
-  .full-colour & {
+  background-color: var(--primary-color);
+  // clip-path: url(#clip);
+  will-change: transform;
+  overflow: hidden;
+  .full-color & {
     background-color: var(--secondary-color);
   }
 }
 
+.section-container.full-color > .inner-texture {
+  opacity: 0.5;
+}
+
 .texture-pull-right {
   position: absolute;
-  right: -85%;
-  top: 0;
+  right: -35%;
+  top: auto;
+  bottom: 0;
   @include clip-edge($edge: left, $height: 100vh);
-  width: 100%;
+  width: 50%;
   height: 100vh;
   background-color: var(--secondary-color);
-  background-image: var(--bg-texture);
+  will-change: transform;
+  // clip-path: url(#clip);
+  overflow: hidden;
+}
+
+.flex--centred {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cta-centred {
@@ -89,46 +214,38 @@ body {
   }
 }
 
-.section-hero-image__wrapper {
+.section-hero-image-wrapper {
   position: absolute;
   display: inline-block;
   left: 0;
   top: 0;
-  width: 100vw;
+  width: 100%;
   height: 50vh;
-  clip-path: polygon(calc(0.36397023426 * 50vh) 0, 100% 0, 100% 100%, 0 100%);
+  @include clip-edge(right, 50vh);
   transition: opacity 1s ease;
   overflow: hidden;
   opacity: 0;
-  // mix-blend-mode: screen;
+
   @include bp(768) {
     left: 10%;
     width: 90vw;
   }
   @include bp(1024) {
-    clip-path: polygon(calc(0.36397023426 * 60vh) 0, 100% 0, 100% 100%, 0 100%);
-    height: 60vh;
-    left: 25%;
-    width: 75vw;
-    width: 45vw;
-    left: 55%;
+    @include clip-edge(left, 50vh);
+    height: 50vh;
+    width: 40%;
+    left: 60%;
   }
   &.is-inview {
     opacity: 1;
   }
-  .section-hero-image__inner {
+  .section-hero-image-inner {
     @include abs100();
     width: 100%;
     left: 0;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    opacity: 0.4;
-    @include bp(1200) {
-      width: 120%;
-      left: -10%;
-      opacity: 0.7;
-    }
   }
 }
 
@@ -136,12 +253,6 @@ body {
   @include abs100();
   background-size: cover;
   background-position: center;
-}
-
-.inner-texture {
-  @include abs100();
-  mix-blend-mode: screen;
-  opacity: 0.1;
 }
 
 .logo-corner-left {
@@ -191,5 +302,76 @@ body {
       @include clip-edge(right, 100vh);
       // transform: skew(-20deg);
     }
+  }
+}
+
+.scroll-prompt {
+  position: absolute;
+  bottom: 30px;
+  width: 100%;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+  @include reveal-slide-up-fade;
+  span {
+    position: relative;
+    display: inline-block;
+    width: 4vw;
+    height: 4vw;
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    svg {
+      fill: #fff;
+    }
+  }
+  &.mono {
+    span {
+      background-color: #fff;
+      svg {
+        fill: #000;
+      }
+    }
+  }
+  &.is-inview {
+    transition-delay: 3s;
+  }
+}
+
+.reveal {
+  @include reveal-slide-up-fade;
+}
+
+.service-list-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  margin-bottom: 60px;
+
+  .service-item {
+    // width: 30%;
+    @include reveal-slide-up-fade();
+    @include stagger-children(
+      $prop: transition,
+      $children: 3,
+      $delay: 0,
+      $stagger: 0.2
+    );
+    * {
+      margin-bottom: 1rem;
+    }
+    h3 {
+      color: var(--primary-color);
+    }
+  }
+  .service-icon {
+    position: relative;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    background-size: contain;
   }
 }
