@@ -48,7 +48,7 @@ export default {
       { rel: "mask-icon", href: "/safari-pinned-tab.svg", color: "#5bbad5" },
       { rel: "preconnect", href: "https://fonts.gstatic.com" },
       {
-        href: "https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap",
         rel: "stylesheet",
       },
     ],

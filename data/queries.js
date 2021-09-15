@@ -36,38 +36,48 @@ export const workQuery = /* groq */ `
 }`;
 
 export const whatWeDoQuery = /* groq */ `
-*[_id=="pageWhatWeDo"][0]{ 
+{
+  "pageContent": *[_id=="pageWhatWeDo"][0]{ 
   theme, title, heroHeadline, introSubhead, introBody,
-  servicesLabel, servicesList[]{title, icon, text}, servicesCta, 
-  servicesCtaBtn{title, "slug": route->slug.current},
-  clientsLabel, clientList[]->{name, logo, website{href}},
-  philanthropyLabel, philanthropyIntro, philanthropyList[]
+  servicesLabel, servicesList[]{title, icon, text}, servicesCta, servicesCtaBtn{title, "slug": route->slug.current},
+  clientsCta{title, "slug": route->slug.current},
+  clientsLabel, philanthropyLabel, philanthropyIntro, philanthropyList[],
+  metadata{title, description, "slug": slug->slug.current, ogImage}
+  },
+  "clientList": *[_id=="global-config"][0]{
+  clientList[]->{name, website, logo},
+  }
 }`;
 
 export const clientsQuery = /* groq */ `
-*[_id=="pageClients"][0]{ 
-  theme, title, headline, introLabel, introSubhead, introBody,
-  clientList[]->{name, website, logo}, ctaHeadline, ctaBtn{title, "slug": route->slug.current},
+{
+  "pageContent":  *[_id=="pageClients"][0]{ 
+  theme, title, heroHeadline, introLabel, introSubhead, introBody,
+  ctaHeadline, ctaBtn{title, "slug": route->slug.current},
   metadata{title, description, "slug": slug->slug.current, ogImage}
+  },
+  "clientList": *[_id=="global-config"][0]{
+  clientList[]->{name, website, logo},
+  }
 }`;
 
 export const teamQuery = /* groq */ `
 *[_id=="pageTeam"][0]{ 
-  theme, title, headline, introLabel, introSubhead, introBody,
+  theme, title, heroHeadline, introLabel, introSubhead, introBody,
   teamMembers[]->{name, qualifications, jobTitle, linkedin, image}, ctaHeadline, ctaBtn{title, "slug": route->slug.current},
   metadata{title, description, "slug": slug->slug.current, ogImage}
 }`;
 
 export const partnershipsQuery = /* groq */ `
 *[_id=="pagePartnerships"][0]{ 
-  theme, title, headline, introLabel, introBody,
-  partnerLabel, partners[]{name, href, jobTitle, logo, body}, partnershipSummary,
+  theme, title, heroHeadline, introLabel, introBody,
+  partnerLabel, partners[]{name, href, logo, text}, partnershipSummary,
   metadata{title, description, "slug": slug->slug.current, ogImage}
 }`;
 
 export const joinUsQuery = /* groq */ `
 *[_id=="pageJoinUs"][0]{ 
-  theme, title, headline, introLabel, introBody,
+  theme, title, heroHeadline, introLabel, introBody,
   valuesLabel, valuesList[]{title, icon, text}, ctaText, ctaImage, ctaBtn{title, "slug": route->slug.current},
   metadata{title, description, "slug": slug->slug.current, ogImage}
 }`;
@@ -75,7 +85,7 @@ export const joinUsQuery = /* groq */ `
 export const contactQuery = /* groq */ `
 {
   "pageContent": *[_id=="pageContact"][0]{ 
-  theme, title, headline, pageLabel, introBody,
+  theme, title, heroHeadline, pageLabel, contactImage, introBody,
   metadata{title, description, "slug": slug->slug.current, ogImage}
   },
   "contactDetails": *[_id=="global-config"][0]{

@@ -1,23 +1,44 @@
 <template>
   <div class="work page-wrapper" :style="cssVars">
-    <div class="page-hero-container">
+    <section class="page-hero-container x2-h">
       <div
         :class="['inner-texture', theme.texture]"
         data-scroll-parallax
-        data-scroll-speed="0.5"
+        data-scroll-speed="0.3"
       ></div>
       <div class="texture-pull-right">
         <div
           :class="['inner-texture', theme.texture]"
           data-scroll-parallax
-          data-scroll-speed="0.5"
+          data-scroll-speed="-0.3"
         ></div>
       </div>
-      <div class="work-hero-content">
-        <h1>{{ heroHeadline }}</h1>
+      <div
+        class="work-headline content-block title-reveal v-centered"
+        :style="`--block-height: 100vh`"
+        data-splitting
+        data-scroll-reveal
+      >
+        <block-content
+          :blocks="heroHeadline"
+          :serializers="serializers"
+        ></block-content>
+        <scroll-prompt></scroll-prompt>
       </div>
-      <scroll-prompt></scroll-prompt>
-    </div>
+      <div
+        class="content-block work-intro v-centered"
+        :style="`--block-height: 100vh`"
+      >
+        <div class="intro-text-lockup col-12 col-md-8 col-lg-7">
+          <h6 data-scroll-reveal class="section-label full-width reveal">
+            {{ introLabel }}
+          </h6>
+          <div data-scroll-reveal class="reveal">
+            <block-content :blocks="introBody"></block-content>
+          </div>
+        </div>
+      </div>
+    </section>
     <transition appear name="fade">
       <div
         ref="logo-peel"
@@ -29,9 +50,85 @@
         </nuxt-link>
       </div>
     </transition>
-    <h4>{{ introLabel }}</h4>
-    <block-content :blocks="introBody"></block-content>
-    <div class="work-container">
+    <section class="case-studies-container section-container white-bg">
+      <div
+        class="texture-pull-left tex-slide-in"
+        data-scroll-reveal
+        data-reveal-start="top center"
+      >
+        <div
+          :class="['inner-texture', theme.texture]"
+          data-scroll-parallax
+          data-scroll-speed="0.5"
+        ></div>
+      </div>
+      <div
+        class="texture-pull-right"
+        data-scroll-reveal
+        data-reveal-start="top center"
+        data-scroll-parallax
+        data-scroll-speed="0.3"
+        data-scroll-direction="horizontal"
+      >
+        <div :class="['inner-texture', theme.texture]"></div>
+      </div>
+      <div class="case-studies-content content-block v-space-normal">
+        <h6 data-scroll-reveal class="section-label reveal col-12">
+          {{ workLabel }}
+        </h6>
+        <ul class="project-list-container">
+          <li
+            v-for="(project, i) in work"
+            :key="i"
+            class="case-study-listing horizontal-list-lockup reveal"
+            data-scroll-reveal
+          >
+            <div class="project-details-lockup flex-col-12 flex-col-md-6">
+              <h5 class="client-name">{{ project.client.name }}</h5>
+              <h2 class="project-title">{{ project.title }}</h2>
+              <cta-btn class="cta-primary" :slug="project.slug">
+                View case study
+              </cta-btn>
+            </div>
+            <figure
+              class="
+                project-hero-image-container
+                flex-col-12 flex-col-md-5
+                offset-md-1
+              "
+            >
+              <!-- <img
+                :src="
+                  imgRes.width > 1
+                    ? urlFor(project.hero)
+                        .width('200')
+                        .auto('format')
+                        .quality(80)
+                        .url()
+                    : ''
+                "
+              /> -->
+              <img
+                :src="
+                  imgRes.width > 1
+                    ? urlFor(project.hero)
+                        .width(
+                          isMobile && imgRes.width < 1000
+                            ? imgRes.width
+                            : Math.floor(imgRes.width / 2)
+                        )
+                        .auto('format')
+                        .quality(80)
+                        .url()
+                    : ''
+                "
+              />
+            </figure>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <!--  <div class="work-container">
       <div class="work-content">
         <div class="work-label">
           <h3>{{ workLabel }}</h3>
@@ -47,16 +144,17 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 <script>
 import sanityClient from "../sanityClient";
 import { workQuery as query } from "../data/queries";
-import Logo from "~/assets/circa_logo_nofill.svg?inline";
+import pageSetup from "~/mixins/pageSetup";
+import scrollAnimations from "~/mixins/scrollAnimations";
 
 export default {
-  components: [Logo],
+  mixins: [pageSetup, scrollAnimations],
   async asyncData() {
     const pageData = await sanityClient.fetch(query);
     console.log(pageData.theme);
@@ -64,13 +162,13 @@ export default {
       ...pageData,
     };
   },
-  computed: {
-    cssVars() {
-      return {
-        "--primary-color": this.theme.primaryColor.value,
-        "--secondary-color": this.theme.secondaryColor.value,
-        "--bg-texture": `var(--tex-${this.theme.texture});`,
-      };
+  mounted() {
+    this.init();
+  },
+  methods: {
+    init() {
+      this.splitText();
+      this.$nextTick(() => this.initScrollAni());
     },
   },
 };

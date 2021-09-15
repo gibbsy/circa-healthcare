@@ -1,4 +1,8 @@
-@mixin section-container($flex: row, $justify: flex-start, $align: flex-start) {
+@mixin section-container(
+  $flex: column,
+  $justify: flex-start,
+  $align: flex-start
+) {
   position: relative;
   width: 100%;
   max-width: 100%;
@@ -7,6 +11,7 @@
   align-items: $align;
   justify-content: $justify;
   overflow: hidden;
+  height: var(--section-height, auto);
 }
 
 @mixin standard-padding() {
@@ -40,7 +45,7 @@
 
 @mixin content-block(
   $padding: 0,
-  $flex: row,
+  $flex: column,
   $justify: flex-start,
   $align: flex-start
 ) {

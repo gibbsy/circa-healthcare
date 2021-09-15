@@ -96,12 +96,48 @@ body {
   }
 }
 .content-block {
-  @include content-block($padding: standard, $align: center);
-  height: var(--block-height);
+  @include content-block($padding: standard);
+  height: var(--block-height, auto);
 }
-.content-block--column {
-  @include content-block($padding: standard, $flex: column, $justify: center);
-  height: var(--block-height);
+.content-block--extra-pad {
+  @include content-block($padding: extra);
+  height: var(--block-height, auto);
+}
+.content-block--row {
+  @include content-block($padding: standard, $flex: row);
+  height: var(--block-height, auto);
+}
+
+.v-space-narrow {
+  > * {
+    margin-bottom: 2rem;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+.v-space-normal {
+  > * {
+    margin-bottom: 5rem;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+.v-space-wide {
+  > * {
+    margin-bottom: 8rem;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+.centered {
+  justify-content: center;
+  align-items: center;
+}
+.v-centered {
+  justify-content: center;
 }
 .headline-container {
   position: relative;
@@ -145,10 +181,10 @@ body {
 .inner-texture {
   position: absolute;
   width: 120%;
-  height: 150%;
+  height: 160%;
   left: -10%;
   right: -10%;
-  top: -50%;
+  top: -30%;
   bottom: 0;
   background: var(--bg-texture);
   mix-blend-mode: screen;
@@ -175,9 +211,14 @@ body {
   opacity: 0.5;
 }
 
+.cta-block > .inner-texture {
+  height: 200%;
+  top: -100%;
+}
+
 .texture-pull-right {
   position: absolute;
-  right: -35%;
+  right: -36%;
   top: auto;
   bottom: 0;
   @include clip-edge($edge: left, $height: 100vh);
@@ -187,6 +228,9 @@ body {
   will-change: transform;
   // clip-path: url(#clip);
   overflow: hidden;
+  .cta-block & {
+    right: -40%;
+  }
 }
 
 .flex--centred {
@@ -215,7 +259,7 @@ body {
 }
 
 .section-hero-image-wrapper {
-  position: absolute;
+  position: relative;
   display: inline-block;
   left: 0;
   top: 0;
@@ -227,6 +271,7 @@ body {
   opacity: 0;
 
   @include bp(768) {
+    position: absolute;
     left: 10%;
     width: 90vw;
   }
@@ -241,8 +286,6 @@ body {
   }
   .section-hero-image-inner {
     @include abs100();
-    width: 100%;
-    left: 0;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -307,6 +350,7 @@ body {
 
 .scroll-prompt {
   position: absolute;
+  left: 0;
   bottom: 30px;
   width: 100%;
   overflow: visible;
@@ -337,22 +381,39 @@ body {
     }
   }
   &.is-inview {
-    transition-delay: 3s;
+    transition-delay: 2s;
   }
 }
 
 .reveal {
   @include reveal-slide-up-fade;
 }
+.reveal-slide-in {
+  transform: translateX(200px);
+}
+.texture-pull-left.reveal-slide-in {
+  transform: translateX(-200px);
+}
+.texture-pull-right.reveal-slide-in {
+  transform: translateX(200px);
+}
+.reveal-slide-in {
+  transition: opacity 1.6s $easing, transform 1.6s $easing;
+  opacity: 0;
+  &.is-inview {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 
 .service-list-container {
   position: relative;
   width: 100%;
   display: flex;
-  margin-bottom: 60px;
+  margin-bottom: 6rem;
 
   .service-item {
-    // width: 30%;
+    margin-bottom: 2rem;
     @include reveal-slide-up-fade();
     @include stagger-children(
       $prop: transition,
@@ -366,6 +427,12 @@ body {
     h3 {
       color: var(--primary-color);
     }
+    &:last-child {
+      margin-bottom: 0;
+    }
+    @include bp(768) {
+      margin-bottom: 0;
+    }
   }
   .service-icon {
     position: relative;
@@ -373,5 +440,36 @@ body {
     width: 80px;
     height: 80px;
     background-size: contain;
+  }
+}
+
+.client-logo-grid {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-row-gap: 2rem;
+  @include reveal-slide-up-fade();
+  .client-logo {
+    width: 160px;
+    background-color: var(--primary-color);
+    img {
+      mix-blend-mode: multiply;
+      width: 100%;
+    }
+    .white-bg & {
+      background-color: #fff;
+      img {
+        mix-blend-mode: normal;
+      }
+    }
+  }
+}
+
+.horizontal-list-lockup {
+  display: flex;
+  margin-bottom: 3rem;
+  &:last-child {
+    margin-bottom: 0;
   }
 }

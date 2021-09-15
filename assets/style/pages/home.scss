@@ -1,5 +1,4 @@
-.hero-container,
-.intro-container {
+.hero-container {
   height: 100vh;
 }
 .hero-background {
@@ -36,15 +35,6 @@
     animation: slide-in-words 0.8s $easing both;
     animation-delay: calc(20ms * var(--word-index) + 1s);
   }
-}
-
-.intro-container {
-  align-items: center;
-}
-
-.intro-content {
-  @include content-block($padding: standard, $align: center);
-  @include reveal-slide-up-fade();
 }
 
 .about-container {
@@ -276,11 +266,6 @@
     top: auto;
     bottom: 0;
   }
-}
-
-.partnerships-container,
-.team-container {
-  height: 100vh;
 }
 
 .team-container {

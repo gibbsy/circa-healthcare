@@ -9,6 +9,7 @@
         data-scroll-start="top top"
       >
         <HeroVideo
+          v-if="hero.heroVideo"
           player-id="textures"
           :vimeo-id="hero.heroVideo"
           :ready-fn="onLoad"
@@ -44,10 +45,10 @@
     </transition>
     <section
       id="intro"
-      class="intro-container section-container white-bg"
+      class="intro-container section-container white-bg v-centered"
       :style="cssVars.intro"
     >
-      <div class="texture-pull-left">
+      <div class="texture-pull-left tex-slide-in" data-scroll-reveal>
         <div
           :class="['inner-texture', intro.introTheme.texture]"
           data-scroll-parallax
@@ -55,14 +56,18 @@
         ></div>
       </div>
       <div
-        class="texture-pull-right"
+        class="texture-pull-right tex-slide-in"
+        data-scroll-reveal
         data-scroll-parallax
         data-scroll-speed="-0.2"
         data-scroll-direction="horizontal"
       >
         <div :class="['inner-texture', intro.introTheme.texture]"></div>
       </div>
-      <div class="intro-content" data-scroll-reveal>
+      <div
+        class="intro-content content-block v-centered reveal"
+        data-scroll-reveal
+      >
         <article class="intro-text-lockup col-12 col-md-8 col-xl-7">
           <div data-scroll-reveal>
             <block-content :blocks="intro.intro"></block-content>
@@ -210,7 +215,9 @@
       </div>
       <div class="work-content">
         <div class="intro-text-lockup col-12 col-md-8 col-xl-7">
-          <h6 data-scroll-reveal class="section-label">{{ work.workLabel }}</h6>
+          <h6 data-scroll-reveal class="section-label reveal">
+            {{ work.workLabel }}
+          </h6>
           <div
             class="headline-container title-reveal"
             data-splitting
@@ -268,7 +275,7 @@
       </div>
       <div class="what-we-do-content">
         <div class="intro-text-lockup col-12 col-md-8 col-xl-7">
-          <h6 data-scroll-reveal class="section-label">
+          <h6 data-scroll-reveal class="section-label reveal">
             {{ whatWeDo.whatWeDoLabel }}
           </h6>
           <div
@@ -282,7 +289,7 @@
             <block-content :blocks="whatWeDo.whatWeDoBody"></block-content>
           </div>
         </div>
-        <div class="service-list-container flex-grid-container">
+        <div class="service-list-container row">
           <div
             v-for="(item, i) in whatWeDo.whatWeDoList"
             :key="i"
@@ -333,7 +340,7 @@
 
       <div class="partnerships-content">
         <div class="intro-text-lockup col-12 col-md-8 col-xl-7">
-          <h6 class="section-label" data-scroll-reveal>
+          <h6 class="section-label reveal" data-scroll-reveal>
             {{ partnerships.partnershipsLabel }}
           </h6>
           <p data-scroll-reveal class="callout">
@@ -399,7 +406,7 @@
 
       <div class="team-content">
         <div class="intro-text-lockup col-12 col-lg-6 offset-lg-6">
-          <h6 class="section-label" data-scroll-reveal>
+          <h6 class="section-label reveal" data-scroll-reveal>
             {{ meetTheTeam.teamLabel }}
           </h6>
           <p data-scroll-reveal class="callout">
@@ -544,34 +551,38 @@ export default {
         intro: {
           "--primary-color": this.intro.introTheme.primaryColor.value,
           "--secondary-color": this.intro.introTheme.secondaryColor.value,
-          "--bg-texture": `var(--tex-${this.intro.introTheme.texture});`,
+          "--bg-texture": `var(--tex-${this.intro.introTheme.texture})`,
+          "--section-height": "100vh",
         },
         about: {
           "--primary-color": this.about.aboutTheme.primaryColor.value,
           "--secondary-color": this.about.aboutTheme.secondaryColor.value,
-          "--bg-texture": `var(--tex-${this.about.aboutTheme.texture});`,
+          "--bg-texture": `var(--tex-${this.about.aboutTheme.texture})`,
         },
         work: {
           "--primary-color": this.work.workTheme.primaryColor.value,
           "--secondary-color": this.work.workTheme.secondaryColor.value,
-          "--bg-texture": `var(--tex-${this.work.workTheme.texture});`,
+          "--bg-texture": `var(--tex-${this.work.workTheme.texture})`,
+          "--section-height": "100vh",
         },
         whatWeDo: {
           "--primary-color": this.whatWeDo.whatWeDoTheme.primaryColor.value,
           "--secondary-color": this.whatWeDo.whatWeDoTheme.secondaryColor.value,
-          "--bg-texture": `var(--tex-${this.whatWeDo.whatWeDoTheme.texture});`,
+          "--bg-texture": `var(--tex-${this.whatWeDo.whatWeDoTheme.texture})`,
         },
         partnerships: {
           "--primary-color":
             this.partnerships.partnershipsTheme.primaryColor.value,
           "--secondary-color":
             this.partnerships.partnershipsTheme.secondaryColor.value,
-          "--bg-texture": `var(--tex-${this.partnerships.partnershipsTheme.texture});`,
+          "--bg-texture": `var(--tex-${this.partnerships.partnershipsTheme.texture})`,
+          "--section-height": "100vh",
         },
         team: {
           "--primary-color": this.meetTheTeam.teamTheme.primaryColor.value,
           "--secondary-color": this.meetTheTeam.teamTheme.secondaryColor.value,
-          "--bg-texture": `var(--tex-${this.meetTheTeam.teamTheme.texture});`,
+          "--bg-texture": `var(--tex-${this.meetTheTeam.teamTheme.texture})`,
+          "--section-height": "100vh",
         },
       };
     },

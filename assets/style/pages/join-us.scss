@@ -1,0 +1,10 @@
+.join-cta-container {
+  .section-hero-image-wrapper {
+    @include bp(1024) {
+      @include clip-edge(left, 70vh);
+      height: 70vh;
+      width: 40%;
+      left: 60%;
+    }
+  }
+}

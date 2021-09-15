@@ -1,16 +1,18 @@
 <template>
   <div class="nav-full-screen-container" :style="cssVars">
     <div class="nav-content">
-      <ul>
-        <li>
-          <nuxt-link to="/" @click.native="clickFn">Home</nuxt-link>
-        </li>
-        <li v-for="link in links" :key="link.slug.current">
-          <nuxt-link :to="link.slug.current" @click.native="clickFn">{{
-            link.title
-          }}</nuxt-link>
-        </li>
-      </ul>
+      <nav class="col-12 col-lg-6 offset-lg-1">
+        <ul>
+          <li>
+            <nuxt-link to="/" @click.native="clickFn">Home</nuxt-link>
+          </li>
+          <li v-for="link in links" :key="link.slug.current">
+            <nuxt-link :to="link.slug.current" @click.native="clickFn">{{
+              link.title
+            }}</nuxt-link>
+          </li>
+        </ul>
+      </nav>
       <div class="nav-contacts-container">
         <div
           v-for="location in contactDetails"

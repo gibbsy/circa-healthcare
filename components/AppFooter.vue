@@ -9,7 +9,7 @@
     </div>
     <div class="footer-main" col-9 col-xl-10>
       <div class="footer-nav">
-        <h6 class="section-label" data-scroll-reveal>Explore</h6>
+        <h6 class="section-label">Explore</h6>
         <ul>
           <li>
             <nuxt-link to="/">Home</nuxt-link>
@@ -20,7 +20,7 @@
         </ul>
       </div>
       <div class="footer-contacts">
-        <h6 class="section-label" data-scroll-reveal>Get in touch</h6>
+        <h6 class="section-label">Get in touch</h6>
         <div class="footer-contacts-container">
           <div
             v-for="location in contactDetails"

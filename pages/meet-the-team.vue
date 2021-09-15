@@ -1,5 +1,5 @@
 <template>
-  <div class="clients page-wrapper" :style="cssVars">
+  <div class="team page-wrapper" :style="cssVars">
     <section class="page-hero-container v-centered">
       <div
         :class="['inner-texture', theme.texture]"
@@ -14,7 +14,7 @@
         ></div>
       </div>
       <div
-        class="clients-headline content-block title-reveal"
+        class="team-headline content-block title-reveal"
         data-splitting
         data-scroll-reveal
       >
@@ -37,7 +37,7 @@
       </div>
     </transition>
 
-    <section class="clients-list-container section-container white-bg">
+    <section class="team-list-container section-container white-bg">
       <div
         class="texture-pull-left tex-slide-in"
         data-scroll-reveal
@@ -60,44 +60,56 @@
           data-scroll-speed="-0.2"
         ></div>
       </div>
-      <div class="clients-content content-block--extra-pad v-space-wide">
+      <div class="team-content content-block--extra-pad v-space-wide">
         <h6 data-scroll-reveal class="section-label reveal col-12">
           {{ introLabel }}
         </h6>
         <article class="row reveal" data-scroll-reveal>
-          <p class="clients-intro intro-lg col-12 col-lg-6">
+          <p class="team-intro intro-lg col-12 col-lg-6">
             <block-content :blocks="introSubhead"></block-content>
           </p>
-          <p class="clients-intro col-12 col-lg-6">
+          <p class="team-intro col-12 col-lg-6">
             <block-content :blocks="introBody"></block-content>
           </p>
         </article>
-        <div class="client-logo-grid" data-scroll-reveal>
-          <figure
-            v-for="(client, i) in clientList"
+        <ul class="team-list col-12">
+          <li
+            v-for="(item, i) in teamMembers"
             :key="i"
-            class="client-logo flex--centred"
+            class="team-member reveal"
+            data-scroll-reveal
           >
-            <img
-              :src="
-                imgRes.width > 1
-                  ? urlFor(client.logo)
-                      .width('200')
-                      .auto('format')
-                      .saturation(-100)
-                      .quality(80)
-                      .url()
-                  : ''
-              "
-              :alt="client.name"
-            />
-          </figure>
-        </div>
+            <div class="team-member-inner">
+              <figure
+                class="team-portrait"
+                :style="{
+                  backgroundImage: `url('${urlFor(item.image)
+                    .width(500)
+                    .height(500)
+                    .auto('format')
+                    .quality(70)
+                    .url()}')`,
+                }"
+              ></figure>
+
+              <div class="team-member-details">
+                <h5 class="team-name">
+                  {{ item.name
+                  }}<span v-if="item.qualifications" class="qualifications">
+                    {{ item.qualifications }}</span
+                  >
+                </h5>
+                <p class="job-title">{{ item.jobTitle }}</p>
+                <a class="team-linkedin" :href="item.linkedin"
+                  >Linkedin profile</a
+                >
+              </div>
+            </div>
+          </li>
+        </ul>
       </div>
     </section>
-    <section
-      class="clients-cta-container section-container full-color cta-block"
-    >
+    <section class="team-cta-container section-container full-color cta-block">
       <div
         :class="['inner-texture', theme.texture]"
         data-scroll-parallax
@@ -109,8 +121,8 @@
       <div class="texture-pull-right">
         <div :class="['inner-texture', theme.texture]"></div>
       </div>
-      <div class="clients-cta content-block--extra-pad v-space-narrow centered">
-        <h3 class="reveal semibold" data-scroll-reveal>{{ ctaHeadline }}</h3>
+      <div class="team-cta content-block--extra-pad v-space-narrow centered">
+        <h3 class="reveal" data-scroll-reveal>{{ ctaHeadline }}</h3>
         <cta-btn class="cta-primary" :slug="ctaBtn.slug">{{
           ctaBtn.title
         }}</cta-btn>
@@ -119,7 +131,7 @@
   </div>
 </template>
 <script>
-import { clientsQuery as query } from "../data/queries";
+import { teamQuery as query } from "../data/queries";
 import sanityClient from "../sanityClient";
 import pageSetup from "~/mixins/pageSetup";
 import scrollAnimations from "~/mixins/scrollAnimations";
@@ -128,10 +140,8 @@ export default {
   mixins: [pageSetup, scrollAnimations],
   async asyncData() {
     const pageData = await sanityClient.fetch(query);
-    const { pageContent, clientList } = pageData;
     return {
-      ...pageContent,
-      ...clientList,
+      ...pageData,
     };
   },
   mounted() {
@@ -149,5 +159,5 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "../assets/style/pages/clients";
+@import "../assets/style/pages/team";
 </style>
