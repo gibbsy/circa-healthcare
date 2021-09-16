@@ -10,7 +10,7 @@
         <div
           :class="['inner-texture', theme.texture]"
           data-scroll-parallax
-          data-scroll-speed="-0.3"
+          data-scroll-speed="0.3"
         ></div>
       </div>
       <div
@@ -50,7 +50,7 @@
         </nuxt-link>
       </figure>
     </transition>
-    <section class="partners-container section-container white-bg">
+    <section class="values-container section-container white-bg">
       <div
         class="texture-pull-left reveal-slide-in"
         data-scroll-reveal
@@ -73,26 +73,27 @@
           data-scroll-speed="-0.2"
         ></div>
       </div>
-      <div class="partners-content content-block--extra-pad v-space-normal">
-        <h6 data-scroll-reveal class="section-label reveal col-11">
+      <div class="values-content content-block--extra-pad v-space-normal">
+        <h6 data-scroll-reveal class="section-label reveal col-12">
           {{ valuesLabel }}
         </h6>
 
-        <ul class="values-list"></ul>
-        <ul class="values-list-container row">
+        <ul class="icon-list-container values row">
           <li
             v-for="(item, i) in valuesList"
             :key="i"
-            class="service-item flex-col-12 flex-col-md-4"
+            class="icon-lockup flex-col-12 flex-col-md-6"
             data-scroll-reveal
           >
             <figure
-              class="service-icon"
+              class="icon-lockup-icon"
               :style="{ backgroundImage: `url(${urlFor(item.icon)})` }"
               data-scroll
             ></figure>
-            <h3 class="service-title">{{ item.title }}</h3>
-            <block-content :blocks="item.text"></block-content>
+            <div class="icon-lockup-text">
+              <h3 class="icon-lockup-title">{{ item.title }}</h3>
+              <block-content :blocks="item.text"></block-content>
+            </div>
           </li>
         </ul>
       </div>
@@ -122,11 +123,7 @@
       </div>
 
       <div class="join-cta content-block v-space-narrow v-centered">
-        <p
-          class="callout col-12 col-lg-8 reveal"
-          data-scroll-reveal
-          data-reveal-start="top bottom-=400"
-        >
+        <p class="callout col-12 col-lg-8 reveal" data-scroll-reveal>
           {{ ctaText }}
         </p>
         <cta-btn class="cta-primary" :slug="ctaBtn.slug">{{

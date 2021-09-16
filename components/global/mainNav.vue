@@ -1,5 +1,28 @@
 <template>
-  <div class="nav-full-screen-container" :style="cssVars">
+  <div
+    class="nav-full-screen-container section-container full-color"
+    :style="cssVars"
+  >
+    <div :class="['inner-texture']"></div>
+    <div
+      :class="['texture-pull-left', 'reveal-slide-in', { 'is-inview': inView }]"
+      data-scroll-reveal
+    >
+      <div class="inner-texture"></div>
+    </div>
+    <div
+      :class="[
+        'texture-pull-right',
+        'reveal-slide-in',
+        { 'is-inview': inView },
+      ]"
+    >
+      <div
+        class="inner-texture"
+        data-scroll-parallax
+        data-scroll-speed="0.5"
+      ></div>
+    </div>
     <div class="nav-content">
       <nav class="col-12 col-lg-6 offset-lg-1">
         <ul>
@@ -7,23 +30,26 @@
             <nuxt-link to="/" @click.native="clickFn">Home</nuxt-link>
           </li>
           <li v-for="link in links" :key="link.slug.current">
-            <nuxt-link :to="link.slug.current" @click.native="clickFn">{{
+            <nuxt-link :to="`/${link.slug.current}`" @click.native="clickFn">{{
               link.title
             }}</nuxt-link>
           </li>
         </ul>
       </nav>
-      <div class="nav-contacts-container">
+      <div class="contacts-container">
         <div
           v-for="location in contactDetails"
           :key="location.name"
           class="nav-contacts-item"
         >
-          <h3>{{ location.name }}</h3>
-          <block-content :blocks="location.address"></block-content>
+          <h6>{{ location.name }}</h6>
+          <div class="infos">
+            <a :href="`mailto:${location.email}`">{{ location.email }}</a>
+            <p>{{ location.phone }}</p>
+          </div>
         </div>
         <div class="nav-contacts-item">
-          <h3>Social</h3>
+          <h6>Social</h6>
           <ul class="nav-socials-menu">
             <li v-for="link in socials" :key="link.title">
               <a :href="link.href">{{ link.title }}></a>
@@ -54,17 +80,29 @@ export default {
       default: () => [],
     },
   },
+  data() {
+    return {
+      inView: false,
+    };
+  },
   computed: {
     cssVars() {
       return {
-        "--primary-color": "anthracite",
-        "--secondary-color": "slate",
-        "--bg-texture": `var(--tex-default);`,
+        "--primary-color": `var(--anthracite)`,
+        "--secondary-color": `var(--slate)`,
+        "--bg-texture": `var(--tex-circuit)`,
       };
     },
   },
   mounted() {
-    console.log(this.links);
+    setTimeout(() => {
+      this.inView = true;
+    }, 500);
+  },
+  methods: {
+    clickHandler() {
+      // tbc
+    },
   },
 };
 </script>

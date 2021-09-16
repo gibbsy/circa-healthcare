@@ -2,16 +2,60 @@ footer {
   position: relative;
   width: 100%;
   display: flex;
-  padding: 4rem 10%;
   color: #fff;
   overflow: hidden;
   background-color: var(--primary-color);
+  height: 420px;
+  .logo-texture-lockup {
+    position: absolute;
+    width: 350px;
+    height: 100%;
+    right: 0;
+    top: 0;
+  }
+  .texture-pull-right {
+    width: 100%;
+    right: auto;
+  }
+  .footer-logo {
+    position: absolute;
+    width: 180px;
+    top: 4rem;
+    left: 12px;
+    svg {
+      fill: #fff;
+    }
+  }
+}
+
+.footer-main,
+.footer-contacts,
+.footer-nav {
+  & > * {
+    margin-bottom: 1rem;
+  }
+}
+
+.contacts-item,
+.footer-nav {
+  a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.125rem;
+    &:hover {
+      color: var(--secondary-color);
+      text-decoration: underline;
+    }
+  }
 }
 
 .footer-main {
   position: relative;
   display: flex;
   flex-direction: column;
+  width: 66.66%;
+  @include footer-padding();
+  padding-bottom: 10px;
   h6 {
     color: var(--secondary-color);
     &:after {
@@ -20,31 +64,47 @@ footer {
   }
   ul {
     display: flex;
+    justify-content: space-between;
   }
   li {
-    margin-left: 2rem;
+    // margin-left: 2rem;
     list-style: none;
     &:first-child {
       margin: 0;
-    }
-    a {
-      text-decoration: none;
-      color: #fff;
-      font-size: 1.125rem;
-      &:hover {
-        color: var(--secondary-color);
-        text-decoration: underline;
-      }
     }
   }
   .footer-contacts-container {
     position: relative;
     display: flex;
-    .footer-contacts-item {
-      margin-left: 2rem;
+    .contacts-item {
+      margin-left: 3rem;
+
+      li,
+      a,
+      p {
+        color: #fff;
+        font-size: 1.125rem;
+      }
+      h6 {
+        color: #fff;
+        font-weight: 500;
+        margin-bottom: 0;
+      }
+      .infos {
+        margin-bottom: 2rem;
+      }
       &:first-child {
         margin: 0;
       }
     }
+  }
+  .footer-legals {
+    li,
+    a,
+    p {
+      font-size: 1.125rem;
+      color: var(--secondary-color);
+    }
+    margin-top: auto;
   }
 }

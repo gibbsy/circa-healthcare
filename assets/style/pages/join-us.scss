@@ -8,3 +8,22 @@
     }
   }
 }
+.icon-list-container.values {
+  .icon-lockup {
+    display: flex;
+    flex-direction: row;
+    transition-delay: 0;
+  }
+  .icon-lockup-icon {
+    flex-shrink: 0;
+  }
+  .icon-lockup-text {
+    padding: 0 2rem;
+  }
+}
+
+.values-container {
+  .texture-pull-right {
+    right: -40%;
+  }
+}

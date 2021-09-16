@@ -79,7 +79,25 @@ export default {
     // https://go.nuxtjs.dev/eslint
     "@nuxtjs/eslint-module",
     "@nuxtjs/style-resources",
+    "@nuxt/image",
   ],
+  // https://image.nuxtjs.org/
+  image: {
+    provider: "sanity",
+    sanity: {
+      projectId: "j3kfzxis",
+    },
+    screens: {
+      xs: 320,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+      xxl: 1536,
+      "2xl": 1536,
+      hd: 1920,
+    },
+  },
   //  global scss vars https://github.com/nuxt-community/style-resources-module
   styleResources: {
     scss: [

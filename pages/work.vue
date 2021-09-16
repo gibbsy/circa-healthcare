@@ -10,7 +10,7 @@
         <div
           :class="['inner-texture', theme.texture]"
           data-scroll-parallax
-          data-scroll-speed="-0.3"
+          data-scroll-speed="0.3"
         ></div>
       </div>
       <div
@@ -86,7 +86,10 @@
             <div class="project-details-lockup flex-col-12 flex-col-md-6">
               <h5 class="client-name">{{ project.client.name }}</h5>
               <h2 class="project-title">{{ project.title }}</h2>
-              <cta-btn class="cta-primary" :slug="project.slug">
+              <cta-btn
+                class="cta-primary"
+                :slug="`case-study/${project.slug.current}`"
+              >
                 View case study
               </cta-btn>
             </div>
@@ -168,7 +171,9 @@ export default {
   methods: {
     init() {
       this.splitText();
-      this.$nextTick(() => this.initScrollAni());
+      setTimeout(() => {
+        this.initScrollAni();
+      }, 100);
     },
   },
 };

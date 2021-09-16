@@ -1,13 +1,21 @@
 <template>
   <footer :style="cssVars">
-    <div class="footer-branding">
+    <div class="logo-texture-lockup">
+      <div :class="['texture-pull-right']">
+        <div
+          class="inner-texture"
+          data-scroll-parallax
+          data-scroll-speed="0.5"
+        ></div>
+      </div>
       <div class="footer-logo">
         <nuxt-link to="/">
           <logo />
         </nuxt-link>
       </div>
     </div>
-    <div class="footer-main" col-9 col-xl-10>
+
+    <div class="footer-main">
       <div class="footer-nav">
         <h6 class="section-label">Explore</h6>
         <ul>
@@ -15,13 +23,36 @@
             <nuxt-link to="/">Home</nuxt-link>
           </li>
           <li v-for="link in links" :key="link.slug.current">
-            <nuxt-link :to="link.slug.current">{{ link.title }}</nuxt-link>
+            <nuxt-link :to="`/${link.slug.current}`">{{
+              link.title
+            }}</nuxt-link>
           </li>
         </ul>
       </div>
       <div class="footer-contacts">
         <h6 class="section-label">Get in touch</h6>
         <div class="footer-contacts-container">
+          <div
+            v-for="location in contactDetails"
+            :key="location.name"
+            class="contacts-item"
+          >
+            <h6>{{ location.name }}</h6>
+            <div class="infos">
+              <a :href="`mailto:${location.email}`">{{ location.email }}</a>
+              <p>{{ location.phone }}</p>
+            </div>
+          </div>
+          <div class="contacts-item">
+            <h6>Social</h6>
+            <ul class="nav-socials-menu">
+              <li v-for="link in socials" :key="link.title">
+                <a :href="link.href">{{ link.title }}></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- <div class="footer-contacts-container">
           <div
             v-for="location in contactDetails"
             :key="location.name"
@@ -38,7 +69,7 @@
               </li>
             </ul>
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="footer-legals">
         <ul class="legal-links-menu">
@@ -87,9 +118,9 @@ export default {
   computed: {
     cssVars() {
       return {
-        "--primary-color": "#212a33",
-        "--secondary-color": "#477e9f",
-        "--bg-texture": `var(--tex-default);`,
+        "--primary-color": `var(--anthracite)`,
+        "--secondary-color": `var(--slate)`,
+        "--bg-texture": `var(--tex-circuit)`,
       };
     },
   },

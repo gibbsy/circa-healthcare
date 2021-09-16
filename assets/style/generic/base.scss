@@ -302,7 +302,6 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 50001;
   width: 20vw;
   margin: 15px 0 0 20px;
   transition: opacity 0.6s ease;
@@ -361,13 +360,21 @@ body {
   span {
     position: relative;
     display: inline-block;
-    width: 4vw;
-    height: 4vw;
+    width: 40px;
+    height: 40px;
     background-color: var(--secondary-color);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    @include bp(768) {
+      width: 60px;
+      height: 60px;
+    }
+    @include bp(1400) {
+      width: 4vw;
+      height: 4vw;
+    }
     svg {
       fill: #fff;
     }
@@ -406,25 +413,26 @@ body {
   }
 }
 
-.service-list-container {
+.icon-list-container {
   position: relative;
   width: 100%;
   display: flex;
   margin-bottom: 6rem;
 
-  .service-item {
+  .icon-lockup {
+    list-style: none;
     margin-bottom: 2rem;
     @include reveal-slide-up-fade();
     @include stagger-children(
       $prop: transition,
-      $children: 3,
+      $children: 4,
       $delay: 0,
       $stagger: 0.2
     );
     * {
       margin-bottom: 1rem;
     }
-    h3 {
+    .icon-lockup-title {
       color: var(--primary-color);
     }
     &:last-child {
@@ -434,7 +442,7 @@ body {
       margin-bottom: 0;
     }
   }
-  .service-icon {
+  .icon-lockup-icon {
     position: relative;
     display: inline-block;
     width: 80px;
@@ -471,5 +479,22 @@ body {
   margin-bottom: 3rem;
   &:last-child {
     margin-bottom: 0;
+  }
+}
+
+.contacts-container {
+  h3,
+  li,
+  a,
+  p {
+    font-size: 1.25rem;
+  }
+  h6 {
+    color: var(--secondary-color);
+    font-weight: 700;
+    margin-bottom: 0;
+  }
+  .infos {
+    margin-bottom: 2rem;
   }
 }

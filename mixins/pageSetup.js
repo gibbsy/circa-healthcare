@@ -5,6 +5,10 @@ import copyline from "~/components/span.vue";
 const urlBuilder = imageUrlBuilder(sanityClient);
 
 export default {
+  transition: {
+    name: "fade",
+    mode: "out-in",
+  },
   components: { Logo },
   data() {
     return {

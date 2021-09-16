@@ -1,5 +1,6 @@
 /* Buttons styles start */
-a.cta-primary {
+a.cta-primary,
+input.cta-primary {
   position: relative;
   background-color: var(--secondary-color);
   // margin: 0;
@@ -12,6 +13,8 @@ a.cta-primary {
   font-weight: 500;
   flex-grow: 0;
   will-change: background-color;
+  border: none;
+  outline: none;
   @include reveal-slide-up-fade;
   transition: color 0.2s ease, background-color 0.2s ease, opacity 1s $easing,
     transform 0.8s $easing;

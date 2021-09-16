@@ -57,6 +57,29 @@
             <block-content :blocks="introBody"></block-content>
           </div>
         </div>
+        <div class="contact-details row">
+          <contact-form></contact-form>
+          <div class="nav-contacts-container">
+            <div
+              v-for="location in contactDetails"
+              :key="location.name"
+              class="nav-contacts-item"
+            >
+              <h6>{{ location.name }}</h6>
+              <div class="address">
+                <block-content :blocks="location.address"></block-content>
+              </div>
+            </div>
+            <div class="nav-contacts-item">
+              <h6>Social</h6>
+              <ul class="nav-socials-menu">
+                <li v-for="link in socials" :key="link.title">
+                  <a :href="link.href">{{ link.title }}></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </div>
@@ -86,11 +109,11 @@ export default {
       // this.$nextTick(() => this.initScrollAni());
       setTimeout(() => {
         this.initScrollAni();
-      }, 50);
+      }, 100);
     },
   },
 };
 </script>
 <style lang="scss" scoped>
-@import "../assets/style/pages/clients";
+@import "../assets/style/pages/contact";
 </style>

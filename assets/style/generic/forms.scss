@@ -21,7 +21,7 @@ input[type="email"]:focus,
 textarea:focus,
 select:focus {
   outline: none;
-  border-color: $midPurple;
+  border-color: var(--primary-color);
   box-shadow: 0 0 5px rgba(44, 86, 222, 0.2);
 }
 select {
@@ -113,7 +113,7 @@ textarea {
 input[type="submit"] {
   &:focus {
     outline: none;
-    background: $nightMode;
+    background: var(--primary-color);
   }
   &:disabled {
     opacity: 0.5;

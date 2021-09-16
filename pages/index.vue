@@ -9,8 +9,7 @@
         data-scroll-start="top top"
       >
         <HeroVideo
-          v-if="hero.heroVideo"
-          player-id="textures"
+          v-if="typeof hero.heroVideo === 'string'"
           :vimeo-id="hero.heroVideo"
           :ready-fn="onLoad"
         ></HeroVideo>
@@ -289,19 +288,19 @@
             <block-content :blocks="whatWeDo.whatWeDoBody"></block-content>
           </div>
         </div>
-        <div class="service-list-container row">
+        <div class="icon-list-container row">
           <div
             v-for="(item, i) in whatWeDo.whatWeDoList"
             :key="i"
-            class="service-item flex-col-12 flex-col-md-4"
+            class="icon-lockup services flex-col-12 flex-col-md-4"
             data-scroll-reveal
           >
             <figure
-              class="service-icon"
+              class="icon-lockup-icon"
               :style="{ backgroundImage: `url(${urlFor(item.icon)})` }"
               data-scroll
             ></figure>
-            <h3 class="service-title">{{ item.title }}</h3>
+            <h3 class="icon-lockup-title">{{ item.title }}</h3>
             <block-content :blocks="item.text"></block-content>
           </div>
         </div>
@@ -441,6 +440,10 @@ export default {
     Logo,
   },
   mixins: [scrollAnimations],
+  transition: {
+    name: "fade",
+    mode: "out-in",
+  },
   async asyncData() {
     const homeData = await sanityClient.fetch(query);
     // console.log(homeData);
@@ -607,7 +610,9 @@ export default {
       return urlBuilder.image(source);
     },
     init() {
-      this.$nextTick(() => this.initScrollAni());
+      setTimeout(() => {
+        this.initScrollAni();
+      }, 100);
       const imgLoad = imagesLoaded(
         this.$refs["about-images-container"],
         { background: true },

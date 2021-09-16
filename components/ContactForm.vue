@@ -1,5 +1,5 @@
 <template>
-  <div class="contact-form-container">
+  <div class="contact-form-container flex-col-12 flex-col-lg-8">
     <form
       id="contact-form"
       name="contact"
@@ -137,8 +137,9 @@
       </transition>
       <div v-show="!submitted" class="submit-row">
         <input
+          data-scroll-reveal
           type="submit"
-          class="submit-button btn__solid--purple"
+          class="cta-primary"
           value="Connect with us"
           :disabled="submitting"
         />

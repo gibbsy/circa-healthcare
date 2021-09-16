@@ -10,7 +10,7 @@
         <div
           :class="['inner-texture', theme.texture]"
           data-scroll-parallax
-          data-scroll-speed="-0.3"
+          data-scroll-speed="0.3"
         ></div>
       </div>
       <div
@@ -136,7 +136,9 @@ export default {
   methods: {
     init() {
       this.splitText();
-      this.$nextTick(() => this.initScrollAni());
+      setTimeout(() => {
+        this.initScrollAni();
+      }, 100);
     },
   },
 };

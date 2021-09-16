@@ -15,14 +15,16 @@
           <span></span>
         </button>
       </div>
-      <app-footer
-        :links="mainNav"
-        :contact-details="config.contactDetails"
-        :socials="config.socials"
-      ></app-footer>
+      <transition name="fade" appear>
+        <app-footer
+          :links="mainNav"
+          :contact-details="config.contactDetails"
+          :socials="config.socials"
+        ></app-footer>
+      </transition>
       <transition name="slide-in">
         <main-nav
-          v-show="navOn"
+          v-if="navOn"
           :links="mainNav"
           :contact-details="config.contactDetails"
           :socials="config.socials"
@@ -50,6 +52,7 @@ export default {
       cookiesOk: true,
       config: {},
       navOn: false,
+      animating: false,
     };
   },
   async fetch() {
@@ -85,8 +88,39 @@ export default {
       });
     },
     navToggle() {
-      console.log("toggle");
-      this.navOn = !this.navOn;
+      if (this.animating) {
+        return;
+      }
+      if (!this.navOn) {
+        this.animating = true;
+        this.openNav();
+      } else {
+        this.closeNav();
+      }
+    },
+    openNav() {
+      this.navOn = true;
+      this.animating = true;
+      setTimeout(() => {
+        this.animating = false;
+      }, 1000);
+      // gsap.globalTimeline.pause();
+      // ScrollTrigger.getAll().forEach((ST) => ST.disable());
+      /*       document.body.style.top = `-${window.scrollY}px`;
+      document.body.style.position = "fixed"; */
+    },
+    closeNav() {
+      this.navOn = false;
+      this.animating = true;
+      setTimeout(() => {
+        this.animating = false;
+      }, 1000);
+      /*       const scrollY = document.body.style.top;
+      document.body.style.position = "";
+      document.body.style.top = "";
+      window.scrollTo(0, parseInt(scrollY || "0") * -1); */
+      // gsap.globalTimeline.pause();
+      // ScrollTrigger.getAll().forEach((ST) => ST.enable());
     },
   },
 };

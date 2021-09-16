@@ -14,8 +14,34 @@
   height: var(--section-height, auto);
 }
 
+@mixin footer-padding() {
+  padding: 1rem;
+
+  @include bp(1024) {
+    padding: 2rem 0 10px 5%;
+  }
+  @include bp(1200) {
+    padding: 3rem 0 10px 7%;
+  }
+  @include bp(1400) {
+    padding: 4rem 0 20px 10%;
+  }
+}
+@mixin min-padding() {
+  padding: 1rem;
+
+  @include bp(1024) {
+    padding: 2rem 5%;
+  }
+  @include bp(1200) {
+    padding: 3rem 7%;
+  }
+  @include bp(1400) {
+    padding: 4rem 10%;
+  }
+}
 @mixin standard-padding() {
-  padding: 30px;
+  padding: 1rem;
 
   @include bp(1024) {
     padding: 5vh 5%;
@@ -28,7 +54,7 @@
   }
 }
 @mixin extra-padding() {
-  padding: 60px 30px;
+  padding: 60px 1rem;
   @include bp(768) {
     padding: 60px;
   }

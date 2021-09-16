@@ -15,7 +15,7 @@
           <div
             :class="['inner-texture', theme.texture]"
             data-scroll-parallax
-            data-scroll-speed="-0.3"
+            data-scroll-speed="0.3"
           ></div>
         </div>
         <div
@@ -78,22 +78,22 @@
             {{ servicesLabel }}
           </h6>
 
-          <div class="service-list-container row">
-            <div
+          <ul class="icon-list-container row">
+            <li
               v-for="(item, i) in servicesList"
               :key="i"
-              class="service-item flex-col-12 flex-col-md-4"
+              class="icon-lockup services flex-col-12 flex-col-md-4"
               data-scroll-reveal
             >
               <figure
-                class="service-icon"
+                class="icon-lockup-icon"
                 :style="{ backgroundImage: `url(${urlFor(item.icon)})` }"
                 data-scroll
               ></figure>
-              <h3 class="service-title">{{ item.title }}</h3>
+              <h3 class="icon-lockup-title">{{ item.title }}</h3>
               <block-content :blocks="item.text"></block-content>
-            </div>
-          </div>
+            </li>
+          </ul>
           <div class="services-cta-container row" data-scroll-reveal>
             <p
               class="flex-col-12 flex-col-lg-7 callout"
@@ -258,7 +258,9 @@ export default {
   methods: {
     init() {
       this.splitText();
-      this.$nextTick(() => this.initScrollAni());
+      setTimeout(() => {
+        this.initScrollAni();
+      }, 100);
     },
   },
 };
