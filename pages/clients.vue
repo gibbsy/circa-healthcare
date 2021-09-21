@@ -65,12 +65,12 @@
           {{ introLabel }}
         </h6>
         <article class="row reveal" data-scroll-reveal>
-          <p class="clients-intro intro-lg col-12 col-lg-6">
+          <div class="clients-intro intro-lg col-12 col-lg-6">
             <block-content :blocks="introSubhead"></block-content>
-          </p>
-          <p class="clients-intro col-12 col-lg-6">
+          </div>
+          <div class="clients-intro col-12 col-lg-6">
             <block-content :blocks="introBody"></block-content>
-          </p>
+          </div>
         </article>
         <div class="client-logo-grid" data-scroll-reveal>
           <figure

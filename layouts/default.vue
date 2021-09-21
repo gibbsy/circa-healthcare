@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div :id="containerId" data-scroll-container>
-      <Nuxt />
-
+    <div :id="containerId">
       <transition name="fade" appear>
         <cookie-panel
           v-show="!cookiesOk"
@@ -23,7 +21,7 @@
           :socials="config.socials"
         ></app-footer>
       </transition>
-      <transition name="slide-in">
+      <transition name="nav-transition">
         <main-nav
           v-if="navOn"
           :links="mainNav"
@@ -56,6 +54,7 @@ export default {
       animating: false,
     };
   },
+
   async fetch() {
     this.config = await sanityClient.fetch(query);
   },
