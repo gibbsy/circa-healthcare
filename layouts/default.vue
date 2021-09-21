@@ -31,7 +31,7 @@
         :socials="config.socials"
       ></app-footer>
     </transition>
-    <transition name="slide-in">
+    <transition name="nav-transition">
       <main-nav
         v-if="navOn"
         :links="mainNav"
