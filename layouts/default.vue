@@ -1,6 +1,7 @@
 <template>
   <div>
     <div :id="containerId">
+      <Nuxt />
       <transition name="fade" appear>
         <cookie-panel
           v-show="!cookiesOk"
