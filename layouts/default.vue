@@ -1,7 +1,6 @@
 <template>
   <div :id="containerId" class="app-container">
     <Nuxt />
-
     <transition name="fade" appear>
       <cookie-panel
         v-show="!cookiesOk"
@@ -24,8 +23,9 @@
         <span></span>
       </button>
     </nav>
-    <transition name="fade" appear>
+    <transition mode="out-in" name="fade" appear>
       <app-footer
+        v-show="!routeTransitioning"
         :links="mainNav"
         :contact-details="config.contactDetails"
         :socials="config.socials"
@@ -67,6 +67,7 @@ export default {
       animating: false,
       scroller: [],
       contactActive: true,
+      routeTransitioning: false,
     };
   },
 
@@ -91,7 +92,12 @@ export default {
   watch: {
     $route(value) {
       this.page = value.name;
-      console.log(value);
+      // animate the footer out when route changes
+      this.routeTransitioning = true;
+      setTimeout(() => {
+        this.routeTransitioning = false;
+      }, 1500);
+      console.log(value.name);
     },
   },
   mounted() {

@@ -22,7 +22,7 @@
     animation: 0.3s $easing forwards fadeout;
     &.on {
       visibility: visible;
-      animation: 0.8s $easing 1.5s forwards fadein;
+      animation: 0.8s $easing 2.5s forwards fadein;
       &:hover {
         background-color: var(--primary-color);
         svg {
