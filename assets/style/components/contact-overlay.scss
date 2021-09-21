@@ -1,0 +1,11 @@
+.contact-full-screen-container {
+  @include abs100();
+  position: fixed;
+  background: var(--primary-color);
+  color: #fff;
+  z-index: 11;
+  &.full-color > .inner-texture {
+    opacity: 0.25;
+    mix-blend-mode: difference;
+  }
+}

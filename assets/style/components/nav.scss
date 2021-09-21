@@ -1,10 +1,15 @@
-.hamburger {
-  display: block;
+.nav-primary-fixed {
+  display: flex;
   position: fixed;
-  z-index: 20;
   top: 30px;
   right: 60px;
-  button {
+  column-gap: 1.5rem;
+  z-index: 20;
+  .cta-primary {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  button.hamburger {
     position: relative;
     width: 4rem;
     height: 4rem;
@@ -35,7 +40,7 @@
       }
     }
   }
-  &.on button {
+  &.on button.hamburger {
     span:first-child {
       transform: translate(0, 6px) rotate(45deg);
     }
