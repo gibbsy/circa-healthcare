@@ -1,5 +1,5 @@
 <template>
-  <div :id="containerId" data-scroll-container>
+  <div :id="containerId" class="app-container">
     <Nuxt />
 
     <transition name="fade" appear>
@@ -9,17 +9,16 @@
       ></cookie-panel>
     </transition>
 
-    <nav :class="['nav-primary-fixed', { on: navOn || contactOn }]">
-      <transition name="fade">
-        <button
-          v-show="!navOn"
-          class="cta-primary contact-toggle"
-          @click.prevent="contactToggle"
+    <nav :class="['nav-primary-fixed', { on: navOn }]">
+      <div :class="['contact-button-container', { hidden: !contactActive }]">
+        <nuxt-link
+          to="/contact"
+          :class="['cta-primary', 'btn-contact', { on: showContact }]"
         >
           <span class="arrow"> <cta-arrow /> </span>
-          Get in touch
-        </button>
-      </transition>
+          Get in touch</nuxt-link
+        >
+      </div>
       <button class="hamburger" @click.prevent="navToggle">
         <span></span>
         <span></span>
@@ -41,14 +40,6 @@
         :click-fn="navToggle"
       ></main-nav>
     </transition>
-    <transition name="slide-in">
-      <contact-overlay
-        v-if="contactOn"
-        :contact-details="config.contactDetails"
-        :socials="config.socials"
-        :click-fn="contactToggle"
-      ></contact-overlay>
-    </transition>
   </div>
 </template>
 <script>
@@ -68,13 +59,14 @@ export default {
   components: { CtaArrow },
   data() {
     return {
+      page: "",
       ready: false,
       cookiesOk: true,
       config: {},
       navOn: false,
-      contactOn: false,
-      hideContact: false,
       animating: false,
+      scroller: [],
+      contactActive: true,
     };
   },
 
@@ -88,6 +80,13 @@ export default {
     containerId() {
       return this.$route.name;
     },
+    showContact() {
+      return this.containerId !== "contact" && this.navOn === false;
+    },
+    scrollPos() {
+      console.log(ScrollTrigger.scroll());
+      return ScrollTrigger.scroll();
+    },
   },
   watch: {
     $route(value) {
@@ -96,10 +95,13 @@ export default {
     },
   },
   mounted() {
+    gsap.registerPlugin(ScrollTrigger);
+    console.log("mounted");
     window.setTimeout(() => {
       this.cookiesOk = this.$cookies.get("circa-accept-cookies");
       // this.cookiesOk = false;
     }, 3000);
+    this.initScrollWatcher();
   },
   methods: {
     acceptCookies() {
@@ -127,10 +129,6 @@ export default {
       setTimeout(() => {
         this.animating = false;
       }, 1000);
-      // gsap.globalTimeline.pause();
-      // ScrollTrigger.getAll().forEach((ST) => ST.disable());
-      /*       document.body.style.top = `-${window.scrollY}px`;
-      document.body.style.position = "fixed"; */
     },
     closeNav() {
       this.navOn = false;
@@ -138,14 +136,27 @@ export default {
       setTimeout(() => {
         this.animating = false;
       }, 1000);
-      /*       const scrollY = document.body.style.top;
-      document.body.style.position = "";
-      document.body.style.top = "";
-      window.scrollTo(0, parseInt(scrollY || "0") * -1); */
-      // gsap.globalTimeline.pause();
-      // ScrollTrigger.getAll().forEach((ST) => ST.enable());
     },
-    contactToggle() {
+    initScrollWatcher() {
+      const that = this;
+      this.scroller = gsap.to(".contact-button-container", {
+        opacity: 0,
+        duration: 0.5,
+        onComplete: () => {},
+        scrollTrigger: {
+          onLeave() {
+            that.contactActive = false;
+          },
+          onEnterBack() {
+            that.contactActive = true;
+          },
+          start: "top top",
+          scrub: true,
+          end: 100,
+        },
+      });
+    },
+    /*  contactToggle() {
       if (this.animating) {
         return;
       }
@@ -162,10 +173,6 @@ export default {
       setTimeout(() => {
         this.animating = false;
       }, 1000);
-      // gsap.globalTimeline.pause();
-      // ScrollTrigger.getAll().forEach((ST) => ST.disable());
-      /*       document.body.style.top = `-${window.scrollY}px`;
-      document.body.style.position = "fixed"; */
     },
     closeContact() {
       this.contactOn = false;
@@ -173,13 +180,7 @@ export default {
       setTimeout(() => {
         this.animating = false;
       }, 1000);
-      /*       const scrollY = document.body.style.top;
-      document.body.style.position = "";
-      document.body.style.top = "";
-      window.scrollTo(0, parseInt(scrollY || "0") * -1); */
-      // gsap.globalTimeline.pause();
-      // ScrollTrigger.getAll().forEach((ST) => ST.enable());
-    },
+    }, */
   },
 };
 </script>

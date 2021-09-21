@@ -1,7 +1,9 @@
 import imageUrlBuilder from "@sanity/image-url";
+import mobile from "is-mobile";
 import sanityClient from "../sanityClient";
 import Logo from "~/assets/circa_logo_nofill.svg?inline";
 import copyline from "~/components/span.vue";
+
 const urlBuilder = imageUrlBuilder(sanityClient);
 
 export default {
@@ -12,6 +14,7 @@ export default {
   components: { Logo },
   data() {
     return {
+      isMobile: "",
       imgRes: { width: 1, height: 1, dpr: 1 },
       serializers: {
         marks: {
@@ -33,6 +36,19 @@ export default {
     },
   },
   mounted() {
+    if (mobile({ tablet: true, featureDetect: true })) {
+      this.isMobile = true;
+    } else {
+      this.isMobile = false;
+    }
+    document.documentElement.style.setProperty(
+      "--primary-color",
+      this.theme.primaryColor.value
+    );
+    document.documentElement.style.setProperty(
+      "--secondary-color",
+      this.theme.secondaryColor.value
+    );
     this.setImgRes();
   },
   methods: {

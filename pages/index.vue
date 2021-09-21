@@ -597,7 +597,6 @@ export default {
     } else {
       this.isMobile = false;
     }
-    gsap.registerPlugin(ScrollTrigger);
     this.setImgRes();
     this.$nextTick(() => this.init());
   },
@@ -641,7 +640,7 @@ export default {
           trigger: "#about-stat-scroller",
           // trigger: "#about",
           start: "top top",
-          scrub: 0.1,
+          scrub: 0.2,
           pin: true,
           end: `${innerHeight}px`,
         },
@@ -674,7 +673,7 @@ export default {
         scrollTrigger: {
           trigger: why,
           start: "top top",
-          scrub: true,
+          scrub: 0.2,
           pin: true,
           end: `${innerHeight * 1.5}px`,
         },
