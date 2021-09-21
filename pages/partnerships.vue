@@ -52,7 +52,7 @@
     </transition>
     <section class="partners-container section-container white-bg">
       <div
-        class="texture-pull-left tex-slide-in"
+        class="texture-pull-left reveal-slide-in"
         data-scroll-reveal
         data-reveal-start="top center"
       >
@@ -63,7 +63,7 @@
         ></div>
       </div>
       <div
-        class="texture-pull-right tex-slide-in"
+        class="texture-pull-right reveal-slide-in"
         data-scroll-reveal
         data-reveal-start="top center"
       >
@@ -108,9 +108,9 @@
             </div>
           </li>
         </ul>
-        <article class="partners-cta col-12 col-lg-7 offset-lg-3">
+        <!--         <article class="partners-cta col-12 col-lg-7 offset-lg-3">
           <block-content :blocks="partnershipSummary"></block-content>
-        </article>
+        </article> -->
       </div>
     </section>
   </div>

@@ -5,14 +5,14 @@
       class="case-study-container section-container white-bg"
       :style="cssVars.whatWeDo"
     >
-      <div class="texture-pull-left">
+      <div class="texture-pull-left reveal-slide-in" data-scroll-reveal>
         <div
           :class="['inner-texture', theme.texture]"
           data-scroll-parallax
           data-scroll-speed="0.5"
         ></div>
       </div>
-      <div class="texture-pull-right">
+      <div class="texture-pull-right reveal-slide-in" data-scroll-reveal>
         <div
           :class="['inner-texture', theme.texture]"
           data-scroll-parallax

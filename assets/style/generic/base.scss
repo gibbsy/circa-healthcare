@@ -155,6 +155,11 @@ body {
     animation: slide-in-words 0.8s $easing both;
     animation-delay: calc(20ms * var(--word-index));
   }
+  .page-hero-container & {
+    &.is-inview .word {
+      animation-delay: calc(20ms * var(--word-index) + 0.75s);
+    }
+  }
 }
 
 .cta-centred-container {
@@ -455,15 +460,19 @@ body {
   position: relative;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-row-gap: 2rem;
+  grid-template-columns: repeat(5, 1fr);
+  grid-row-gap: 5rem;
+  justify-items: center;
+  align-items: center;
   @include reveal-slide-up-fade();
   .client-logo {
-    width: 160px;
     background-color: var(--primary-color);
     img {
-      mix-blend-mode: multiply;
       width: 100%;
+      max-width: 140px;
+      max-height: 100px;
+      width: auto;
+      height: auto;
     }
     .white-bg & {
       background-color: #fff;
@@ -479,6 +488,15 @@ body {
   margin-bottom: 3rem;
   &:last-child {
     margin-bottom: 0;
+  }
+  .partners-content &,
+  .philanthropy-list-container & {
+    align-items: center;
+  }
+}
+.list-item-logo {
+  img {
+    max-width: 100%;
   }
 }
 

@@ -14,115 +14,87 @@
           >Don’t fill this out if you’re human: <input name="bot-field"
         /></label>
       </p>
-      <fieldset>
+      <fieldset class="form-grid">
+        <div class="form-row enquiry-type clear-row">
+          <label class="enquiry hidden" for="enquiry">Nature of enquiry</label>
+          <div class="select-container">
+            <select id="enquiry" v-model="enquiry" name="enquiry" required="">
+              <option disabled selected value="">Nature of enquiry</option>
+              <option value="sales">Say hello</option>
+              <option value="support">New business</option>
+              <option value="careers">Careers</option>
+            </select>
+          </div>
+        </div>
         <div class="form-row text firstname">
-          <label class="firstname" for="firstname">First name</label>
+          <label class="firstname hidden" for="firstname">First name</label>
           <input
             id="firstname"
             v-model="firstname"
             name="firstname"
             type="text"
-            placeholder="Jane"
+            placeholder="First name"
             required=""
           />
         </div>
 
         <div class="form-row text lastname">
-          <label class="lastname" for="lastname">Last name</label>
+          <label class="lastname hidden" for="lastname">Last name</label>
           <input
             id="lastname"
             v-model="lastname"
             name="lastname"
             type="text"
-            placeholder="Doe"
+            placeholder="Last name"
             required=""
           />
         </div>
 
         <div class="form-row text email">
-          <label class="email" for="email">Work email</label>
+          <label class="email hidden" for="email">Email address</label>
           <input
             id="email"
             v-model="email.value"
             name="email"
             type="email"
-            placeholder="jane.doe@example.com"
-            required=""
-          />
-        </div>
-        <div class="form-row text phone">
-          <label class="phone" for="phone">Phone number</label>
-          <input
-            id="phone"
-            v-model="phone"
-            name="phone"
-            type="text"
-            placeholder="+44"
+            placeholder="Email address"
             required=""
           />
         </div>
         <div class="form-row text website">
-          <label class="website" for="website">Company website</label>
+          <label class="website hidden" for="website">Company website</label>
           <input
             id="website"
             v-model="website"
             name="website"
             type="text"
-            placeholder="example.com"
+            placeholder="Website"
             required=""
           />
         </div>
-        <div class="form-row country">
-          <label class="country" for="country">Country</label>
-          <div class="select-container">
-            <select id="country" v-model="country" name="country" required="">
-              <option disabled="" value="">Choose country…</option>
-              <option value="GB +44">United Kingdom</option>
-              <option
-                v-for="nation in countryList"
-                :key="nation.code"
-                :value="`${nation.code} +${nation.phone}`"
-              >
-                {{ nation.name }}
-              </option>
-            </select>
-          </div>
-        </div>
-        <div class="form-row enquiry-type">
-          <label class="enquiry" for="enquiry">Nature of enquiry</label>
-          <div class="select-container">
-            <select id="enquiry" v-model="enquiry" name="enquiry" required="">
-              <option disabled selected value="">Select option...</option>
-              <option value="sales">Sales</option>
-              <option value="support">Tech Support</option>
-              <option value="careers">Careers</option>
-              <option value="general">General</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-row opt-in">
-          <input
-            id="opt-in"
-            v-model="optIn"
-            type="checkbox"
-            name="mailing-list"
-          />
-          <label for="opt-in"
-            ><p>
-              Opt-in to receive email updates from Elwood. You can unsubscribe
-              from these communications at any time. For more information on how
-              to unsubscribe, view our <a>Privacy Policy</a>.
-            </p></label
+        <textarea
+          class="form-row form-row--wide"
+          name="message"
+          value="message"
+          placeholder="Message"
+        ></textarea>
+        <transition name="quick-fade" mode="out-in">
+          <div
+            v-show="enquiry === 'careers'"
+            class="form-row form-row--wide upload"
           >
-        </div>
+            <label for="upload">Upload CV</label>
+            <input type="file" name="upload" class="cv-upload" />
+          </div>
+        </transition>
       </fieldset>
       <transition name="quick-fade" mode="out-in">
         <div v-if="submitted && errors.length" class="submit-row error">
           <p>
             Something went wrong on our end. Sorry about that. You can still
             contact us at
-            <a href="mailto:mailto:sales@elwoodam.io" class="common-Link"
-              >sales@elwoodam.io</a
+            <a href="mailto:mailto:info@circahealthcare.com" class="common-Link"
+              >info@circahealthcare.com</a
             >
           </p>
         </div>
@@ -136,13 +108,13 @@
         </div>
       </transition>
       <div v-show="!submitted" class="submit-row">
-        <input
-          data-scroll-reveal
+        <button
           type="submit"
-          class="cta-primary"
-          value="Connect with us"
+          class="cta-primary submit-btn"
           :disabled="submitting"
-        />
+        >
+          <span class="arrow"> <cta-arrow /> </span>Submit form
+        </button>
       </div>
     </form>
   </div>
@@ -150,19 +122,18 @@
 <script>
 // import countryCodes from "country-codes-list";
 import { countries } from "countries-list";
+import CtaArrow from "~/assets/cta_arrow_small.svg?inline";
 
 export default {
+  components: { CtaArrow },
   data() {
     return {
       errors: [],
       firstname: null,
       lastname: null,
-      country: "GB +44",
-      phone: null,
       email: { value: null, valid: false },
       website: null,
       enquiry: "",
-      optIn: false,
       submitting: false,
       submitted: false,
     };
@@ -227,3 +198,6 @@ export default {
   },
 };
 </script>
+<style lang="scss" scoped>
+@import "~/assets/style/components/contact-form";
+</style>

@@ -57,22 +57,24 @@
             <block-content :blocks="introBody"></block-content>
           </div>
         </div>
-        <div class="contact-details row">
+        <div class="contact-details row reveal" data-scroll-reveal>
           <contact-form></contact-form>
-          <div class="nav-contacts-container">
+          <div class="contacts-container">
             <div
               v-for="location in contactDetails"
               :key="location.name"
-              class="nav-contacts-item"
+              class="contacts-item"
             >
               <h6>{{ location.name }}</h6>
+              <a :href="`mailto:${location.email}`">{{ location.email }}</a>
+              <p>{{ location.phone }}</p>
               <div class="address">
                 <block-content :blocks="location.address"></block-content>
               </div>
             </div>
-            <div class="nav-contacts-item">
+            <div class="contacts-item">
               <h6>Social</h6>
-              <ul class="nav-socials-menu">
+              <ul class="socials-menu">
                 <li v-for="link in socials" :key="link.title">
                   <a :href="link.href">{{ link.title }}></a>
                 </li>

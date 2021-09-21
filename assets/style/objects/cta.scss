@@ -1,6 +1,7 @@
 /* Buttons styles start */
 a.cta-primary,
-input.cta-primary {
+input.cta-primary,
+button.cta-primary {
   position: relative;
   background-color: var(--secondary-color);
   // margin: 0;
@@ -15,6 +16,7 @@ input.cta-primary {
   will-change: background-color;
   border: none;
   outline: none;
+  cursor: pointer;
   @include reveal-slide-up-fade;
   transition: color 0.2s ease, background-color 0.2s ease, opacity 1s $easing,
     transform 0.8s $easing;

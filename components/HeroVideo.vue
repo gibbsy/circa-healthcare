@@ -13,10 +13,6 @@
 import { mapState } from "vuex";
 export default {
   props: {
-    playerId: {
-      type: String,
-      required: true,
-    },
     vimeoId: {
       type: String,
       required: true,

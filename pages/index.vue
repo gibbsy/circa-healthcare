@@ -47,7 +47,7 @@
       class="intro-container section-container white-bg v-centered"
       :style="cssVars.intro"
     >
-      <div class="texture-pull-left tex-slide-in" data-scroll-reveal>
+      <div class="texture-pull-left reveal-slide-in" data-scroll-reveal>
         <div
           :class="['inner-texture', intro.introTheme.texture]"
           data-scroll-parallax
@@ -55,7 +55,7 @@
         ></div>
       </div>
       <div
-        class="texture-pull-right tex-slide-in"
+        class="texture-pull-right reveal-slide-in"
         data-scroll-reveal
         data-scroll-parallax
         data-scroll-speed="-0.2"
@@ -441,7 +441,7 @@ export default {
   },
   mixins: [scrollAnimations],
   transition: {
-    name: "fade",
+    name: "fade-pause",
     mode: "out-in",
   },
   async asyncData() {
@@ -610,6 +610,7 @@ export default {
       return urlBuilder.image(source);
     },
     init() {
+      this.splitText();
       setTimeout(() => {
         this.initScrollAni();
       }, 100);
@@ -736,7 +737,6 @@ export default {
     },
     onLoad() {
       this.ready = true;
-      this.splitText();
       setTimeout(() => {
         this.showUi = true;
       }, 300);

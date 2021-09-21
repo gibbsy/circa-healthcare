@@ -24,19 +24,22 @@
       ></div>
     </div>
     <div class="nav-content">
-      <nav class="col-12 col-lg-6 offset-lg-1">
+      <nav class="menu col-12 col-lg-3 offset-lg-1">
+        <h6>Explore</h6>
         <ul>
           <li>
             <nuxt-link to="/" @click.native="clickFn">Home</nuxt-link>
           </li>
           <li v-for="link in links" :key="link.slug.current">
-            <nuxt-link :to="`/${link.slug.current}`" @click.native="clickFn">{{
-              link.title
-            }}</nuxt-link>
+            <nuxt-link
+              :to="`/${link.slug.current}`"
+              @click.native="clickHandler"
+              >{{ link.title }}</nuxt-link
+            >
           </li>
         </ul>
       </nav>
-      <div class="contacts-container">
+      <div class="contacts-container offset-lg-3">
         <div
           v-for="location in contactDetails"
           :key="location.name"
@@ -101,7 +104,9 @@ export default {
   },
   methods: {
     clickHandler() {
-      // tbc
+      setTimeout(() => {
+        this.clickFn();
+      }, 250);
     },
   },
 };

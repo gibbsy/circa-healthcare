@@ -1,153 +1,19 @@
-.contact-form-container {
-  .select-container {
-    position: relative;
-    width: 100%;
-    margin-top: 0.5rem;
-    @include bp(768) {
-      margin-top: 0;
-      width: 60%;
-    }
-  }
-  .select-container::after {
-    content: "";
-    position: absolute;
-    z-index: 1;
-    right: 16px;
-    top: 50%;
-    margin-top: -8px;
-    display: block;
-    width: 16px;
-    height: 16px;
-    background: url("data:image/svg+xml;charset=utf-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0D%0A%3C%21DOCTYPE%20svg%20PUBLIC%20%22-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN%22%20%22http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd%22%3E%0D%0A%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%0D%0A%09%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20enable-background%3D%22new%200%200%2016%2016%22%20xml%3Aspace%3D%22preserve%22%3E%0D%0A%3Cg%3E%0D%0A%09%3Cpolygon%20fill%3D%22%232c3e50%22%20points%3D%220.9%2C5.5%203.1%2C3.4%208%2C8.3%2012.9%2C3.4%2015.1%2C5.5%208%2C12.6%20%09%22%2F%3E%0D%0A%3C%2Fg%3E%0D%0A%3C%2Fsvg%3E")
-      no-repeat center center;
-    pointer-events: none;
-  }
-
-  p.hidden {
-    display: none;
+.contact.page-wrapper {
+  .intro-text-lockup {
+    margin-bottom: 60px;
   }
 }
 
-.form-row {
-  position: relative;
-  margin-top: 1rem;
-  &:first-child {
-    margin-top: 0;
+.contacts-item {
+  margin-bottom: 2rem;
+  p,
+  li,
+  a {
+    color: #000;
+    font-size: 1.125rem;
+    list-style: none;
   }
-  @include bp(768) {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  &.opt-in {
-    margin-top: 2rem;
-    width: 100%;
-    label {
-      position: relative;
-      display: inline-block;
-      text-transform: none;
-      letter-spacing: 0;
-      width: 90%;
-      @include bp(1800) {
-        width: 80%;
-      }
-      p,
-      a {
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 12px;
-        line-height: 1.4;
-      }
-      p {
-        margin-left: 1rem;
-      }
-      a {
-        text-decoration: underline;
-      }
-    }
-  }
-}
-
-.submit-row {
-  margin-top: 3rem;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  strong {
-    display: block;
-    color: var(--primary-color);
-  }
-  &.thanks {
-    p {
-      font-weight: 500;
-    }
-  }
-  input[type="submit"] {
-    width: 100%;
-    font-size: 1.2rem;
-    @include bp(768) {
-      width: auto;
-      padding: 1rem 4rem;
-    }
-    @include bp(1200) {
-      font-size: 1.3rem;
-    }
-  }
-}
-
-@keyframes cd-bounce {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(0.8);
-  }
-}
-
-#dots-connect-1 {
-  top: 70vh;
-  left: 5%;
-  opacity: 0.5;
-  @include bp(1600) {
-    left: 16%;
-  }
-}
-#dots-connect-2 {
-  top: 30vh;
-  right: 10%;
-  opacity: 0.5;
-  @include bp(1800) {
-    right: 22%;
-    top: 36vh;
-  }
-}
-#connect-hex-1 {
-  top: 0;
-  right: 8%;
-  opacity: 0.5;
-}
-#connect-hex-2 {
-  top: 75vh;
-  left: 8%;
-  width: 180px;
-  height: 180px;
-  @include bp(1600) {
-    width: 220px;
-    height: 220px;
-    left: 17%;
-  }
-  @include bp(1900) {
-    width: 220px;
-    height: 220px;
-    left: 22%;
-  }
-}
-
-#connect-circ-1 {
-  top: 80px;
-  right: 10%;
-  .graphic {
-    width: 180px;
-    height: 180px;
+  a:hover {
+    color: var(--secondary-color);
   }
 }

@@ -45,7 +45,7 @@ export const whatWeDoQuery = /* groq */ `
   metadata{title, description, "slug": slug->slug.current, ogImage}
   },
   "clientList": *[_id=="global-config"][0]{
-  clientList[]->{name, website, logo},
+  clientList[]->{name, website, logo, logoWhite},
   }
 }`;
 
@@ -89,6 +89,7 @@ export const contactQuery = /* groq */ `
   metadata{title, description, "slug": slug->slug.current, ogImage}
   },
   "contactDetails": *[_id=="global-config"][0]{
-    contactDetails[]->{name, email, address, phone}
+    contactDetails[]->{name, email, address, phone},
+    socials
   }
 }`;

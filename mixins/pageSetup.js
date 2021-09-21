@@ -6,7 +6,7 @@ const urlBuilder = imageUrlBuilder(sanityClient);
 
 export default {
   transition: {
-    name: "fade",
+    name: "fade-pause",
     mode: "out-in",
   },
   components: { Logo },

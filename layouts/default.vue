@@ -9,6 +9,7 @@
           :click-fn="acceptCookies"
         ></cookie-panel>
       </transition>
+
       <div :class="['hamburger', { on: navOn }]">
         <button @click.prevent="navToggle">
           <span></span>

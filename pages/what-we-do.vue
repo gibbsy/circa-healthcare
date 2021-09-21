@@ -52,7 +52,7 @@
       </transition>
       <section class="wwd-services section-container white-bg">
         <div
-          class="texture-pull-left tex-slide-in"
+          class="texture-pull-left reveal-slide-in"
           data-scroll-reveal
           data-reveal-start="top center"
         >
@@ -63,7 +63,7 @@
           ></div>
         </div>
         <div
-          class="texture-pull-right tex-slide-in"
+          class="texture-pull-right reveal-slide-in"
           data-scroll-reveal
           data-reveal-start="top center"
         >
@@ -112,7 +112,7 @@
       </section>
       <section class="wwd-clients section-container full-color">
         <div
-          class="texture-pull-left tex-slide-in"
+          class="texture-pull-left reveal-slide-in"
           data-scroll-reveal
           data-reveal-start="top center"
         >
@@ -123,7 +123,7 @@
           ></div>
         </div>
         <div
-          class="texture-pull-right tex-slide-in"
+          class="texture-pull-right reveal-slide-in"
           data-scroll-reveal
           data-reveal-start="top center"
         >
@@ -146,7 +146,7 @@
               <img
                 :src="
                   imgRes.width > 1
-                    ? urlFor(client.logo)
+                    ? urlFor(client.logoWhite)
                         .width('200')
                         .auto('format')
                         .saturation(-100)
@@ -167,7 +167,7 @@
       </section>
       <section class="wwd-philanthropy section-container white-bg">
         <div
-          class="texture-pull-left tex-slide-in"
+          class="texture-pull-left reveal-slide-in"
           data-scroll-reveal
           data-reveal-start="top center"
         >
@@ -178,7 +178,7 @@
           ></div>
         </div>
         <div
-          class="texture-pull-right tex-slide-in"
+          class="texture-pull-right reveal-slide-in"
           data-scroll-reveal
           data-reveal-start="top center"
         >
@@ -210,12 +210,14 @@
               class="list-item horizontal-list-lockup"
               data-scroll-reveal
             >
-              <figure class="list-item-logo flex-col-6 flex-col-md-3">
+              <figure
+                class="list-item-logo flex-col-3 flex-col-md-2 offset-md-1"
+              >
                 <img
                   :src="
                     imgRes.width > 1
                       ? urlFor(item.logo)
-                          .width('200')
+                          .width('400')
                           .auto('format')
                           .saturation(-100)
                           .quality(80)

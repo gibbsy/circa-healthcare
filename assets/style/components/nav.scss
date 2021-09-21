@@ -63,6 +63,12 @@
   li {
     list-style: none;
   }
+  h6 {
+    color: var(--secondary-color);
+    &:after {
+      border-color: var(--secondary-color);
+    }
+  }
   a {
     position: relative;
     color: #fff;

@@ -16,7 +16,6 @@
 // ==========================================================================
 @import "./generic/grid";
 @import "./generic/typography";
-@import "./generic/forms";
 @import "./generic/base";
 
 // Objects
@@ -28,4 +27,4 @@
 @import "components/nav";
 // @import "components/nav-sticky";
 // @import "components/footer";
-// @import "components/cookie-panel";
+@import "components/cookie-panel";

@@ -31,10 +31,12 @@
 }
 .content__video_wrapper_inner {
   @include abs100();
+  opacity: 0;
   &.wallpaper {
     width: 100%;
     max-width: none;
   }
+  animation: fadein 1s ease 1s forwards;
 }
 .video__poster {
   @include abs100();

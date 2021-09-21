@@ -39,7 +39,7 @@
 
     <section class="clients-list-container section-container white-bg">
       <div
-        class="texture-pull-left tex-slide-in"
+        class="texture-pull-left reveal-slide-in"
         data-scroll-reveal
         data-reveal-start="top center"
       >
@@ -50,7 +50,7 @@
         ></div>
       </div>
       <div
-        class="texture-pull-right tex-slide-in"
+        class="texture-pull-right reveal-slide-in"
         data-scroll-reveal
         data-reveal-start="top center"
       >
