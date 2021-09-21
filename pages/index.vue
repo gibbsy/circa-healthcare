@@ -178,14 +178,14 @@
       class="work-container section-container white-bg"
       :style="cssVars.work"
     >
-      <div class="texture-pull-left">
+      <div class="texture-pull-left reveal-slide-in" data-scroll-reveal>
         <div
           :class="['inner-texture', work.workTheme.texture]"
           data-scroll-parallax
           data-scroll-speed="0.5"
         ></div>
       </div>
-      <div class="texture-pull-right">
+      <div class="texture-pull-right reveal-slide-in" data-scroll-reveal>
         <div
           :class="['inner-texture', work.workTheme.texture]"
           data-scroll-parallax
@@ -238,14 +238,14 @@
       class="what-we-do-container section-container white-bg"
       :style="cssVars.whatWeDo"
     >
-      <div class="texture-pull-left">
+      <div class="texture-pull-left reveal-slide-in" data-scroll-reveal>
         <div
           :class="['inner-texture', whatWeDo.whatWeDoTheme.texture]"
           data-scroll-parallax
           data-scroll-speed="0.5"
         ></div>
       </div>
-      <div class="texture-pull-right">
+      <div class="texture-pull-right reveal-slide-in" data-scroll-reveal>
         <div
           :class="['inner-texture', whatWeDo.whatWeDoTheme.texture]"
           data-scroll-parallax
@@ -321,17 +321,12 @@
         data-scroll-parallax
         data-scroll-speed="0.2"
       ></div>
-      <div class="texture-pull-left">
+      <div class="texture-pull-left reveal-slide-in" data-scroll-reveal>
         <div
           :class="['inner-texture', partnerships.partnershipsTheme.texture]"
         ></div>
       </div>
-      <div
-        class="texture-pull-right"
-        data-scroll-parallax
-        data-scroll-speed="-0.2"
-        data-scroll-direction="horizontal"
-      >
+      <div class="texture-pull-right reveal-slide-in" data-scroll-reveal>
         <div
           :class="['inner-texture', partnerships.partnershipsTheme.texture]"
         ></div>
@@ -342,7 +337,7 @@
           <h6 class="section-label reveal" data-scroll-reveal>
             {{ partnerships.partnershipsLabel }}
           </h6>
-          <p data-scroll-reveal class="callout">
+          <p data-scroll-reveal class="callout reveal">
             {{ partnerships.partnershipsText }}
           </p>
           <cta-btn
@@ -386,20 +381,10 @@
           }"
         ></figure>
       </div>
-      <div
-        class="texture-pull-left"
-        data-scroll-parallax
-        data-scroll-speed="-0.2"
-        data-scroll-direction="horizontal"
-      >
+      <div class="texture-pull-left reveal-slide-in" data-scroll-reveal>
         <div :class="['inner-texture', meetTheTeam.teamTheme.texture]"></div>
       </div>
-      <div
-        class="texture-pull-right"
-        data-scroll-parallax
-        data-scroll-speed="-0.2"
-        data-scroll-direction="horizontal"
-      >
+      <div class="texture-pull-right reveal-slide-in" data-scroll-reveal>
         <div :class="['inner-texture', meetTheTeam.teamTheme.texture]"></div>
       </div>
 
@@ -408,7 +393,7 @@
           <h6 class="section-label reveal" data-scroll-reveal>
             {{ meetTheTeam.teamLabel }}
           </h6>
-          <p data-scroll-reveal class="callout">
+          <p data-scroll-reveal class="callout reveal">
             {{ meetTheTeam.teamText }}
           </p>
           <cta-btn class="cta-primary" :slug="meetTheTeam.teamCta.slug">{{
