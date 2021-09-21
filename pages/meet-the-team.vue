@@ -65,12 +65,12 @@
           {{ introLabel }}
         </h6>
         <article class="row reveal" data-scroll-reveal>
-          <p class="team-intro intro-lg col-12 col-lg-9">
+          <p class="team-intro intro-lg col-12 col-lg-6">
             <block-content :blocks="introSubhead"></block-content>
           </p>
-          <!--  <p class="team-intro col-12 col-lg-6">
+          <p class="team-intro col-12 col-lg-6">
             <block-content :blocks="introBody"></block-content>
-          </p> -->
+          </p>
         </article>
         <ul class="team-list col-12">
           <li
