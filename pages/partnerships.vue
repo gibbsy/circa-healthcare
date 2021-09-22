@@ -125,7 +125,6 @@ export default {
   mixins: [pageSetup, scrollAnimations],
   async asyncData() {
     const pageData = await sanityClient.fetch(query);
-    console.log(pageData);
     return {
       ...pageData,
     };
