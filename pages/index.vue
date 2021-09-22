@@ -42,7 +42,7 @@
         </nuxt-link>
       </div>
     </transition> -->
-    <corner-logo :show="showUi"></corner-logo>
+    <corner-logo :show="showUi" :delay="1.5"></corner-logo>
     <section
       id="intro"
       class="intro-container section-container white-bg v-centered"

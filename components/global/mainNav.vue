@@ -4,12 +4,7 @@
     :style="cssVars"
   >
     <div :class="['inner-texture']"></div>
-    <div
-      :class="['texture-pull-left', 'reveal-slide-in', { 'is-inview': inView }]"
-      data-scroll-reveal
-    >
-      <div class="inner-texture"></div>
-    </div>
+    <corner-logo :full-color="true" :delay="1"></corner-logo>
     <div
       :class="[
         'texture-pull-right',

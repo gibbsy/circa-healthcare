@@ -1,5 +1,6 @@
 <template>
   <div
+    ref="logo-container"
     :class="['circa-logo', 'logo-corner-left', { 'full-color': fullColor }]"
     aria-label="circa Logo"
   >
@@ -23,14 +24,19 @@ export default {
       type: Boolean,
       default: false,
     },
+    delay: {
+      type: Number,
+      default: 1,
+    },
   },
   mounted() {
+    const container = this.$refs["logo-container"];
     const logo = this.$refs["logo-svg"];
     this.tl = gsap.timeline({
-      delay: 1.5,
+      delay: this.delay,
     });
     this.tl.fromTo(
-      ".logo-corner-left",
+      container,
       { x: "-100%" },
       { x: 0, duration: 1.5, ease: "power4.out" },
       0

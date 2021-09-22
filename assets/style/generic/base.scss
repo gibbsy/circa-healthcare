@@ -364,6 +364,11 @@ body {
       &::before {
         background-color: var(--primary-color);
       }
+      .nav-full-screen-container & {
+        &::before {
+          background-color: var(--secondary-color);
+        }
+      }
       svg {
         fill: #fff;
       }

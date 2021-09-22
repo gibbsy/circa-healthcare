@@ -13,6 +13,7 @@ export default {
   data() {
     return {
       isMobile: "",
+      showUi: "",
       imgRes: { width: 1, height: 1, dpr: 1 },
       serializers: {
         marks: {
@@ -51,6 +52,7 @@ export default {
       this.theme.secondaryColor.value
     );
     this.setImgRes();
+    this.showUi = true;
   },
   methods: {
     urlFor(source) {
