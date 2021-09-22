@@ -218,7 +218,14 @@
                 />
               </figure>
               <div class="list-item-text flex-col-12 flex-col-lg-7">
-                <h4 class="partner-name">{{ item.name }}</h4>
+                <a
+                  v-if="item.href"
+                  class="partner-url"
+                  :href="item.href"
+                  target="_blank"
+                  ><h4 class="partner-name">{{ item.name }}</h4></a
+                >
+                <h4 v-else class="partner-name">{{ item.name }}</h4>
                 <block-content :blocks="item.text"></block-content>
               </div>
             </li>

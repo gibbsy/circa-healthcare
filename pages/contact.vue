@@ -5,7 +5,6 @@
       class="contact-container section-container white-bg"
       :style="cssVars"
     >
-      <corner-logo :show="showUi" :full-color="true" :delay="0.5"></corner-logo>
       <div class="texture-pull-right">
         <div
           :class="['inner-texture', theme.texture]"
@@ -78,6 +77,7 @@
         </div>
       </div>
     </section>
+    <corner-logo :show="showUi" :full-color="true" :delay="0.5"></corner-logo>
   </div>
 </template>
 <script>

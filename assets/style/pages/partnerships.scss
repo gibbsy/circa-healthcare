@@ -5,12 +5,4 @@
   .texture-pull-right {
     background-color: var(--primary-color);
   }
-  .partner-url {
-    display: inline-block;
-    text-decoration: none;
-    margin-bottom: 1rem;
-    &:hover > * {
-      color: var(--secondary-color);
-    }
-  }
 }

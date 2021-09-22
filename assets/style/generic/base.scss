@@ -526,6 +526,14 @@ body {
   .philanthropy-list-container & {
     align-items: center;
   }
+  .partner-url {
+    display: inline-block;
+    text-decoration: none;
+    margin-bottom: 1rem;
+    &:hover > * {
+      color: var(--secondary-color);
+    }
+  }
 }
 .list-item-logo {
   img {
