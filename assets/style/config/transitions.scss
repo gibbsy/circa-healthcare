@@ -169,6 +169,16 @@
 .slide-in-leave-to {
   transform: translateX(100%);
 }
+.logo-slide-in-enter-active {
+  transition: transform 1s $Power4EaseInOut;
+}
+.logo-slide-in-leave-active {
+  transition: transform 0.8s $EaseInCubic;
+}
+.logo-slide-in-enter,
+.logo-slide-in-leave-to {
+  transform: translateX(-100px);
+}
 .nav-transition-enter-active {
   transition: transform 1s $Power4EaseInOut;
 }

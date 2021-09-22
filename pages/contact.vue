@@ -5,13 +5,7 @@
       class="contact-container section-container white-bg"
       :style="cssVars"
     >
-      <div class="texture-pull-left">
-        <div
-          :class="['inner-texture', theme.texture]"
-          data-scroll-parallax
-          data-scroll-speed="0.5"
-        ></div>
-      </div>
+      <corner-logo :show="showUi" :full-color="true"></corner-logo>
       <div class="texture-pull-right">
         <div
           :class="['inner-texture', theme.texture]"

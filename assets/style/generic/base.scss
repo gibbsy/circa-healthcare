@@ -345,7 +345,10 @@ body {
       fill: $black;
     }
   }
-  @include bp(1200) {
+  @include bp(1024) {
+    svg {
+      opacity: 0;
+    }
     &:before {
       content: "";
       display: inline-block;
@@ -356,7 +359,20 @@ body {
       height: 100vh;
       background: #fff;
       @include clip-edge(right, 100vh);
-      // transform: skew(-20deg);
+    }
+    &.full-color {
+      &::before {
+        background-color: var(--primary-color);
+      }
+      svg {
+        fill: #fff;
+      }
+      .inner-texture {
+        @include abs100();
+        opacity: 0.5;
+        height: 100vh;
+        @include clip-edge(right, 100vh);
+      }
     }
   }
 }

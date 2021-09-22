@@ -39,17 +39,7 @@
         </div>
       </div>
     </section>
-    <transition appear name="fade">
-      <figure
-        ref="logo-peel"
-        class="circa-logo logo-corner-left"
-        aria-label="Circa logo"
-      >
-        <nuxt-link to="/">
-          <logo />
-        </nuxt-link>
-      </figure>
-    </transition>
+    <corner-logo :show="showUi"></corner-logo>
     <section class="partners-container section-container white-bg">
       <div
         class="texture-pull-left reveal-slide-in"

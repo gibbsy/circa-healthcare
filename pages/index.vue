@@ -30,7 +30,7 @@
       <scroll-prompt :mono="true"></scroll-prompt>
     </section>
 
-    <transition appear name="fade">
+    <!--    <transition appear name="fade">
       <div
         v-show="showUi"
         ref="logo-peel"
@@ -41,7 +41,8 @@
           <logo />
         </nuxt-link>
       </div>
-    </transition>
+    </transition> -->
+    <corner-logo :show="showUi"></corner-logo>
     <section
       id="intro"
       class="intro-container section-container white-bg v-centered"
@@ -412,7 +413,6 @@ import sanityClient from "../sanityClient";
 import { homeQuery as query } from "../data/queries";
 import scrollAnimations from "~/mixins/scrollAnimations";
 import copyline from "~/components/span.vue";
-import Logo from "~/assets/circa_logo_nofill.svg?inline";
 
 const urlBuilder = imageUrlBuilder(sanityClient);
 
@@ -421,9 +421,6 @@ if (typeof window === "undefined") {
 }
 
 export default {
-  components: {
-    Logo,
-  },
   mixins: [scrollAnimations],
   transition: {
     name: "fade-pause",

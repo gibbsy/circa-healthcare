@@ -1,7 +1,6 @@
 import imageUrlBuilder from "@sanity/image-url";
 import mobile from "is-mobile";
 import sanityClient from "../sanityClient";
-import Logo from "~/assets/circa_logo_nofill.svg?inline";
 import copyline from "~/components/span.vue";
 
 const urlBuilder = imageUrlBuilder(sanityClient);
@@ -11,7 +10,6 @@ export default {
     name: "fade-pause",
     mode: "out-in",
   },
-  components: { Logo },
   data() {
     return {
       isMobile: "",

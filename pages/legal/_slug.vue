@@ -1,20 +1,7 @@
 <template>
   <div ref="scroll-legal" class="page-wrapper ancillary-page legals">
-    <div id="sticky-logo-target"></div>
-    <transition name="fade" appear mode="out-in">
-      <div
-        ref="logo-peel"
-        class="circa-logo logo-corner-left"
-        aria-label="circa Logo"
-        data-scroll
-        data-scroll-sticky="true"
-        data-scroll-target="#sticky-logo-target"
-      >
-        <nuxt-link to="/">
-          <logo />
-        </nuxt-link>
-      </div>
-    </transition>
+    <corner-logo :show="showUi" :full-color="true"></corner-logo>
+
     <section
       id="legals-wrapper"
       class="generic__container legals__container"
@@ -47,12 +34,10 @@ import mobile from "is-mobile";
 import imageUrlBuilder from "@sanity/image-url";
 import sanityClient from "@/sanityClient";
 import AppFooter from "~/components/AppFooter.vue";
-import Logo from "~/assets/circa_logo_nofill.svg?inline";
 const urlBuilder = imageUrlBuilder(sanityClient);
 console.log(mobile());
 export default {
   components: {
-    Logo,
     AppFooter,
   },
   async asyncData({ route, params }) {
