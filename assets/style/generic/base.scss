@@ -24,7 +24,7 @@
   --tex-circuit-lrg: url("~/assets/tex-circuit-lrg.jpg") repeat 0/400px auto;
   --tex-herringbone-lrg: url("~/assets/tex-herringbone-lrg.jpg") repeat 0/640px
     auto;
-  --tex-leaf-lrg: url("~/assets/tex-leaf-lrg.jpg") repeat 0/480px auto;
+  --tex-leaf-lrg: url("~/assets/tex-leaf-lrg.jpg") repeat 0/540px auto;
   --tex-waves-lrg: url("~/assets/tex-waves-lrg.jpg") repeat 0/480px;
   --default-texture: var(--tex-beehive);
   --bg-texture: var(--default-texture);
@@ -424,6 +424,9 @@ body {
   &.is-inview {
     opacity: 1;
     transform: translateX(0);
+  }
+  .page-hero-container & {
+    transition-delay: 1s;
   }
 }
 

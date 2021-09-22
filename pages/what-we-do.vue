@@ -11,7 +11,7 @@
           data-scroll-parallax
           data-scroll-speed="0.6"
         ></div>
-        <div class="texture-pull-right">
+        <div class="texture-pull-right reveal-slide-in" data-scroll-reveal>
           <div
             :class="['inner-texture', theme.texture]"
             data-scroll-parallax
