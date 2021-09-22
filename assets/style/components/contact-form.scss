@@ -211,8 +211,7 @@ $col-gap: 2rem;
 .submit-row {
   margin-bottom: 3rem;
   display: flex;
-  justify-content: center;
-  text-align: center;
+
   strong {
     display: block;
     color: var(--primary-color);
@@ -246,7 +245,7 @@ $col-gap: 2rem;
     display: inline-flex;
     color: #fff;
     background: tint($teal, 50%);
-    padding: 0.75rem 2rem;
+    padding: 1rem 2rem;
     border-radius: 2rem;
     outline: none;
     white-space: nowrap;

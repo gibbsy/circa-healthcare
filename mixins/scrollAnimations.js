@@ -10,9 +10,9 @@ export default {
         const yDist = horizontal ? 0 : dist;
         const xDist = horizontal ? dist : 0;
         // const trigger = el.getAttribute("data-scroll-trigger") ?
-        gsap.fromTo(
+        gsap.to(
           el,
-          { x: 0, y: 0 },
+
           {
             scrollTrigger: {
               trigger: el,

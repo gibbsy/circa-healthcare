@@ -3,7 +3,7 @@
     <section
       id="contact"
       class="contact-container section-container white-bg"
-      :style="cssVars.whatWeDo"
+      :style="cssVars"
     >
       <div class="texture-pull-left">
         <div

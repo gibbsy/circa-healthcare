@@ -24,12 +24,15 @@ export default {
     };
   },
   computed: {
+    texSuffix() {
+      return this.isMobile ? "" : "-lrg";
+    },
     cssVars() {
       const vars = this.theme.primaryColor.value
         ? {
             "--primary-color": this.theme.primaryColor.value,
             "--secondary-color": this.theme.secondaryColor.value,
-            "--bg-texture": `var(--tex-${this.theme.texture})`,
+            "--bg-texture": `var(--tex-${this.theme.texture}${this.texSuffix})`,
           }
         : {};
       return vars;

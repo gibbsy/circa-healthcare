@@ -534,42 +534,45 @@ export default {
   },
 
   computed: {
+    texSuffix() {
+      return this.isMobile ? "" : "-lrg";
+    },
     cssVars() {
       return {
         intro: {
           "--primary-color": this.intro.introTheme.primaryColor.value,
           "--secondary-color": this.intro.introTheme.secondaryColor.value,
-          "--bg-texture": `var(--tex-${this.intro.introTheme.texture})`,
+          "--bg-texture": `var(--tex-${this.intro.introTheme.texture}${this.texSuffix})`,
           "--section-height": "100vh",
         },
         about: {
           "--primary-color": this.about.aboutTheme.primaryColor.value,
           "--secondary-color": this.about.aboutTheme.secondaryColor.value,
-          "--bg-texture": `var(--tex-${this.about.aboutTheme.texture})`,
+          "--bg-texture": `var(--tex-${this.about.aboutTheme.texture}${this.texSuffix})`,
         },
         work: {
           "--primary-color": this.work.workTheme.primaryColor.value,
           "--secondary-color": this.work.workTheme.secondaryColor.value,
-          "--bg-texture": `var(--tex-${this.work.workTheme.texture})`,
+          "--bg-texture": `var(--tex-${this.work.workTheme.texture}${this.texSuffix})`,
           "--section-height": "100vh",
         },
         whatWeDo: {
           "--primary-color": this.whatWeDo.whatWeDoTheme.primaryColor.value,
           "--secondary-color": this.whatWeDo.whatWeDoTheme.secondaryColor.value,
-          "--bg-texture": `var(--tex-${this.whatWeDo.whatWeDoTheme.texture})`,
+          "--bg-texture": `var(--tex-${this.whatWeDo.whatWeDoTheme.texture}${this.texSuffix})`,
         },
         partnerships: {
           "--primary-color":
             this.partnerships.partnershipsTheme.primaryColor.value,
           "--secondary-color":
             this.partnerships.partnershipsTheme.secondaryColor.value,
-          "--bg-texture": `var(--tex-${this.partnerships.partnershipsTheme.texture})`,
+          "--bg-texture": `var(--tex-${this.partnerships.partnershipsTheme.texture}${this.texSuffix})`,
           "--section-height": "100vh",
         },
         team: {
           "--primary-color": this.meetTheTeam.teamTheme.primaryColor.value,
           "--secondary-color": this.meetTheTeam.teamTheme.secondaryColor.value,
-          "--bg-texture": `var(--tex-${this.meetTheTeam.teamTheme.texture})`,
+          "--bg-texture": `var(--tex-${this.meetTheTeam.teamTheme.texture}${this.texSuffix})`,
           "--section-height": "100vh",
         },
       };
@@ -583,11 +586,15 @@ export default {
       this.isMobile = false;
     }
     this.setImgRes();
+    document.documentElement.style.setProperty(
+      "--primary-color",
+      "var(--default-primary)"
+    );
+    document.documentElement.style.setProperty(
+      "--secondary-color",
+      "var(--default-secondary)"
+    );
     this.$nextTick(() => this.init());
-  },
-  beforeDestroy() {
-    console.log("destroy scroll");
-    window.removeEventListener("resize", this.handleResize);
   },
   methods: {
     urlFor(source) {
@@ -705,13 +712,7 @@ export default {
       }
       this.imgRes = { ...res, dpr };
     },
-    handleResize() {
-      console.log("Resize");
-      clearTimeout(this.resizeTimeout);
-      this.resizeTimeout = setTimeout(() => {
-        this.updateScroll();
-      }, 250);
-    },
+
     splitText() {
       Splitting({
         target: "[data-splitting]",

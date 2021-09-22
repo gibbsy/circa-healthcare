@@ -9,13 +9,13 @@
         <div
           :class="['inner-texture', theme.texture]"
           data-scroll-parallax
-          data-scroll-speed="0.3"
+          data-scroll-speed="0.6"
         ></div>
         <div class="texture-pull-right">
           <div
             :class="['inner-texture', theme.texture]"
             data-scroll-parallax
-            data-scroll-speed="0.3"
+            data-scroll-speed="0.5"
           ></div>
         </div>
         <div
