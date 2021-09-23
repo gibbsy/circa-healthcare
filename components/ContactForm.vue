@@ -205,8 +205,7 @@ export default {
       // console.log(formData);
       fetch("/", {
         method: "POST",
-        headers: { "Content-Type": "multipart/form-data" },
-        body: new URLSearchParams(formData),
+        body: formData,
       })
         .then(() => {
           setTimeout(() => {
