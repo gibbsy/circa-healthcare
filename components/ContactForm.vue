@@ -82,13 +82,14 @@
             v-show="enquiry === 'careers'"
             class="form-row form-row--wide upload"
           >
-            <label for="upload">Upload CV</label>
-            <input
-              type="file"
-              name="upload"
-              class="cv-upload"
-              accept=".doc, .pdf, image/*"
-            />
+            <label for="cv-upload"
+              >Upload CV
+              <input
+                type="file"
+                name="cv-upload"
+                class="cv-upload"
+                accept=".doc, .pdf, image/*"
+            /></label>
           </div>
         </transition>
         <div class="form-row form-row--wide terms">
