@@ -6,6 +6,7 @@
       method="POST"
       data-netlify="true"
       netlify-honeypot="bot-field"
+      enctype="multipart/form-data"
       @submit.prevent="handleSubmit"
     >
       <input type="hidden" name="form-name" value="contact" />
@@ -198,11 +199,6 @@ export default {
       this.submitting = true;
       const myForm = document.getElementById("contact-form");
       const formData = new FormData(myForm);
-      const input = document.getElementById("cv");
-      formData.append("UserCV", input.files[0]);
-      // if (input.files.length) {
-      // }
-      // console.log(formData);
       fetch("/", {
         method: "POST",
         body: formData,
