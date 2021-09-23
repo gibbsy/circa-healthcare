@@ -198,10 +198,10 @@ export default {
       this.submitting = true;
       const myForm = document.getElementById("contact-form");
       const formData = new FormData(myForm);
-      /*  const input = document.getElementById("cv");
-      if (input.files.length) {
-        formData.append("UserCV", input.files[0]);
-      } */
+      const input = document.getElementById("cv");
+      formData.append("UserCV", input.files[0]);
+      // if (input.files.length) {
+      // }
       // console.log(formData);
       fetch("/", {
         method: "POST",
