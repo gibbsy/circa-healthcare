@@ -78,10 +78,7 @@
           placeholder="Message"
         ></textarea>
         <transition name="quick-fade" mode="out-in">
-          <div
-            v-show="enquiry === 'careers'"
-            class="form-row form-row--wide upload"
-          >
+          <div class="form-row form-row--wide upload">
             <label for="cv">Upload CV</label>
             <input
               id="cv"
@@ -198,7 +195,7 @@ export default {
       this.submitting = true;
       const myForm = document.getElementById("contact-form");
       const formData = new FormData(myForm);
-      /*   const input = document.getElementById("cv");
+      /*  const input = document.getElementById("cv");
       if (input.files.length) {
         formData.append("UserCV", input.files[0]);
       } */
@@ -206,7 +203,7 @@ export default {
       fetch("/", {
         method: "POST",
         headers: { "Content-Type": "multipart/form-data" },
-        body: formData,
+        body: new URLSearchParams(formData).toString(),
       })
         .then(() => {
           setTimeout(() => {
