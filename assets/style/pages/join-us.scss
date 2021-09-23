@@ -27,3 +27,64 @@
     right: -40%;
   }
 }
+
+.section-label.vacancies-label {
+  margin-bottom: 2.5rem;
+}
+.vacancies-list-container {
+  list-style: none;
+  .vacancy-listing {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 3rem;
+    gap: 2rem;
+    // border-bottom: 1px solid tint($brown, 75%);
+    &:first-child {
+      // border-top: 1px solid tint($brown, 75%);
+    }
+    &::before {
+      @include abs100();
+      content: "";
+      background-color: #fff;
+      transition: background-color 1s $easing;
+      z-index: -1;
+    }
+    &:hover {
+      &::before {
+        background-color: tint($brown, 85%);
+      }
+    }
+    .job-title-lockup {
+      .job-title {
+        margin-bottom: 0rem;
+      }
+      .job-location {
+        color: var(--secondary-color);
+      }
+    }
+    .download-description {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      color: var(--secondary-color);
+      margin-left: auto;
+      .icon-pdf {
+        width: 32px;
+        stroke: var(--secondary-color);
+        stroke-width: 2;
+      }
+      &:hover {
+        text-decoration: underline;
+        color: var(--primary-color);
+        .icon-pdf {
+          stroke: var(--primary-color);
+        }
+      }
+    }
+    .cta-primary {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

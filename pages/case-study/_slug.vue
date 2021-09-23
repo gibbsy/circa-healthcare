@@ -100,6 +100,7 @@ import sanityClient from "~/sanityClient";
 import pageSetup from "~/mixins/pageSetup";
 import scrollAnimations from "~/mixins/scrollAnimations";
 export default {
+  name: "Contact",
   mixins: [pageSetup, scrollAnimations],
   async asyncData({ route, params }) {
     const query = `{

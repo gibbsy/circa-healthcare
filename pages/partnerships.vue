@@ -1,6 +1,6 @@
 <template>
   <div class="partnerships page-wrapper" :style="cssVars">
-    <section class="page-hero-container x2-h">
+    <section class="page-hero-container x2-h full-color">
       <div
         :class="['inner-texture', theme.texture]"
         data-scroll-parallax

@@ -51,7 +51,7 @@
           </div>
         </div>
         <div class="contact-details row reveal" data-scroll-reveal>
-          <contact-form></contact-form>
+          <contact-form :enquiry-prefill="enquiryPrefill"></contact-form>
           <div class="contacts-container">
             <div
               v-for="location in contactDetails"
@@ -96,7 +96,13 @@ export default {
       ...contactDetails,
     };
   },
+  data() {
+    return {
+      enquiryPrefill: "",
+    };
+  },
   mounted() {
+    this.enquiryPrefill = this.$route.params.enquiry;
     this.$nextTick(this.init);
   },
   methods: {

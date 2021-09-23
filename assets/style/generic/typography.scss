@@ -170,12 +170,16 @@ p,
 a,
 li,
 button {
+  color: #000;
   font-weight: 400;
   font-size: 1.25rem;
   line-height: 1.75;
   .case-study-container & {
     font-size: 1.125rem;
     line-height: 2;
+  }
+  .full-color & {
+    color: #fff;
   }
 }
 

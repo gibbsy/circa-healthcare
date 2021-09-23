@@ -53,8 +53,7 @@ input[type="checkbox"] + label::after {
   display: block;
   position: absolute;
   left: 0;
-  top: 50%;
-  margin-bottom: -10px;
+  top: 0;
   width: 20px;
   height: 20px;
 }
@@ -74,7 +73,7 @@ input[type="checkbox"] + label::after {
 }
 input[type="radio"] + label::after,
 input[type="checkbox"] + label::after {
-  background-color: #2c3e50;
+  background-color: var(--secondary-color);
   background-position: center center;
   background-repeat: no-repeat;
   box-shadow: 0 0 5px rgba(44, 151, 222, 0.4);
@@ -202,6 +201,32 @@ $col-gap: 2rem;
   }
   &.clear-row {
     margin-right: 50%;
+  }
+  &.terms {
+    display: flex;
+    align-items: center;
+    label {
+      position: relative;
+      display: inline-block;
+      text-transform: none;
+      letter-spacing: 0;
+      width: 90%;
+      @include bp(1800) {
+        width: 80%;
+      }
+      p,
+      a {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1rem;
+        line-height: 1.4;
+      }
+      p {
+        margin-left: 1rem;
+      }
+      a {
+        text-decoration: underline;
+      }
+    }
   }
 }
 .form-row--wide {

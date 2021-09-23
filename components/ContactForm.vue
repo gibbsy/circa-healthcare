@@ -34,7 +34,7 @@
             name="firstname"
             type="text"
             placeholder="First name"
-            required=""
+            required
           />
         </div>
 
@@ -46,7 +46,7 @@
             name="lastname"
             type="text"
             placeholder="Last name"
-            required=""
+            required
           />
         </div>
 
@@ -58,7 +58,7 @@
             name="email"
             type="email"
             placeholder="Email address"
-            required=""
+            required
           />
         </div>
         <div class="form-row text website">
@@ -69,7 +69,6 @@
             name="website"
             type="text"
             placeholder="Website"
-            required=""
           />
         </div>
         <textarea
@@ -87,6 +86,23 @@
             <input type="file" name="upload" class="cv-upload" />
           </div>
         </transition>
+        <div class="form-row form-row--wide terms">
+          <input
+            id="terms"
+            v-model="acceptTerms"
+            required
+            type="checkbox"
+            name="accept-terms"
+          />
+          <label for="terms"
+            ><p>
+              Before submitting this form you must agree Circa’s
+              <nuxt-link to="/"
+                >Terms and Conditions and Privacy Notice.</nuxt-link
+              >
+            </p></label
+          >
+        </div>
       </fieldset>
       <transition name="quick-fade" mode="out-in">
         <div v-if="submitted && errors.length" class="submit-row error">
@@ -126,6 +142,12 @@ import CtaArrow from "~/assets/cta_arrow_small.svg?inline";
 
 export default {
   components: { CtaArrow },
+  props: {
+    enquiryPrefill: {
+      type: String,
+      default: "",
+    },
+  },
   data() {
     return {
       errors: [],
@@ -134,6 +156,7 @@ export default {
       email: { value: null, valid: false },
       website: null,
       enquiry: "",
+      acceptTerms: "",
       submitting: false,
       submitted: false,
     };
@@ -159,6 +182,11 @@ export default {
       this.validate("email", value);
       console.log(value, this.email.valid);
     },
+  },
+  mounted() {
+    if (this.enquiryPrefill.length > 0) {
+      this.enquiry = this.enquiryPrefill;
+    }
   },
   methods: {
     validate(type, value) {
