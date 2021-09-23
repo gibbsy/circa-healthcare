@@ -269,18 +269,20 @@ $col-gap: 2rem;
     content: "Select file to upload";
     display: inline-flex;
     color: #fff;
-    background: tint($teal, 50%);
+    background: var(--secondary-color);
     padding: 1rem 2rem;
+    line-height: 1;
     border-radius: 2rem;
     outline: none;
     white-space: nowrap;
     -webkit-user-select: none;
     cursor: pointer;
     font-size: 1rem;
+    transition: background-color 0.2s ease;
   }
   &:hover {
     &::before {
-      background: $teal;
+      background-color: var(--primary-color);
     }
   }
 }
@@ -288,7 +290,7 @@ $col-gap: 2rem;
   border-color: black;
 }
 .cv-upload:active::before {
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
 }
 
 @keyframes cd-bounce {
