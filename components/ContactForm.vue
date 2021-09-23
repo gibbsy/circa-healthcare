@@ -78,7 +78,10 @@
           placeholder="Message"
         ></textarea>
         <transition name="quick-fade" mode="out-in">
-          <div class="form-row form-row--wide upload">
+          <div
+            v-show="enquiry === 'careers'"
+            class="form-row form-row--wide upload"
+          >
             <label for="cv">Upload CV</label>
             <input
               id="cv"
@@ -203,7 +206,7 @@ export default {
       fetch("/", {
         method: "POST",
         headers: { "Content-Type": "multipart/form-data" },
-        body: new URLSearchParams(formData).toString(),
+        body: new URLSearchParams(formData),
       })
         .then(() => {
           setTimeout(() => {
