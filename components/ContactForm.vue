@@ -83,7 +83,12 @@
             class="form-row form-row--wide upload"
           >
             <label for="upload">Upload CV</label>
-            <input type="file" name="upload" class="cv-upload" />
+            <input
+              type="file"
+              name="upload"
+              class="cv-upload"
+              accept=".doc, .pdf, image/*"
+            />
           </div>
         </transition>
         <div class="form-row form-row--wide terms">
