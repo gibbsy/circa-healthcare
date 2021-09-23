@@ -18,7 +18,7 @@
         <div class="form-row enquiry-type clear-row">
           <label class="enquiry hidden" for="enquiry">Nature of enquiry</label>
           <div class="select-container">
-            <select id="enquiry" v-model="enquiry" name="enquiry" required="">
+            <select id="enquiry" v-model="enquiry" name="enquiry" required>
               <option disabled selected value="">Nature of enquiry</option>
               <option value="sales">Say hello</option>
               <option value="support">New business</option>
@@ -136,8 +136,6 @@
   </div>
 </template>
 <script>
-// import countryCodes from "country-codes-list";
-import { countries } from "countries-list";
 import CtaArrow from "~/assets/cta_arrow_small.svg?inline";
 
 export default {
@@ -161,32 +159,17 @@ export default {
       submitted: false,
     };
   },
-  computed: {
-    countryList() {
-      const list = [];
-      for (const key in countries) {
-        const country = {
-          code: key.toString(),
-          name: countries[key].name,
-          phone: countries[key].phone,
-        };
-        if (country.name !== "South Georgia and the South Sandwich Islands")
-          list.push(country);
-      }
-      return list;
-    },
-  },
   watch: {
+    enquiryPrefill(val) {
+      if (val.length > 0) {
+        this.enquiry = val;
+      }
+    },
     // watching nested property
     "email.value"(value) {
       this.validate("email", value);
       console.log(value, this.email.valid);
     },
-  },
-  mounted() {
-    if (this.enquiryPrefill.length > 0) {
-      this.enquiry = this.enquiryPrefill;
-    }
   },
   methods: {
     validate(type, value) {

@@ -103,6 +103,7 @@ export default {
   },
   mounted() {
     this.enquiryPrefill = this.$route.params.enquiry;
+    console.log(this.$route.params);
     this.$nextTick(this.init);
   },
   methods: {
