@@ -259,13 +259,13 @@ $col-gap: 2rem;
   }
 }
 .cv-upload::-webkit-file-upload-button {
-  /*   visibility: hidden;
-  width: 0; */
+  visibility: hidden;
+  width: 0;
 }
 .cv-upload {
   width: 100%;
   // display: flex;
-  /* &::before {
+  &::before {
     content: "Select file to upload";
     display: inline-flex;
     color: #fff;
@@ -282,7 +282,7 @@ $col-gap: 2rem;
     &::before {
       background: $teal;
     }
-  } */
+  }
 }
 .cv-upload:hover::before {
   border-color: black;

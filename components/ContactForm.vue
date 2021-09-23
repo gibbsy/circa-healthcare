@@ -84,6 +84,7 @@
           >
             <label for="cv">Upload CV</label>
             <input
+              id="cv"
               type="file"
               name="cv"
               class="cv-upload"
@@ -197,6 +198,11 @@ export default {
       this.submitting = true;
       const myForm = document.getElementById("contact-form");
       const formData = new FormData(myForm);
+      const input = document.getElementById("cv");
+      if (input.files.length) {
+        formData.append("UserCV", input.files[0]);
+      }
+      // console.log(formData);
       fetch("/", {
         method: "POST",
         headers: { "Content-Type": "multipart/form-data" },
