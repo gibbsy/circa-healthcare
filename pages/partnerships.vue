@@ -75,7 +75,7 @@
             class="list-item horizontal-list-lockup"
             data-scroll-reveal
           >
-            <figure class="list-item-logo flex-col-6 flex-col-md-3">
+            <figure class="list-item-logo col-6 flex-col-md-3">
               <img
                 :src="
                   imgRes.width > 1

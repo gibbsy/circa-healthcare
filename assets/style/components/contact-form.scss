@@ -200,7 +200,9 @@ $col-gap: 2rem;
     flex-basis: calc(50% - 1rem);
   }
   &.clear-row {
-    margin-right: 50%;
+    @include bp(768) {
+      margin-right: 50%;
+    }
   }
   &.terms {
     display: flex;

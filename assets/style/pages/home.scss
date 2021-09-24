@@ -36,37 +36,68 @@
     animation-delay: calc(20ms * var(--word-index) + 1s);
   }
 }
-
+.intro-container {
+  min-height: 100vh;
+}
 .about-container {
   flex-direction: column;
   color: #fff;
   > .inner-texture {
     opacity: 0.5;
   }
-  .texture-pull-right {
-    top: 0;
-    bottom: auto;
+  &.scroll-ani {
+    .texture-pull-right {
+      top: 0;
+      bottom: auto;
+    }
   }
 }
 .stat-scroller-container {
-  @include content-block($padding: standard);
-  height: 200vh;
-
+  @include content-block();
+  max-width: 100%;
   .texture-pull-right {
-    right: -40%;
+    display: none;
+  }
+  .stat-scroller-inner {
+    width: 100%;
+    max-width: 100%;
+  }
+  .headline-container {
+    @include standard-padding();
+    width: 100%;
+    max-width: 100%;
+  }
+  &.scroll-ani {
+    height: 200vh;
+    .texture-pull-right {
+      display: inline-block;
+      display: inline-block;
+      right: -40%;
+    }
   }
 }
 
 // wrap the images and stats so we can animate in
 .scroller-transition-wrapper {
-  position: absolute;
-  height: 80vh;
-  left: 65%;
-  top: 20vh;
+  position: relative;
+  padding-left: 30vw;
+  max-width: 100%;
   opacity: 0;
   transform: translateX(300px);
   transition: opacity 2s $easing, transform 2s $easing;
   transition-delay: 0.5s;
+  max-width: 100%;
+  overflow: visible;
+  overflow-x: scroll;
+
+  .scroll-ani & {
+    position: absolute;
+    height: 80vh;
+    left: 65%;
+    top: 30vh;
+    padding-left: 0;
+    overflow: initial;
+  }
   &.is-inview {
     opacity: 1;
     transform: translateX(0);
@@ -90,10 +121,10 @@
 
   .about-img {
     position: relative;
-    width: 260px;
-    height: 260px;
+    width: 280px;
+    height: 240px;
     display: inline-block;
-    margin-left: 40px;
+    margin-left: 80px;
     flex-shrink: 0;
     @include bp(768) {
       margin-left: 60px;
@@ -119,8 +150,6 @@
       height: 100%;
       display: inline-block;
       background-size: cover;
-      // filter: grayscale(100%);
-      mix-blend-mode: screen;
       &::after {
         content: "";
         @include abs100();
@@ -137,9 +166,12 @@
 .about-stats-container {
   display: flex;
   position: absolute;
-  top: 45%;
+  top: 40%;
   left: 0;
   width: auto;
+  @include bp(1600) {
+    top: 45%;
+  }
 
   .is-mobile & {
     position: relative;
@@ -173,7 +205,7 @@
       }
     }
     .stat-text {
-      width: 280px;
+      width: 300px;
       min-width: 200px;
       @include bp(768) {
         width: 360px;
@@ -197,48 +229,73 @@
 }
 
 .why-circa-container {
-  @include content-block($padding: standard, $flex: column);
-  min-height: 250vh;
+  @include content-block($padding: extra, $flex: column);
   .texture-pull-left {
-    // transform: translate3d(-40vw, 0, 0);
-    // transition: transform 1.2s $easeInSnapOut;
-    left: -64%;
-    /*  &.is-inview {
-      transform: translate3d(0, 0, 0);
-    } */
+    display: none;
+  }
+  .headline-container {
+    margin-bottom: 2rem;
+  }
+  &.scroll-ani {
+    min-height: 250vh;
+    .headline-container {
+      margin-bottom: 0;
+    }
+    .texture-pull-left {
+      display: inline-block;
+      left: -64%;
+    }
   }
 }
 
 .why-circa-content {
   position: relative;
-  margin-top: 50vh;
+  .scroll-ani & {
+    margin-top: 50vh;
+  }
   // margin-bottom: 25vh;
   h3 {
     color: var(--secondary-color);
   }
   .why-section {
-    margin-bottom: 25vh;
     opacity: 0;
     transform-origin: 50%;
     transform: scale(0.3);
     transition: opacity 1s $easing, transform 0.6s $easing;
+    margin-bottom: 15vh;
+    @include bp(768) {
+      margin-bottom: 4rem;
+    }
+    &:last-of-type {
+      margin-bottom: 4em;
+    }
+
     &.is-inview {
       opacity: 1;
       transform: scale(1);
     }
-    &:last-of-type {
-      margin-bottom: 120px;
-      // padding-bottom: 5vh;
-    }
   }
-  .cta-primary {
-    margin-bottom: 25vh;
+
+  .scroll-ani & {
+    .why-section {
+      margin-bottom: 15vh;
+      &:last-of-type {
+        margin-bottom: 120px;
+        // padding-bottom: 5vh;
+      }
+    }
+    .cta-primary {
+      margin-bottom: 25vh;
+    }
   }
 }
 
 .work-container,
 .what-we-do-container {
-  min-height: 100vh;
+  .texture-pull-left,
+  .texture-pull-right {
+    z-index: 1;
+  }
   .texture-pull-right {
     right: -40%;
   }
@@ -248,9 +305,10 @@
 .what-we-do-content {
   @include content-block($padding: standard, $flex: column);
   .intro-text-lockup {
-    margin-bottom: 8rem;
-    p {
-      width: 80%;
+    @include bp(1200) {
+      p {
+        width: 80%;
+      }
     }
   }
 }

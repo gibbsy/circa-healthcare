@@ -29,7 +29,7 @@
         class="content-block work-intro v-centered"
         :style="`--block-height: 100vh`"
       >
-        <div class="intro-text-lockup col-12 col-md-8 col-lg-7">
+        <div class="intro-text-lockup col-12 col-md-10 col-lg-8 col-xl-7">
           <h6 data-scroll-reveal class="section-label full-width reveal">
             {{ introLabel }}
           </h6>

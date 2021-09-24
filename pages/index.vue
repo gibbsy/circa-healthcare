@@ -1,5 +1,9 @@
 <template>
-  <div id="page-wrapper" ref="page-wrapper" class="home page-wrapper">
+  <div
+    id="page-wrapper"
+    ref="page-wrapper"
+    :class="['home', 'page-wrapper', { 'is-mobile': isMobile }]"
+  >
     <section id="hero" class="hero-container section-container">
       <div
         ref="heroBg"
@@ -49,11 +53,7 @@
       :style="cssVars.intro"
     >
       <div class="texture-pull-left reveal-slide-in" data-scroll-reveal>
-        <div
-          :class="['inner-texture', intro.introTheme.texture]"
-          data-scroll-parallax
-          data-scroll-speed="0.5"
-        ></div>
+        <div :class="['inner-texture', intro.introTheme.texture]"></div>
       </div>
       <div
         class="texture-pull-right reveal-slide-in"
@@ -68,7 +68,7 @@
         class="intro-content content-block v-centered reveal"
         data-scroll-reveal
       >
-        <article class="intro-text-lockup col-12 col-md-8 col-xl-7">
+        <article class="intro-text-lockup col-12 col-lg-8 col-xl-7">
           <div data-scroll-reveal>
             <block-content :blocks="intro.intro"></block-content>
           </div>
@@ -81,16 +81,25 @@
     <section
       id="about"
       ref="about"
-      class="about-container section-container full-color"
+      :class="[
+        'about-container',
+        'section-container',
+        'full-color',
+        ,
+        { 'scroll-ani': !isMobile },
+      ]"
       :style="cssVars.about"
       data-scroll-reveal
     >
+      <div :class="['inner-texture', about.aboutTheme.texture]"></div>
       <div
-        :class="['inner-texture', about.aboutTheme.texture]"
-        data-scroll-parallax
-        data-scroll-speed="2"
-      ></div>
-      <div id="about-stat-scroller" class="stat-scroller-container">
+        id="about-stat-scroller"
+        :class="[
+          'stat-scroller-container',
+          { 'scroll-ani': !isMobile },
+          { 'is-mobile': isMobile },
+        ]"
+      >
         <div class="stat-scroller-inner">
           <div
             class="headline-container title-reveal"
@@ -142,7 +151,10 @@
           </div>
         </div>
       </div>
-      <div id="why-circa" class="why-circa-container">
+      <div
+        id="why-circa"
+        :class="['why-circa-container', { 'scroll-ani': !isMobile }]"
+      >
         <div id="why-circa-tex" class="texture-pull-left">
           <div :class="['inner-texture', about.aboutTheme.texture]"></div>
         </div>
@@ -193,7 +205,10 @@
           data-scroll-speed="0.5"
         ></div>
       </div>
-      <div class="section-hero-image-wrapper work" data-scroll-reveal>
+      <div
+        class="section-hero-image-wrapper work full-height reveal-slide-in"
+        data-scroll-reveal
+      >
         <figure
           class="section-hero-image-inner work"
           :alt="work.workImage.title"
@@ -213,8 +228,8 @@
           }"
         ></figure>
       </div>
-      <div class="work-content">
-        <div class="intro-text-lockup col-12 col-md-8 col-xl-7">
+      <div class="work-content v-space-wide">
+        <div class="intro-text-lockup col-12 col-lg-8 col-xl-7">
           <h6 data-scroll-reveal class="section-label reveal">
             {{ work.workLabel }}
           </h6>
@@ -253,7 +268,15 @@
           data-scroll-speed="0.5"
         ></div>
       </div>
-      <div class="section-hero-image-wrapper what-we-do" data-scroll-reveal>
+      <div
+        class="
+          section-hero-image-wrapper
+          what-we-do
+          full-height
+          reveal-slide-in
+        "
+        data-scroll-reveal
+      >
         <figure
           class="section-hero-image-inner what-we-do"
           :alt="whatWeDo.whatWeDoImage.title"
@@ -273,8 +296,8 @@
           }"
         ></figure>
       </div>
-      <div class="what-we-do-content">
-        <div class="intro-text-lockup col-12 col-md-8 col-xl-7">
+      <div class="what-we-do-content v-space-wide">
+        <div class="intro-text-lockup col-12 col-lg-8 col-xl-7">
           <h6 data-scroll-reveal class="section-label reveal">
             {{ whatWeDo.whatWeDoLabel }}
           </h6>
@@ -288,8 +311,11 @@
           <div class="intro-text reveal" data-scroll-reveal>
             <block-content :blocks="whatWeDo.whatWeDoBody"></block-content>
           </div>
+          <cta-btn class="cta-primary" :slug="whatWeDo.whatWeDoCta.slug">{{
+            whatWeDo.whatWeDoCta.title
+          }}</cta-btn>
         </div>
-        <div class="icon-list-container row">
+        <!--         <div class="icon-list-container row">
           <div
             v-for="(item, i) in whatWeDo.whatWeDoList"
             :key="i"
@@ -304,12 +330,12 @@
             <h3 class="icon-lockup-title">{{ item.title }}</h3>
             <block-content :blocks="item.text"></block-content>
           </div>
-        </div>
         <div class="cta-centred-container">
           <cta-btn class="cta-primary" :slug="whatWeDo.whatWeDoCta.slug">{{
             whatWeDo.whatWeDoCta.title
           }}</cta-btn>
         </div>
+        </div> -->
       </div>
     </section>
     <section
@@ -334,7 +360,7 @@
       </div>
 
       <div class="partnerships-content">
-        <div class="intro-text-lockup col-12 col-md-8 col-xl-7">
+        <div class="intro-text-lockup col-12 col-lg-8 col-xl-7">
           <h6 class="section-label reveal" data-scroll-reveal>
             {{ partnerships.partnershipsLabel }}
           </h6>
@@ -551,12 +577,13 @@ export default {
           "--primary-color": this.work.workTheme.primaryColor.value,
           "--secondary-color": this.work.workTheme.secondaryColor.value,
           "--bg-texture": `var(--tex-${this.work.workTheme.texture}${this.texSuffix})`,
-          "--section-height": "100vh",
+          "--section-height": "90vh",
         },
         whatWeDo: {
           "--primary-color": this.whatWeDo.whatWeDoTheme.primaryColor.value,
           "--secondary-color": this.whatWeDo.whatWeDoTheme.secondaryColor.value,
           "--bg-texture": `var(--tex-${this.whatWeDo.whatWeDoTheme.texture}${this.texSuffix})`,
+          "--section-height": "90vh",
         },
         partnerships: {
           "--primary-color":
@@ -564,24 +591,26 @@ export default {
           "--secondary-color":
             this.partnerships.partnershipsTheme.secondaryColor.value,
           "--bg-texture": `var(--tex-${this.partnerships.partnershipsTheme.texture}${this.texSuffix})`,
-          "--section-height": "100vh",
+          "--section-height": "90vh",
         },
         team: {
           "--primary-color": this.meetTheTeam.teamTheme.primaryColor.value,
           "--secondary-color": this.meetTheTeam.teamTheme.secondaryColor.value,
           "--bg-texture": `var(--tex-${this.meetTheTeam.teamTheme.texture}${this.texSuffix})`,
-          "--section-height": "100vh",
+          "--section-height": "90vh",
         },
       };
     },
   },
-
-  mounted() {
+  beforeMount() {
     if (mobile({ tablet: true, featureDetect: true })) {
       this.isMobile = true;
     } else {
       this.isMobile = false;
     }
+  },
+  mounted() {
+    console.log(this.isMobile);
     this.setImgRes();
     document.documentElement.style.setProperty(
       "--primary-color",
@@ -602,19 +631,21 @@ export default {
       setTimeout(() => {
         this.initScrollAni();
       }, 100);
-      const imgLoad = imagesLoaded(
-        this.$refs["about-images-container"],
-        { background: true },
-        () => {
-          this.$nextTick(() => {
-            this.initAboutScroller();
-          });
-        }
-      );
-      imgLoad.on("progress", function (instance, image) {
-        const result = image.isLoaded ? "loaded" : "broken";
-        console.log("image is " + result + " for " + image.img.src);
-      });
+      if (!this.isMobile) {
+        const imgLoad = imagesLoaded(
+          this.$refs["about-images-container"],
+          { background: true },
+          () => {
+            this.$nextTick(() => {
+              this.initAboutScroller();
+            });
+          }
+        );
+        imgLoad.on("progress", function (instance, image) {
+          const result = image.isLoaded ? "loaded" : "broken";
+          console.log("image is " + result + " for " + image.img.src);
+        });
+      }
     },
     initAboutScroller() {
       const images = document.getElementById("about-images-container");

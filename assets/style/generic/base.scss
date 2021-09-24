@@ -37,10 +37,13 @@
 // ==========================================================================
 // grid
 // ==========================================================================
-
-html,
 body {
   width: 100%;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+html {
+  height: -webkit-fill-available;
 }
 
 // trying svg mask. No perf improvements
@@ -91,7 +94,7 @@ body {
   }
   &.x2-h {
     flex-direction: column;
-    height: 200vh;
+    min-height: 200vh;
     .texture-pull-right {
       position: absolute;
       right: -20%;
@@ -106,15 +109,15 @@ body {
 }
 .content-block {
   @include content-block($padding: standard);
-  height: var(--block-height, auto);
+  min-height: var(--block-height, auto);
 }
 .content-block--extra-pad {
   @include content-block($padding: extra);
-  height: var(--block-height, auto);
+  min-height: var(--block-height, auto);
 }
 .content-block--row {
   @include content-block($padding: standard, $flex: row);
-  height: var(--block-height, auto);
+  min-height: var(--block-height, auto);
 }
 
 .v-space-narrow {
@@ -135,9 +138,17 @@ body {
 }
 .v-space-wide {
   > * {
-    margin-bottom: 8rem;
+    margin-bottom: 6rem;
     &:last-child {
       margin-bottom: 0;
+    }
+  }
+  @include bp(1600) {
+    > * {
+      margin-bottom: 8rem;
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 }
@@ -154,7 +165,9 @@ body {
 .title-reveal {
   position: relative;
   .copy-line {
-    overflow: hidden;
+    @include bp(1024) {
+      overflow: hidden;
+    }
   }
   .word {
     display: inline-block;
@@ -232,7 +245,7 @@ body {
 
 .texture-pull-right {
   position: absolute;
-  right: -36%;
+  right: -40%;
   top: auto;
   bottom: 0;
   @include clip-edge($edge: left, $height: 100vh);
@@ -242,6 +255,9 @@ body {
   will-change: transform;
   // clip-path: url(#clip);
   overflow: hidden;
+  @include bp(1400) {
+    right: -36%;
+  }
   .cta-block & {
     right: -40%;
   }
@@ -275,25 +291,28 @@ body {
 .section-hero-image-wrapper {
   position: relative;
   display: inline-block;
-  left: 0;
-  top: 0;
+  margin: 0;
   width: 100%;
   height: 50vh;
-  @include clip-edge(right, 50vh);
   transition: opacity 1s ease;
   overflow: hidden;
   opacity: 0;
-
   @include bp(768) {
-    position: absolute;
-    left: 10%;
-    width: 90vw;
+    height: 40vh;
   }
+
   @include bp(1024) {
+    position: absolute;
     @include clip-edge(left, 50vh);
     height: 50vh;
     width: 40%;
     left: 60%;
+    &.full-height {
+      @include clip-edge(left, 100vh);
+      height: 100vh;
+      width: 50%;
+      left: 50%;
+    }
   }
   &.is-inview {
     opacity: 1;
@@ -312,76 +331,6 @@ body {
   background-position: center;
 }
 
-.logo-corner-left {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 20vw;
-  margin: 15px 0 0 20px;
-  transition: opacity 0.6s ease;
-  @include bp(768) {
-    margin: 20px 0 0 30px;
-    width: 140px;
-  }
-  @include bp(1200) {
-    margin: 0;
-    padding: 1.4rem 10vw 0 1.5vw;
-    height: 100vh;
-    width: 25vw;
-  }
-  @include bp(1200) {
-    padding: 1.4rem 3vw 0 1.5vw;
-    height: 100vh;
-    width: 10vw;
-  }
-  a {
-    position: relative;
-    width: 100%;
-  }
-  svg {
-    width: 100%;
-    fill: $white;
-    @include bp(1200) {
-      fill: $black;
-    }
-  }
-  @include bp(1024) {
-    svg {
-      opacity: 0;
-    }
-    &:before {
-      content: "";
-      display: inline-block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background: #fff;
-      @include clip-edge(right, 100vh);
-    }
-    &.full-color {
-      &::before {
-        background-color: var(--primary-color);
-      }
-      .nav-full-screen-container & {
-        &::before {
-          background-color: var(--secondary-color);
-        }
-      }
-      svg {
-        fill: #fff;
-      }
-      .inner-texture {
-        @include abs100();
-        opacity: 0.5;
-        height: 100vh;
-        @include clip-edge(right, 100vh);
-      }
-    }
-  }
-}
-
 .scroll-prompt {
   position: absolute;
   left: 0;
@@ -395,17 +344,14 @@ body {
   span {
     position: relative;
     display: inline-block;
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     background-color: var(--secondary-color);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    @include bp(768) {
-      width: 60px;
-      height: 60px;
-    }
+
     @include bp(1400) {
       width: 4vw;
       height: 4vw;
@@ -492,20 +438,39 @@ body {
 .client-logo-grid {
   position: relative;
   width: 100%;
+  max-width: 2000px;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-row-gap: 5rem;
+  grid-template-columns: repeat(3, 1fr);
   justify-items: center;
   align-items: center;
+  gap: 55px;
+  padding: 0 10px;
   @include reveal-slide-up-fade();
+  @include bp(1024) {
+    grid-template-columns: repeat(5, 1fr);
+    grid-row-gap: 2rem;
+  }
+  @include bp(1200) {
+    gap: 3rem 6rem;
+    padding: 0 3rem;
+  }
+  @include bp(1400) {
+    gap: 3.5rem 6rem;
+  }
+  @include bp(1600) {
+    gap: 5rem 10rem;
+    padding: 0 4rem;
+  }
+  @include bp(1920) {
+    gap: 5rem 12rem;
+    padding: 0 6rem;
+  }
   .client-logo {
     background-color: var(--primary-color);
+    object-fit: contain;
+    margin: 0;
     img {
       width: 100%;
-      max-width: 140px;
-      max-height: 100px;
-      width: auto;
-      height: auto;
     }
     .white-bg & {
       background-color: #fff;
@@ -517,14 +482,18 @@ body {
 }
 
 .horizontal-list-lockup {
-  display: flex;
   margin-bottom: 3rem;
+  @include bp(768) {
+    display: flex;
+  }
   &:last-child {
     margin-bottom: 0;
   }
   .partners-content &,
   .philanthropy-list-container & {
-    align-items: center;
+    @include bp(768) {
+      align-items: center;
+    }
   }
   .partner-url {
     display: inline-block;

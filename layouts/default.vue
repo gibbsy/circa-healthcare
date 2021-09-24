@@ -101,6 +101,7 @@ export default {
     },
   },
   mounted() {
+    gsap.config({ force3D: true });
     gsap.registerPlugin(ScrollTrigger);
     console.log("mounted");
     window.setTimeout(() => {

@@ -35,13 +35,17 @@ export default {
     this.tl = gsap.timeline({
       delay: this.delay,
     });
-    this.tl.fromTo(
-      container,
-      { x: "-100%" },
-      { x: 0, duration: 1.5, ease: "power4.out" },
-      0
-    );
-    this.tl.to(logo, { opacity: 1, duration: 0.8 }, 0.75);
+    if (window.innerHeight > 767) {
+      this.tl.fromTo(
+        container,
+        { x: "-100%" },
+        { x: 0, duration: 1.5, ease: "power4.out" },
+        0
+      );
+      this.tl.to(logo, { opacity: 1, duration: 0.8 }, 0.75);
+    } else {
+      this.tl.to(logo, { opacity: 1, duration: 0.8 }, 0);
+    }
   },
 };
 </script>

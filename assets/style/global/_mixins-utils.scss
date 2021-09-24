@@ -120,6 +120,11 @@ $to-colossal: $from-colossal - 1 !default;
     @content;
   }
 }
+@mixin bpMax($point) {
+  @media only screen and (max-width: #{$point}px) {
+    @content;
+  }
+}
 
 @mixin landscape($point: 1366) {
   @media screen and (max-width: #{$point}px) and (orientation: landscape) {

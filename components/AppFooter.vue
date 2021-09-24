@@ -77,7 +77,7 @@
             <nuxt-link :to="`/legal/${link.slug}`">{{ link.title }}</nuxt-link>
           </li>
           <li>
-            <p class="copyright">©2021 Circa</p>
+            <p class="copyright">©2021 Circa Healthcare</p>
           </li>
         </ul>
       </div>

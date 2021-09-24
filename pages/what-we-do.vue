@@ -131,7 +131,7 @@
             <figure
               v-for="(client, i) in clientList"
               :key="i"
-              class="client-logo flex--centred"
+              class="client-logo"
             >
               <img
                 :src="

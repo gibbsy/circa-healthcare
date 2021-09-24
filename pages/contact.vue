@@ -32,7 +32,7 @@
         ></figure>
       </div>
       <div class="contact-content content-block">
-        <div class="intro-text-lockup col-12 col-md-8 col-xl-7">
+        <div class="intro-text-lockup col-12 col-lg-7">
           <h6 data-scroll-reveal class="section-label reveal">
             {{ pageLabel }}
           </h6>

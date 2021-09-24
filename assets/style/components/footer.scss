@@ -5,13 +5,17 @@ footer {
   color: #fff;
   overflow: hidden;
   background-color: var(--primary-color);
-  height: 420px;
+  min-height: 420px;
   .logo-texture-lockup {
     position: absolute;
-    width: 350px;
+    width: 160px;
     height: 100%;
     right: 0;
-    top: 0;
+    bottom: 0;
+    @include bp(1024) {
+      width: 350px;
+      top: 0;
+    }
   }
   .texture-pull-right {
     width: 100%;
@@ -19,11 +23,18 @@ footer {
   }
   .footer-logo {
     position: absolute;
-    width: 180px;
-    top: 4rem;
-    left: 12px;
+    width: 100px;
+    bottom: 3rem;
+    right: 12px;
     svg {
       fill: #fff;
+    }
+    @include bp(1024) {
+      top: 4rem;
+      bottom: auto;
+      left: 12px;
+      right: auto;
+      width: 180px;
     }
   }
 }
@@ -63,22 +74,22 @@ footer {
     }
   }
   ul {
-    display: flex;
-    justify-content: space-between;
+    @include bp(1024) {
+      display: flex;
+      justify-content: space-between;
+    }
   }
   li {
     // margin-left: 2rem;
     list-style: none;
-    &:first-child {
-      margin: 0;
-    }
   }
   .footer-contacts-container {
     position: relative;
-    display: flex;
+    @include bp(1024) {
+      display: flex;
+      gap: 3rem;
+    }
     .contacts-item {
-      margin-left: 3rem;
-
       li,
       a,
       p {
