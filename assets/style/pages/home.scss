@@ -320,17 +320,17 @@
   }
 }
 
-.team-container {
+/* .team-container {
   .section-hero-image-wrapper {
     @include bp(1024) {
       top: -15vh;
       left: 0;
       width: 50%;
       height: 115vh;
-      @include clip-edge(right, 130vh);
+      @include clip-edge(right, 115vh);
     }
   }
-}
+} */
 
 .partnerships-content,
 .team-content {

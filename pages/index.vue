@@ -202,7 +202,7 @@
         <div
           :class="['inner-texture', work.workTheme.texture]"
           data-scroll-parallax
-          data-scroll-speed="0.5"
+          data-scroll-speed="0.3"
         ></div>
       </div>
       <div
@@ -210,7 +210,9 @@
         data-scroll-reveal
       >
         <figure
-          class="section-hero-image-inner work"
+          data-scroll-parallax
+          data-scroll-speed="0.1"
+          class="section-hero-image work parallax-image"
           :alt="work.workImage.title"
           :style="{
             backgroundImage:
@@ -278,7 +280,9 @@
         data-scroll-reveal
       >
         <figure
-          class="section-hero-image-inner what-we-do"
+          data-scroll-parallax
+          data-scroll-speed="0.1"
+          class="section-hero-image what-we-do parallax-image"
           :alt="whatWeDo.whatWeDoImage.title"
           :style="{
             backgroundImage:
@@ -385,11 +389,14 @@
         data-scroll-parallax
         data-scroll-speed="0.2"
       ></div>
-      <div class="section-hero-image-wrapper" data-scroll-reveal>
+      <div
+        class="section-hero-image-wrapper full-height pull-left"
+        data-scroll-reveal
+      >
         <figure
           data-scroll-parallax
           data-scroll-speed="0.2"
-          class="section-hero-image-inner"
+          class="section-hero-image parallax-image"
           :alt="meetTheTeam.teamImage.title"
           :style="{
             backgroundImage:

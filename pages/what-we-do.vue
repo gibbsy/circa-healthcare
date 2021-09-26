@@ -203,11 +203,31 @@
               <figure
                 class="list-item-logo flex-col-3 flex-col-md-2 offset-md-1"
               >
+                <a
+                  v-if="item.href"
+                  class="partner-url"
+                  :href="item.href"
+                  target="_blank"
+                >
+                  <img
+                    :src="
+                      imgRes.width > 1
+                        ? urlFor(item.logo)
+                            .width('200')
+                            .auto('format')
+                            .saturation(-100)
+                            .quality(80)
+                            .url()
+                        : ''
+                    "
+                    :alt="item.name"
+                /></a>
                 <img
+                  v-else
                   :src="
                     imgRes.width > 1
                       ? urlFor(item.logo)
-                          .width('400')
+                          .width('200')
                           .auto('format')
                           .saturation(-100)
                           .quality(80)

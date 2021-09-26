@@ -76,7 +76,27 @@
             data-scroll-reveal
           >
             <figure class="list-item-logo col-6 flex-col-md-3">
+              <a
+                v-if="item.href"
+                class="partner-url"
+                :href="item.href"
+                target="_blank"
+              >
+                <img
+                  :src="
+                    imgRes.width > 1
+                      ? urlFor(item.logo)
+                          .width('200')
+                          .auto('format')
+                          .saturation(-100)
+                          .quality(80)
+                          .url()
+                      : ''
+                  "
+                  :alt="item.name"
+              /></a>
               <img
+                v-else
                 :src="
                   imgRes.width > 1
                     ? urlFor(item.logo)
