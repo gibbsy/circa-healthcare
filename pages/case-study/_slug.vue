@@ -113,14 +113,10 @@ export default {
     const { theme, caseStudy } = pageData;
     return { ...theme, ...caseStudy };
   },
-  data() {
-    return {
-      imgSizes: {
-        hero: "xs:100vw sm:100vw md:100vw lg:50vw xl:50vw xxl:50vw hd:50vw",
-        content:
-          "xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw hd:100vw",
-      },
-    };
+  computed: {
+    imgSizes() {
+      return this.$store.state.imgSizes;
+    },
   },
   mounted() {
     this.$nextTick(this.init);

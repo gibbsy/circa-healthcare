@@ -14,7 +14,7 @@
       </div>
       <div class="section-hero-image-wrapper contact" data-scroll-reveal>
         <figure
-          class="section-hero-image-inner contact"
+          class="section-hero-image contact"
           :style="{
             backgroundImage:
               imgRes.width > 1

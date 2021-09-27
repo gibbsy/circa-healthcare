@@ -132,7 +132,7 @@
         data-scroll-reveal
       >
         <figure
-          class="section-hero-image-inner"
+          class="section-hero-image"
           :style="{
             backgroundImage:
               imgRes.width > 1

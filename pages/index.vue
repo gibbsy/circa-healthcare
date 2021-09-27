@@ -205,8 +205,8 @@
                 ? `url('${urlFor(work.workImage)
                     .width(
                       isMobile && imgRes.width < 1000
-                        ? imgRes.width
-                        : Math.floor(imgRes.width / 2)
+                        ? Math.floor(imgRes.width / 2)
+                        : imgRes.width
                     )
                     .auto('format')
                     .quality(80)
@@ -275,8 +275,8 @@
                 ? `url('${urlFor(whatWeDo.whatWeDoImage)
                     .width(
                       isMobile && imgRes.width < 1000
-                        ? imgRes.width
-                        : Math.floor(imgRes.width / 2)
+                        ? Math.floor(imgRes.width / 2)
+                        : imgRes.width
                     )
                     .auto('format')
                     .quality(80)

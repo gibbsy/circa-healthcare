@@ -313,15 +313,24 @@ html {
       width: 50%;
       left: 50%;
     }
+    &.pull-left {
+      @include clip-edge(right, 100vh);
+      left: 0;
+      right: auto;
+    }
   }
   &.is-inview {
     opacity: 1;
   }
-  .section-hero-image-inner {
+  .section-hero-image {
     @include abs100();
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    &.parallax-image {
+      top: -10%;
+      height: 120%;
+    }
   }
 }
 
