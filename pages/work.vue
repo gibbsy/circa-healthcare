@@ -76,12 +76,12 @@
             <div class="project-details-lockup flex-col-12 flex-col-md-6">
               <h5 class="client-name">{{ project.client.name }}</h5>
               <h2 class="project-title">{{ project.title }}</h2>
-              <cta-btn
-                class="cta-primary"
-                :slug="`case-study/${project.slug.current}`"
-              >
-                View case study
-              </cta-btn>
+              <nuxt-link
+                class="cta-primary reveal"
+                :to="`case-study/${project.slug.current}`"
+                data-scroll-reveal
+                ><span class="arrow"> <cta-arrow /> </span>View case study
+              </nuxt-link>
             </div>
             <figure
               class="
@@ -145,8 +145,10 @@ import sanityClient from "../sanityClient";
 import { workQuery as query } from "../data/queries";
 import pageSetup from "~/mixins/pageSetup";
 import scrollAnimations from "~/mixins/scrollAnimations";
+import CtaArrow from "~/assets/cta_arrow_small.svg?inline";
 
 export default {
+  components: { CtaArrow },
   mixins: [pageSetup, scrollAnimations],
   async asyncData() {
     const pageData = await sanityClient.fetch(query);
