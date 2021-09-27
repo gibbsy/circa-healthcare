@@ -9,20 +9,37 @@
       </div>
       <div class="video__overlay"></div>
     </div>
-    <div class="nav-primary-fixed">
+    <transition name="fade" appear>
+      <div v-if="started" class="nav-primary-fixed">
+        <button
+          class="intro__close-btn"
+          aria-label="Close overlay"
+          @click.prevent="doneFn"
+        >
+          <span />
+          <span />
+        </button>
+      </div>
+    </transition>
+    <transition name="fade" appear>
       <button
-        class="intro__close-btn"
-        aria-label="Close overlay"
-        @click.prevent="doneFn"
+        v-if="started"
+        class="intro__sound-btn"
+        @click.prevent="soundToggle"
       >
-        <span></span>
-        <span></span>
+        <speaker-icon class="speaker-icon"></speaker-icon>
+        <span class="audio-on" :class="{ on: !muted }"></span>
+        <span class="audio-off" :class="{ on: muted }"></span>
       </button>
-    </div>
+    </transition>
   </div>
 </template>
 <script>
+import SpeakerIcon from "~/assets/icon_speaker.svg?inline";
 export default {
+  components: {
+    SpeakerIcon,
+  },
   props: {
     vimeoId: {
       type: String,
@@ -46,6 +63,7 @@ export default {
       inProgress: false,
       initialized: false,
       started: false,
+      muted: true,
     };
   },
   computed: {
@@ -80,11 +98,17 @@ export default {
   },
   methods: {
     init() {
-      this.player = new Vimeo.Player("intro-vid", this.playerOpts);
-      this.initialized = true;
-      // on "start" not firing on ipad chrome - must be to do with autoplay
-      this.player.on("timeupdate", this.onStart);
-      this.player.on("ended", this.onEnded);
+      if (!this.vimeoId) {
+        setTimeout(() => {
+          this.init();
+        }, 250);
+      } else {
+        this.player = new Vimeo.Player("intro-vid", this.playerOpts);
+        this.initialized = true;
+        // on "start" not firing on ipad chrome - must be to do with autoplay
+        this.player.on("timeupdate", this.onStart);
+        this.player.on("ended", this.onEnded);
+      }
     },
     onStart() {
       if (!this.started) {
@@ -95,6 +119,15 @@ export default {
     },
     onEnded() {
       this.doneFn();
+    },
+    soundToggle() {
+      if (this.muted === true) {
+        this.player.setVolume(0.5);
+        this.muted = false;
+      } else {
+        this.player.setVolume(0);
+        this.muted = true;
+      }
     },
   },
 };

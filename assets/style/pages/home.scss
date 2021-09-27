@@ -244,6 +244,8 @@
     .texture-pull-left {
       display: inline-block;
       left: -64%;
+      height: 200vh;
+      @include clip-edge($edge: right, $height: 200vh);
     }
   }
 }

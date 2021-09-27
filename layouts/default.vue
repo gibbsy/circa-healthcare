@@ -1,8 +1,6 @@
 <template>
   <div :id="containerId" class="app-container">
-    <transition name="fade" appear>
-      <Nuxt v-if="showSite === true" />
-    </transition>
+    <Nuxt v-if="showSite === true" />
     <transition name="fade" appear>
       <cookie-panel
         v-show="!cookiesOk"
@@ -46,8 +44,9 @@
         :click-fn="navToggle"
       ></main-nav>
     </transition>
-    <transition v-if="playIntro === true && introPlayed === false" name="fade">
+    <transition name="fade">
       <video-overlay
+        v-if="playIntro === true && introPlayed === false"
         :vimeo-id="'615840707'"
         :done-fn="onIntroPlayed"
       ></video-overlay>
@@ -55,6 +54,7 @@
   </div>
 </template>
 <script>
+import mobile from "is-mobile";
 import sanityClient from "../sanityClient";
 import CtaArrow from "~/assets/cta_arrow_small.svg?inline";
 
@@ -89,6 +89,9 @@ export default {
     this.config = await sanityClient.fetch(query);
   },
   computed: {
+    isMobile() {
+      return this.$store.state.isMobile;
+    },
     introPlayed() {
       return this.$store.state.introPlayed;
     },
@@ -116,6 +119,13 @@ export default {
       }, 1500);
       console.log(value.name);
     },
+  },
+  beforeMount() {
+    if (mobile({ tablet: true, featureDetect: true })) {
+      this.$store.commit("setMobile", true);
+    } else {
+      this.$store.commit("setMobile", false);
+    }
   },
   mounted() {
     console.log(this.$route.name);

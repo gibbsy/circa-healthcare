@@ -12,11 +12,9 @@
         data-scroll-speed="0.2"
         data-scroll-start="top top"
       >
-        <HeroVideo
-          v-if="typeof hero.heroVideo === 'string'"
-          :vimeo-id="hero.heroVideo"
-          :ready-fn="onLoad"
-        ></HeroVideo>
+        <transition name="fade" appear>
+          <HeroVideo :vimeo-id="hero.heroVideo" :ready-fn="onLoad"></HeroVideo>
+        </transition>
       </div>
       <div
         id="hero-text"
@@ -440,7 +438,6 @@
 </template>
 
 <script>
-import mobile from "is-mobile";
 import imageUrlBuilder from "@sanity/image-url";
 import sanityClient from "../sanityClient";
 import { homeQuery as query } from "../data/queries";
@@ -448,10 +445,6 @@ import scrollAnimations from "~/mixins/scrollAnimations";
 import copyline from "~/components/span.vue";
 
 const urlBuilder = imageUrlBuilder(sanityClient);
-
-if (typeof window === "undefined") {
-  global.window = { innerWidth: 0, innerHeight: 0, devicePixelRatio: 0 };
-}
 
 export default {
   mixins: [scrollAnimations],
@@ -461,7 +454,6 @@ export default {
   },
   async asyncData() {
     const homeData = await sanityClient.fetch(query);
-    // console.log(homeData);
     return {
       ...homeData.home,
       config: homeData.config[0],
@@ -474,7 +466,6 @@ export default {
       showPrompt: false,
       ready: false,
       imgRes: { width: 1, height: 1, dpr: 1 },
-      isMobile: "",
       serializers: {
         marks: {
           span: copyline,
@@ -564,6 +555,9 @@ export default {
   },
 
   computed: {
+    isMobile() {
+      return this.$store.state.isMobile;
+    },
     texSuffix() {
       return this.isMobile ? "" : "-lrg";
     },
@@ -608,13 +602,6 @@ export default {
         },
       };
     },
-  },
-  beforeMount() {
-    if (mobile({ tablet: true, featureDetect: true })) {
-      this.isMobile = true;
-    } else {
-      this.isMobile = false;
-    }
   },
   mounted() {
     console.log(this.isMobile);

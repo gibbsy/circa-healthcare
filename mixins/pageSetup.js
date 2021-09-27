@@ -1,5 +1,4 @@
 import imageUrlBuilder from "@sanity/image-url";
-import mobile from "is-mobile";
 import sanityClient from "../sanityClient";
 import copyline from "~/components/span.vue";
 
@@ -12,7 +11,6 @@ export default {
   },
   data() {
     return {
-      isMobile: "",
       showUi: "",
       imgRes: { width: 1, height: 1, dpr: 1 },
       serializers: {
@@ -23,6 +21,9 @@ export default {
     };
   },
   computed: {
+    isMobile() {
+      return this.$store.state.isMobile;
+    },
     texSuffix() {
       return this.isMobile ? "" : "-lrg";
     },
@@ -38,11 +39,6 @@ export default {
     },
   },
   mounted() {
-    if (mobile({ tablet: true, featureDetect: true })) {
-      this.isMobile = true;
-    } else {
-      this.isMobile = false;
-    }
     document.documentElement.style.setProperty(
       "--primary-color",
       this.theme.primaryColor.value

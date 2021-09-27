@@ -64,10 +64,16 @@ export default {
   },
   methods: {
     init() {
-      this.player = new Vimeo.Player("hero-bg-vid", this.playerOpts);
-      this.initialized = true;
+      if (!this.vimeoId) {
+        setTimeout(() => {
+          this.init();
+        }, 250);
+      } else {
+        this.player = new Vimeo.Player("hero-bg-vid", this.playerOpts);
+        this.initialized = true;
+        this.player.on("timeupdate", this.onStart);
+      }
       // on "start" not firing on ipad chrome - must be to do with autoplay
-      this.player.on("timeupdate", this.onStart);
     },
     onStart() {
       if (!this.started) {

@@ -189,7 +189,7 @@
             {{ philanthropyLabel }}
           </h6>
           <article
-            class="philanthropy-intro intro-lg col-12 col-lg-7 offset-lg-3"
+            class="philanthropy-intro intro-lg col-12 col-lg-8 offset-lg-3"
           >
             <block-content :blocks="philanthropyIntro"></block-content>
           </article>
