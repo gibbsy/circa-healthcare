@@ -5,7 +5,6 @@
       class="case-study-container section-container white-bg"
       :style="cssVars.whatWeDo"
     >
-      <corner-logo :show="showUi" :full-color="true"></corner-logo>
       <div class="texture-pull-right reveal-slide-in" data-scroll-reveal>
         <div
           :class="['inner-texture', theme.texture]"
@@ -76,6 +75,7 @@
           </figure>
         </div>
       </div>
+      <corner-logo :show="showUi" :full-color="true"></corner-logo>
     </section>
     <section class="work-back-container section-container full-color cta-block">
       <div
