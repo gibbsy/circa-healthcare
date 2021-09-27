@@ -102,7 +102,7 @@ import scrollAnimations from "~/mixins/scrollAnimations";
 export default {
   name: "Contact",
   mixins: [pageSetup, scrollAnimations],
-  async asyncData({ route, params }) {
+  async asyncData({ params }) {
     const query = `{
       "theme": *[_id=="pageWork"][0]{theme},
       "caseStudy": *[_type == "caseStudy" && slug.current == "${params.slug}"][0]
@@ -124,7 +124,6 @@ export default {
   methods: {
     init() {
       this.splitText();
-      // this.$nextTick(() => this.initScrollAni());
       setTimeout(() => {
         this.initScrollAni();
       }, 100);

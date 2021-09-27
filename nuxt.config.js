@@ -1,3 +1,20 @@
+import sanityClient from "./sanityClient";
+const queryRoutes = `
+*[_id=="pageWork"][0]{ 
+  work[]->{slug, title, hero{asset->}, client->{name}, product,  problem, solution, deliverables, projectImages[]{title, caption, asset->}},
+}`;
+async function dynamicRoutes() {
+  const routes = await sanityClient.fetch(queryRoutes);
+  const { work } = routes;
+  const arr = work.map((project) => {
+    return {
+      route: `/case-study/${project.slug.current}`,
+      payload: project,
+    };
+  });
+  console.log(arr);
+  return arr;
+}
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: "static",
@@ -177,7 +194,10 @@ export default {
         ],
       });
     },
-    generate: { fallback: false },
+    generate: {
+      routes: dynamicRoutes,
+      fallback: false,
+    },
     terser: {
       // https://github.com/terser/terser#compress-options
       terserOptions: {
