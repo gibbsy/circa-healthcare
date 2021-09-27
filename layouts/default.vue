@@ -1,6 +1,8 @@
 <template>
   <div :id="containerId" class="app-container">
-    <Nuxt />
+    <transition name="fade" appear>
+      <Nuxt v-if="showSite === true" />
+    </transition>
     <transition name="fade" appear>
       <cookie-panel
         v-show="!cookiesOk"
@@ -8,7 +10,7 @@
       ></cookie-panel>
     </transition>
 
-    <nav :class="['nav-primary-fixed', { on: navOn }]">
+    <nav :class="['nav-primary-fixed', { on: navOn && showSite === true }]">
       <div :class="['contact-button-container', { hidden: !contactActive }]">
         <nuxt-link
           to="/contact"
@@ -18,14 +20,18 @@
           Get in touch</nuxt-link
         >
       </div>
-      <button class="hamburger" @click.prevent="navToggle">
+      <button
+        class="hamburger"
+        aria-label="Toggle navigation"
+        @click.prevent="navToggle"
+      >
         <span></span>
         <span></span>
       </button>
     </nav>
     <transition mode="out-in" name="fade" appear>
       <app-footer
-        v-show="!routeTransitioning"
+        v-show="!routeTransitioning && showSite === true"
         :links="mainNav"
         :contact-details="config.contactDetails"
         :socials="config.socials"
@@ -39,6 +45,12 @@
         :socials="config.socials"
         :click-fn="navToggle"
       ></main-nav>
+    </transition>
+    <transition v-if="playIntro === true && introPlayed === false" name="fade">
+      <video-overlay
+        :vimeo-id="'615840707'"
+        :done-fn="onIntroPlayed"
+      ></video-overlay>
     </transition>
   </div>
 </template>
@@ -61,6 +73,8 @@ export default {
     return {
       page: "",
       ready: false,
+      playIntro: "",
+      showSite: false,
       cookiesOk: true,
       config: {},
       navOn: false,
@@ -75,6 +89,9 @@ export default {
     this.config = await sanityClient.fetch(query);
   },
   computed: {
+    introPlayed() {
+      return this.$store.state.introPlayed;
+    },
     mainNav() {
       return this.config.mainNavigation;
     },
@@ -82,11 +99,11 @@ export default {
       return this.$route.name;
     },
     showContact() {
-      return this.containerId !== "contact" && this.navOn === false;
-    },
-    scrollPos() {
-      console.log(ScrollTrigger.scroll());
-      return ScrollTrigger.scroll();
+      return (
+        this.containerId !== "contact" &&
+        this.navOn === false &&
+        this.showSite === true
+      );
     },
   },
   watch: {
@@ -101,6 +118,12 @@ export default {
     },
   },
   mounted() {
+    console.log(this.$route.name);
+    if (this.$route.name === "index") {
+      this.playIntro = true;
+    } else {
+      this.showSite = true;
+    }
     gsap.config({ force3D: true });
     gsap.registerPlugin(ScrollTrigger);
     console.log("mounted");
@@ -129,6 +152,12 @@ export default {
       } else {
         this.closeNav();
       }
+    },
+    onIntroPlayed() {
+      this.$store.commit("onIntroPlayed");
+      this.$nextTick(() => {
+        this.showSite = true;
+      });
     },
     openNav() {
       this.navOn = true;
@@ -163,31 +192,6 @@ export default {
         },
       });
     },
-    /*  contactToggle() {
-      if (this.animating) {
-        return;
-      }
-      if (!this.contactOn) {
-        this.animating = true;
-        this.openContact();
-      } else {
-        this.closeContact();
-      }
-    },
-    openContact() {
-      this.contactOn = true;
-      this.animating = true;
-      setTimeout(() => {
-        this.animating = false;
-      }, 1000);
-    },
-    closeContact() {
-      this.contactOn = false;
-      this.animating = true;
-      setTimeout(() => {
-        this.animating = false;
-      }, 1000);
-    }, */
   },
 };
 </script>

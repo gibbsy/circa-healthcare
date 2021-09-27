@@ -1,12 +1,24 @@
 <template>
-  <div ref="container" class="content__video_wrapper autoplay wallpaper">
-    <div
-      ref="innerContainer"
-      class="content__video_wrapper_inner autoplay wallpaper"
-    >
-      <div id="hero-bg-vid" ref="player" class="content__video wallpaper"></div>
+  <div ref="modal" class="intro__video-modal">
+    <div class="content__video_wrapper autoplay wallpaper">
+      <div
+        ref="innerContainer"
+        class="content__video_wrapper_inner autoplay wallpaper"
+      >
+        <div id="intro-vid" ref="player" class="content__video wallpaper"></div>
+      </div>
+      <div class="video__overlay"></div>
     </div>
-    <div class="video__overlay"></div>
+    <div class="nav-primary-fixed">
+      <button
+        class="intro__close-btn"
+        aria-label="Close overlay"
+        @click.prevent="doneFn"
+      >
+        <span></span>
+        <span></span>
+      </button>
+    </div>
   </div>
 </template>
 <script>
@@ -17,6 +29,10 @@ export default {
       required: true,
     },
     readyFn: {
+      type: Function,
+      default: () => {},
+    },
+    doneFn: {
       type: Function,
       default: () => {},
     },
@@ -44,7 +60,7 @@ export default {
         portrait: false,
         title: false,
         controls: false,
-        loop: true,
+        loop: false,
       };
     },
     videoUri() {
@@ -58,16 +74,17 @@ export default {
   },
   beforeDestroy() {
     if (this.initialized) {
-      this.player.off("play", this.readyFn);
+      this.player.off("play", this.doneFn);
       this.player.destroy();
     }
   },
   methods: {
     init() {
-      this.player = new Vimeo.Player("hero-bg-vid", this.playerOpts);
+      this.player = new Vimeo.Player("intro-vid", this.playerOpts);
       this.initialized = true;
       // on "start" not firing on ipad chrome - must be to do with autoplay
       this.player.on("timeupdate", this.onStart);
+      this.player.on("ended", this.onEnded);
     },
     onStart() {
       if (!this.started) {
@@ -76,6 +93,12 @@ export default {
       }
       this.player.off("timeupdate", this.onStart);
     },
+    onEnded() {
+      this.doneFn();
+    },
   },
 };
 </script>
+<style lang="scss" scoped>
+@import "~/assets/style/components/video-overlay";
+</style>

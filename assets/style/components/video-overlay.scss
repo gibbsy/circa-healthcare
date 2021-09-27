@@ -1,0 +1,36 @@
+.intro__video-modal {
+  @include abs100();
+  position: fixed;
+  z-index: 100;
+  background-color: #fff;
+}
+
+.intro__close-btn {
+  width: 4rem;
+  height: 4rem;
+  padding: 1rem;
+  border-radius: 50%;
+  display: block;
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+  background: #fff;
+  span {
+    display: block;
+    width: 2rem;
+    height: 0.25rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    background: #000;
+    border-radius: 0.125rem;
+    z-index: 21;
+    transform-origin: 50% 50%;
+    transform: translate(0, 6px) rotate(45deg);
+    &:last-child {
+      margin-bottom: 0;
+      width: 2rem;
+      transform: translate(0, -6px) rotate(-45deg);
+    }
+  }
+}
