@@ -441,9 +441,12 @@ export default {
   },
   async asyncData() {
     const homeData = await sanityClient.fetch(query);
+    /*     console.log(homeData.caseStudies);
+    this.$store.setCaseStudies(homeData.caseStudies); */
     return {
       ...homeData.home,
       config: homeData.config[0],
+      caseStudies: homeData.caseStudies,
     };
   },
   data() {

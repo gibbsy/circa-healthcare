@@ -18,7 +18,7 @@ async function dynamicRoutes() {
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: "static",
-
+  ssr: false,
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: "Circa Healthcare | A Strategic Healthcare Communications Agency",
@@ -195,7 +195,7 @@ export default {
       });
     },
     generate: {
-      routes: dynamicRoutes,
+      // routes: dynamicRoutes,
       fallback: false,
     },
     terser: {

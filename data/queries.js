@@ -1,5 +1,9 @@
 export const homeQuery = /* groq */ `{
   "config": *[_id=="global-config"],
+  "caseStudies": *[_id=="pageWork"][0]
+  { 
+  work[]->{slug, title, hero{asset->}, client->{name}, product,  problem, solution, deliverables, projectImages[]{title, caption, asset->}},
+  },
   "home": *[_type=="homepage"][0]{
   "hero": {
     heroVideo, mainHeadline
