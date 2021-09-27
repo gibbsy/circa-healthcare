@@ -31,19 +31,6 @@
       </div>
       <scroll-prompt :mono="true"></scroll-prompt>
     </section>
-
-    <!--    <transition appear name="fade">
-      <div
-        v-show="showUi"
-        ref="logo-peel"
-        class="circa-logo logo-corner-left"
-        aria-label="circa Logo"
-      >
-        <nuxt-link to="/">
-          <logo />
-        </nuxt-link>
-      </div>
-    </transition> -->
     <corner-logo :show="showUi" :delay="1.5"></corner-logo>
     <section
       id="intro"

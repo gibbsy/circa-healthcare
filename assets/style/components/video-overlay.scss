@@ -66,13 +66,13 @@
     position: relative;
     width: 1rem;
   }
-  .audio-on {
+  .audio-off {
     position: absolute;
-    left: 32px;
     display: inline-block;
+    left: 32px;
     width: 14px;
     height: 18px;
-    background: url("~/assets/audio_on.svg") no-repeat center/contain;
+    background: url("~/assets/audio_off.svg") no-repeat center/contain;
     transform-origin: center;
     transform: translateX(-10px);
     opacity: 0;
@@ -82,13 +82,13 @@
       opacity: 1;
     }
   }
-  .audio-off {
+  .audio-on {
     position: absolute;
-    left: 36px;
     display: inline-block;
+    left: 36px;
     width: 12px;
     height: 12px;
-    background: url("~/assets/audio_off.svg") no-repeat center/contain;
+    background: url("~/assets/audio_on.svg") no-repeat center/contain;
     transform-origin: center;
     transform: translateX(-15px) scaleX(0.8);
     opacity: 0;

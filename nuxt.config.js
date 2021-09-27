@@ -54,7 +54,7 @@ export default {
     ],
     script: [
       {
-        src: "https://cdn.jsdelivr.net/combine/npm/gsap@3.6.1,npm/@vimeo/player@2.15.0,npm/splitting@1.0.6,npm/imagesloaded@4.1.4/imagesloaded.pkgd.min.js,npm/gsap@3.6.1/dist/ScrollTrigger.min.js",
+        src: "https://cdn.jsdelivr.net/combine/npm/gsap@3.6.1,npm/@vimeo/player@2.15.0,npm/splitting@1.0.6,npm/imagesloaded@4.1.4/imagesloaded.pkgd.min.js,npm/gsap@3.6.1/dist/ScrollToPlugin.min.js,npm/gsap@3.6.1/dist/ScrollTrigger.min.js",
       },
     ],
   },

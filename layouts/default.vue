@@ -54,6 +54,7 @@
   </div>
 </template>
 <script>
+import gsap from "gsap";
 import mobile from "is-mobile";
 import sanityClient from "../sanityClient";
 import CtaArrow from "~/assets/cta_arrow_small.svg?inline";
@@ -129,7 +130,7 @@ export default {
   },
   mounted() {
     console.log(this.$route.name);
-    if (this.$route.name === "index") {
+    if (this.$route.name === "index" && this.isMobile === false) {
       this.playIntro = true;
     } else {
       this.showSite = true;
