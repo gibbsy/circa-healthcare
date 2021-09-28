@@ -31,7 +31,7 @@
           <scroll-prompt></scroll-prompt>
         </div>
         <div class="content-block wwd-intro" :style="`--block-height: 100vh`">
-          <div class="content-inner col-12 col-md-8 col-lg-7">
+          <div class="content-inner col-12 col-md-10 col-xl-7">
             <h2 data-scroll-reveal class="reveal">{{ introSubhead }}</h2>
             <div data-scroll-reveal class="reveal">
               <block-content :blocks="introBody"></block-content>
@@ -203,12 +203,7 @@
               <figure
                 class="list-item-logo flex-col-3 flex-col-md-2 offset-md-1"
               >
-                <a
-                  v-if="item.href"
-                  class="partner-url"
-                  :href="item.href"
-                  target="_blank"
-                >
+                <a v-if="item.href" :href="item.href" target="_blank">
                   <img
                     :src="
                       imgRes.width > 1

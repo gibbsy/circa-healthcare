@@ -11,14 +11,19 @@
 .icon-list-container.values {
   .icon-lockup {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     transition-delay: 0;
+    @include bp(768) {
+      flex-direction: row;
+    }
   }
   .icon-lockup-icon {
     flex-shrink: 0;
   }
   .icon-lockup-text {
-    padding: 0 2rem;
+    @include bp(768) {
+      padding: 0 2rem;
+    }
   }
 }
 

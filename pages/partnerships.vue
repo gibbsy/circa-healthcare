@@ -76,12 +76,7 @@
             data-scroll-reveal
           >
             <figure class="list-item-logo col-6 flex-col-md-3">
-              <a
-                v-if="item.href"
-                class="partner-url"
-                :href="item.href"
-                target="_blank"
-              >
+              <a v-if="item.href" :href="item.href" target="_blank">
                 <img
                   :src="
                     imgRes.width > 1

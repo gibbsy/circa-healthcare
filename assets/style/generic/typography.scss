@@ -53,6 +53,15 @@ li {
     }
   }
 }
+.intro-col {
+  margin-bottom: 1rem;
+  @include bp(1024) {
+    margin-bottom: 0;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
 
 h1 {
   font-size: 9vw;
