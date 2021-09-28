@@ -45,23 +45,17 @@ export const whatWeDoQuery = /* groq */ `
   theme, title, heroHeadline, introSubhead, introBody,
   servicesLabel, servicesList[]{title, icon, text}, servicesCta, servicesCtaBtn{title, "slug": route->slug.current},
   clientsCta{title, "slug": route->slug.current},
-  clientsLabel, philanthropyLabel, philanthropyIntro, philanthropyList[],
+  clientsLabel,clientList[]->{name, website, logo, logoWhite}, philanthropyLabel, philanthropyIntro, philanthropyList[],
   metadata{title, description, "slug": slug->slug.current, ogImage}
-  },
-  "clientList": *[_id=="global-config"][0]{
-  clientList[]->{name, website, logo, logoWhite},
   }
 }`;
 
 export const clientsQuery = /* groq */ `
 {
   "pageContent":  *[_id=="pageClients"][0]{ 
-  theme, title, heroHeadline, introLabel, introSubhead, introBody,
+  theme, title, heroHeadline, introLabel, introSubhead, introBody, clientList[]->{name, website, logo, logoWhite},
   ctaHeadline, ctaBtn{title, "slug": route->slug.current},
   metadata{title, description, "slug": slug->slug.current, ogImage}
-  },
-  "clientList": *[_id=="global-config"][0]{
-  clientList[]->{name, website, logo},
   }
 }`;
 
