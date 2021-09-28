@@ -60,7 +60,7 @@ h1 {
     font-size: 7vw;
   }
   @include bp(1024) {
-    font-size: 4vw;
+    font-size: 4.25vw;
   }
   @include bp(1200) {
     font-size: 3.5rem;

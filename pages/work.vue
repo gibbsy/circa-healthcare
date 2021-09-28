@@ -101,21 +101,23 @@
                     : ''
                 "
               /> -->
-              <img
-                :src="
-                  imgRes.width > 1
-                    ? urlFor(project.hero)
-                        .width(
-                          isMobile && imgRes.width < 1000
-                            ? imgRes.width
-                            : Math.floor(imgRes.width / 2)
-                        )
-                        .auto('format')
-                        .quality(80)
-                        .url()
-                    : ''
-                "
-              />
+              <nuxt-link :to="`case-study/${project.slug.current}`">
+                <img
+                  :src="
+                    imgRes.width > 1
+                      ? urlFor(project.hero)
+                          .width(
+                            isMobile && imgRes.width < 1000
+                              ? imgRes.width
+                              : Math.floor(imgRes.width / 2)
+                          )
+                          .auto('format')
+                          .quality(80)
+                          .url()
+                      : ''
+                  "
+                />
+              </nuxt-link>
             </figure>
           </li>
         </ul>

@@ -19,7 +19,7 @@
       ></div>
     </div>
     <div class="nav-content">
-      <nav class="menu col-12 col-lg-3 offset-lg-1">
+      <nav class="menu col-12 col-lg-4 offset-lg-1">
         <h6>Explore</h6>
         <ul>
           <li>
@@ -34,7 +34,7 @@
           </li>
         </ul>
       </nav>
-      <div class="contacts-container offset-lg-3">
+      <div class="contacts-container offset-lg-2">
         <div
           v-for="location in contactDetails"
           :key="location.name"

@@ -1,8 +1,10 @@
 .case-studies-container {
   .texture-pull-right {
-    right: -5%;
-    @include clip-edge($edge: left, $height: 250vh);
-    height: 250vh;
+    @include bp(1200) {
+      right: -5%;
+      @include clip-edge($edge: left, $height: 250vh);
+      height: 250vh;
+    }
   }
 }
 
@@ -16,8 +18,13 @@
 
 .project-details-lockup {
   margin-top: -3rem;
+  @include bp(768) {
+    margin-top: -8rem;
+  }
   @include bp(1024) {
     margin-top: 0;
+  }
+  @include bp(1200) {
     padding-top: 2rem;
   }
   .client-name {
