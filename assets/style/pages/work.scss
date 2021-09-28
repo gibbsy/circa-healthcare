@@ -9,7 +9,7 @@
 .horizontal-list-lockup {
   display: flex;
   flex-direction: column-reverse;
-  @include bp(768) {
+  @include bp(1024) {
     flex-direction: row;
   }
 }
