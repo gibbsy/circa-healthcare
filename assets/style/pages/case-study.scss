@@ -51,17 +51,20 @@
   }
   .deliverables-list {
     li {
+      position: relative;
       list-style: none;
-      display: flex;
-      align-items: center;
+      margin-left: 1rem;
       margin-bottom: 0;
       &:before {
+        position: absolute;
         content: "";
+        display: inline-block;
+        top: 0.85rem;
+        left: -1rem;
         width: 4px;
         height: 4px;
         border-radius: 50%;
         background-color: var(--secondary-color);
-        margin-right: 1rem;
       }
     }
   }
@@ -69,6 +72,6 @@
     img {
       width: 100%;
     }
-    padding-bottom: 10vh;
+    padding-bottom: 5vh;
   }
 }

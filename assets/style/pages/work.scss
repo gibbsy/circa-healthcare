@@ -6,8 +6,20 @@
   }
 }
 
+.horizontal-list-lockup {
+  display: flex;
+  flex-direction: column-reverse;
+  @include bp(768) {
+    flex-direction: row;
+  }
+}
+
 .project-details-lockup {
-  margin-top: 2rem;
+  margin-top: -3rem;
+  @include bp(1024) {
+    margin-top: 0;
+    padding-top: 2rem;
+  }
   .client-name {
     color: var(--primary-color);
   }
@@ -16,6 +28,9 @@
   }
 }
 .project-hero-image-container {
+  @include bpMax(1023) {
+    margin-left: -0.5rem;
+  }
   img {
     width: 115%;
   }

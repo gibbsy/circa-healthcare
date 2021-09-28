@@ -68,31 +68,29 @@
             class="team-member reveal"
             data-scroll-reveal
           >
-            <div class="team-member-inner">
-              <figure
-                class="team-portrait"
-                :style="{
-                  backgroundImage: `url('${urlFor(item.image)
-                    .width(500)
-                    .height(500)
-                    .auto('format')
-                    .quality(70)
-                    .url()}')`,
-                }"
-              ></figure>
+            <figure
+              class="team-portrait"
+              :style="{
+                backgroundImage: `url('${urlFor(item.image)
+                  .width(500)
+                  .height(500)
+                  .auto('format')
+                  .quality(70)
+                  .url()}')`,
+              }"
+            ></figure>
 
-              <div class="team-member-details">
-                <h5 class="team-name">
-                  {{ item.name
-                  }}<span v-if="item.qualifications" class="qualifications">
-                    {{ item.qualifications }}</span
-                  >
-                </h5>
-                <p class="job-title">{{ item.jobTitle }}</p>
-                <a class="team-linkedin" :href="item.linkedin"
-                  >Linkedin profile</a
+            <div class="team-member-details">
+              <h5 class="team-name">
+                {{ item.name
+                }}<span v-if="item.qualifications" class="qualifications">
+                  {{ item.qualifications }}</span
                 >
-              </div>
+              </h5>
+              <p class="job-title">{{ item.jobTitle }}</p>
+              <a class="team-linkedin" :href="item.linkedin"
+                >Linkedin profile</a
+              >
             </div>
           </li>
         </ul>

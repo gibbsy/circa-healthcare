@@ -11,7 +11,11 @@
   display: grid;
   gap: 6rem 1rem;
   grid-template-columns: 1fr;
+  justify-items: center;
   @include bp(768) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include bp(1024) {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
@@ -20,35 +24,56 @@
   display: inline-flex;
   flex-direction: column;
   width: 100%;
+  align-items: center;
   .team-member-inner {
     padding-left: 10%;
   }
 }
 .team-portrait {
-  width: 300px;
-  height: 300px;
+  width: 180px;
+  height: 180px;
   background-size: cover;
   border-radius: 50%;
   flex-grow: 0;
+  @include bp(768) {
+    width: 220px;
+    height: 220px;
+  }
+  @include bp(1200) {
+    width: 300px;
+    height: 300px;
+  }
+  @include bp(1400) {
+    width: 300px;
+    height: 300px;
+  }
 }
 
 .team-member-details {
-  width: 90%;
+  width: 100%;
+  text-align: center;
   .team-name {
     color: var(--secondary-color);
     margin-bottom: 0;
   }
   .qualifications {
-    font-size: 1rem;
+    font-size: 0.75rem;
   }
   .job-title {
-    font-size: 1rem;
+    font-size: 0.875rem;
+    @include bp(1200) {
+      font-size: 1rem;
+    }
     font-weight: 600;
     margin-bottom: 0;
+    line-height: 1.125;
   }
   .team-linkedin {
     color: #999;
-    font-size: 1rem;
+    font-size: 0.875rem;
+    @include bp(1200) {
+      font-size: 1rem;
+    }
     font-weight: 500;
     &:hover {
       color: var(--secondary-color);

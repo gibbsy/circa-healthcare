@@ -121,23 +121,6 @@
         </ul>
       </div>
     </section>
-    <!--  <div class="work-container">
-      <div class="work-content">
-        <div class="work-label">
-          <h3>{{ workLabel }}</h3>
-        </div>
-        <div class="work-list">
-          <div
-            v-for="project in work"
-            :key="project.title"
-            class="case-study-listing"
-          >
-            <h3>{{ project.title }}</h3>
-            <button class="primary">View case study</button>
-          </div>
-        </div>
-      </div>
-    </div> -->
   </div>
 </template>
 <script>

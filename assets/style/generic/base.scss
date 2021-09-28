@@ -130,17 +130,33 @@ html {
 }
 .v-space-normal {
   > * {
-    margin-bottom: 5rem;
+    margin-bottom: 3rem;
     &:last-child {
       margin-bottom: 0;
+    }
+  }
+  @include bp(768) {
+    > * {
+      margin-bottom: 5rem;
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 }
 .v-space-wide {
   > * {
-    margin-bottom: 6rem;
+    margin-bottom: 4rem;
     &:last-child {
       margin-bottom: 0;
+    }
+  }
+  @include bp(768) {
+    > * {
+      margin-bottom: 6rem;
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
   @include bp(1600) {
