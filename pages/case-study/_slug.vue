@@ -22,7 +22,7 @@
 
       <div class="case-study-content content-block--extra-pad v-space-wide">
         <div class="case-study-info-lockup row">
-          <div class="intro-text-lockup col-12 col-md-6">
+          <div class="intro-text-lockup flex-col-12 flex-col-lg-6">
             <div
               class="headline-container title-reveal"
               data-splitting
@@ -57,7 +57,7 @@
               </aside>
             </div>
           </div>
-          <div class="right-col flex-col-12 flex-col-md-6">
+          <div class="right-col flex-col-12 flex-col-lg-6">
             <div
               class="case-study-hero-image-wrapper reveal"
               data-scroll-reveal
