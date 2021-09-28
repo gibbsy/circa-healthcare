@@ -34,10 +34,14 @@
               </div>
             </div>
             <div class="intro-text reveal" data-scroll-reveal>
-              <h5 class="subhead">What was the challenge?</h5>
-              <block-content :blocks="problem"></block-content>
-              <h5 class="subhead">How did we solve it?</h5>
-              <block-content :blocks="solution"></block-content>
+              <article class="case-study-problem">
+                <h5 class="subhead">What was the challenge?</h5>
+                <block-content :blocks="problem"></block-content>
+              </article>
+              <article class="case-study-solution">
+                <h5 class="subhead">How did we solve it?</h5>
+                <block-content :blocks="solution"></block-content>
+              </article>
             </div>
           </div>
           <div class="right-col flex-col-12 flex-col-md-6">

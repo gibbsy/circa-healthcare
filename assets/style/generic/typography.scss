@@ -199,6 +199,12 @@ button {
   }
 }
 
+p a {
+  &:hover {
+    color: var(--primary-color);
+  }
+}
+
 p.intro-lg,
 .intro-lg p {
   color: var(--primary-color);
