@@ -59,7 +59,9 @@
               class="contacts-item"
             >
               <h6>{{ location.name }}</h6>
-              <a :href="`mailto:${location.email}`">{{ location.email }}</a>
+              <a class="email" :href="`mailto:${location.email}`">{{
+                location.email
+              }}</a>
               <p>{{ location.phone }}</p>
               <div class="address">
                 <block-content :blocks="location.address"></block-content>

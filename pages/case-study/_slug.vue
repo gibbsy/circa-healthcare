@@ -5,6 +5,13 @@
       class="case-study-container section-container white-bg"
       :style="cssVars.whatWeDo"
     >
+      <div class="texture-pull-left reveal-slide-in" data-scroll-reveal>
+        <div
+          :class="['inner-texture', theme.texture]"
+          data-scroll-parallax
+          data-scroll-speed="0.5"
+        ></div>
+      </div>
       <div class="texture-pull-right reveal-slide-in" data-scroll-reveal>
         <div
           :class="['inner-texture', theme.texture]"
@@ -42,6 +49,12 @@
                 <h5 class="subhead">How did we solve it?</h5>
                 <block-content :blocks="solution"></block-content>
               </article>
+              <aside class="case-study-deliverables reveal" data-scroll-reveal>
+                <h5 class="subhead">What we delivered</h5>
+                <ul class="deliverables-list">
+                  <li v-for="item in deliverables" :key="item">{{ item }}</li>
+                </ul>
+              </aside>
             </div>
           </div>
           <div class="right-col flex-col-12 flex-col-md-6">

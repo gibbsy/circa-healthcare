@@ -1,7 +1,11 @@
 <template>
   <div
     ref="logo-container"
-    :class="['circa-logo', 'logo-corner-left', { 'full-color': fullColor }]"
+    :class="[
+      'circa-logo',
+      'logo-corner-left',
+      { 'full-color': fullColor, 'white-bg': whiteBg },
+    ]"
     aria-label="circa Logo"
   >
     <div v-if="fullColor" :class="['inner-texture']"></div>
@@ -21,6 +25,10 @@ export default {
       default: false,
     },
     fullColor: {
+      type: Boolean,
+      default: false,
+    },
+    whiteBg: {
       type: Boolean,
       default: false,
     },
