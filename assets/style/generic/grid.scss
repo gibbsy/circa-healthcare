@@ -1,6 +1,7 @@
 // ==========================================================================
 // Responsive grid https://www.toptal.com/sass/css3-flexbox-sass-grid-tutorial
 // ==========================================================================
+@use "sass:math";
 
 // number of grid columns and breakpoints
 $grid__cols: 12;
@@ -32,7 +33,7 @@ $map-grid-props: (
   @include create-mq($breakpoint) {
     @for $i from 1 through $grid__cols {
       .flex-col#{$modifier}-#{$i} {
-        flex-basis: (100 / ($grid__cols / $i)) * 1%;
+        flex-basis: math.div(100, math.div($grid__cols, $i)) * 1%;
         @if $i < $grid__cols {
           padding-right: 1.5rem;
         }
@@ -41,7 +42,7 @@ $map-grid-props: (
         }
       }
       .col#{$modifier}-#{$i} {
-        width: (100 / ($grid__cols / $i)) * 1%;
+        width: math.div(100, math.div($grid__cols, $i)) * 1%;
         @if $i < $grid__cols {
           padding-right: 1.5rem;
         }
@@ -50,7 +51,7 @@ $map-grid-props: (
         }
       }
       .offset#{$modifier}-#{$i} {
-        margin-left: (100 / ($grid__cols / $i)) * 1%;
+        margin-left: math.div(100, math.div($grid__cols, $i)) * 1%;
       }
     }
   }
