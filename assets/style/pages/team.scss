@@ -9,13 +9,15 @@
 
 .team-list {
   display: grid;
-  gap: 6rem 1rem;
+  gap: 2rem 1rem;
   grid-template-columns: 1fr;
   justify-items: center;
   @include bp(768) {
+    gap: 4rem 1rem;
     grid-template-columns: 1fr 1fr;
   }
   @include bp(1024) {
+    gap: 6rem 1rem;
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
@@ -39,11 +41,11 @@
     width: 220px;
     height: 220px;
   }
-  @include bp(1200) {
-    width: 300px;
-    height: 300px;
-  }
   @include bp(1400) {
+    width: 240px;
+    height: 240px;
+  }
+  @include bp(1800) {
     width: 300px;
     height: 300px;
   }
@@ -52,6 +54,7 @@
 .team-member-details {
   width: 100%;
   text-align: center;
+  padding: 0 1rem;
   .team-name {
     color: var(--secondary-color);
     margin-bottom: 0;
