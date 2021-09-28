@@ -111,7 +111,7 @@
                       .width(500)
                       .height(500)
                       .auto('format')
-                      .quality(70)
+                      .quality(80)
                       .url()}')`,
                   }"
                 ></figure>
@@ -203,11 +203,7 @@
             backgroundImage:
               imgRes.width > 1
                 ? `url('${urlFor(work.workImage)
-                    .width(
-                      isMobile && imgRes.width < 1000
-                        ? imgRes.width
-                        : Math.floor(imgRes.width / 2)
-                    )
+                    .width(imgRes.width)
                     .auto('format')
                     .quality(80)
                     .url()}')`
@@ -273,11 +269,7 @@
             backgroundImage:
               imgRes.width > 1
                 ? `url('${urlFor(whatWeDo.whatWeDoImage)
-                    .width(
-                      isMobile && imgRes.width < 1000
-                        ? imgRes.width
-                        : Math.floor(imgRes.width / 2)
-                    )
+                    .width(imgRes.width)
                     .auto('format')
                     .quality(80)
                     .url()}')`
@@ -387,11 +379,7 @@
             backgroundImage:
               imgRes.width > 1
                 ? `url('${urlFor(meetTheTeam.teamImage)
-                    .width(
-                      isMobile && imgRes.width < 1000
-                        ? imgRes.width
-                        : Math.floor(imgRes.width / 2)
-                    )
+                    .width(imgRes.width)
                     .auto('format')
                     .saturation(-100)
                     .quality(80)
