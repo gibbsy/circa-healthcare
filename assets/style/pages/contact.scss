@@ -4,8 +4,29 @@
   }
 }
 
+.contacts-container {
+  display: inline-flex;
+  flex-wrap: wrap;
+  row-gap: 2rem;
+  justify-content: space-between;
+  @include bp(1024) {
+    display: inline-block;
+  }
+  .contacts-item {
+    flex-basis: 100%;
+    @include bp(768) {
+      flex-basis: 46%;
+    }
+    @include bp(1024) {
+      flex-basis: 100%;
+    }
+  }
+}
+
 .contacts-item {
-  margin-bottom: 2rem;
+  @include bp(1024) {
+    margin-bottom: 2rem;
+  }
   p,
   li,
   a {

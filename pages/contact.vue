@@ -67,7 +67,7 @@
                 <block-content :blocks="location.address"></block-content>
               </div>
             </div>
-            <div class="contacts-item">
+            <div class="contacts-item social">
               <h6>Social</h6>
               <ul class="socials-menu">
                 <li v-for="link in socials" :key="link.title">

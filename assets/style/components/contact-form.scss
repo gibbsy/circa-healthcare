@@ -202,13 +202,16 @@ $col-gap: 2rem;
   position: relative;
   margin-bottom: 2rem;
   flex-basis: 100%;
-  @include bp(768) {
+  @include bp(1200) {
     flex-basis: calc(50% - 1rem);
   }
   &.clear-row {
-    @include bp(768) {
+    @include bp(1200) {
       margin-right: 50%;
     }
+  }
+  &:last-child {
+    margin-bottom: 0;
   }
   &.terms {
     display: flex;

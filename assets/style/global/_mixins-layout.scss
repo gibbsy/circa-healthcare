@@ -20,7 +20,10 @@
   padding: 4rem 2rem;
 
   @include bp(768) {
-    padding: 2rem 0 10px 4rem;
+    padding: 2rem 12% 10px 6rem;
+  }
+  @include bp(1024) {
+    padding: 2rem 25% 10px 10%;
   }
 
   @include bp(1200) {
