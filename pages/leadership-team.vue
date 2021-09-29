@@ -89,7 +89,7 @@
               </h5>
               <p class="job-title">{{ item.jobTitle }}</p>
               <a class="team-linkedin" :href="item.linkedin"
-                >Linkedin profile</a
+                >LinkedIn profile</a
               >
             </div>
           </li>

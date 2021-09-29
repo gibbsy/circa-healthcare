@@ -11,7 +11,7 @@
     <nav :class="['nav-primary-fixed', { on: navOn && showSite === true }]">
       <div :class="['contact-button-container', { hidden: !contactActive }]">
         <nuxt-link
-          to="/contact"
+          to="/contact-us"
           :class="['cta-primary', 'btn-contact', { on: showContact }]"
         >
           <span class="arrow"> <cta-arrow /> </span>
