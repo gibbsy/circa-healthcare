@@ -103,7 +103,7 @@
           />
           <label for="terms"
             ><p>
-              Before submitting this form you must agree Circa’s
+              Before submitting this form you must agree to Circa’s
               <nuxt-link to="/cookie-and-privacy-policy"
                 >Cookie and Privacy Policy.</nuxt-link
               >
