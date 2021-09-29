@@ -104,8 +104,8 @@
           <label for="terms"
             ><p>
               Before submitting this form you must agree Circa’s
-              <nuxt-link to="/"
-                >Terms and Conditions and Privacy Notice.</nuxt-link
+              <nuxt-link to="/cookie-and-privacy-policy"
+                >Cookie and Privacy Policy.</nuxt-link
               >
             </p></label
           >
