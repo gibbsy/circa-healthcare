@@ -73,11 +73,11 @@
       </div>
       <div class="footer-legals">
         <ul class="legal-links-menu">
-          <li v-for="link in footerLinks" :key="link.slug.current">
-            <nuxt-link :to="`/legal/${link.slug}`">{{ link.title }}</nuxt-link>
-          </li>
           <li>
             <p class="copyright">©2021 Circa Healthcare</p>
+          </li>
+          <li v-for="link in footerLinks" :key="link.slug.current">
+            <nuxt-link :to="`/${link.slug}`">{{ link.title }}</nuxt-link>
           </li>
         </ul>
       </div>

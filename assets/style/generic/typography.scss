@@ -119,6 +119,24 @@ h2 {
   }
 }
 
+.ancillary.page-wrapper {
+  .ancillary-container {
+    padding-top: 10vh;
+  }
+  h1 {
+    font-size: 2rem;
+    @include bp(1200) {
+      font-size: 3rem;
+    }
+  }
+  h2 {
+    font-size: 1.75rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+  }
+}
+
 h3 {
   font-size: 1.5rem;
   @include bp(1400) {

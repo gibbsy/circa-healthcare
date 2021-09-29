@@ -33,6 +33,7 @@
         :links="mainNav"
         :contact-details="config.contactDetails"
         :socials="config.socials"
+        :footer-links="config.footerLinks"
       ></app-footer>
     </transition>
     <transition name="nav-transition">

@@ -91,3 +91,15 @@ export const contactQuery = /* groq */ `
     socials
   }
 }`;
+
+export const legalQuery = /* groq */ `
+{
+  "pageContent":
+    *[_id=="pageLegal"][0] {
+      title, slug->{title, "current": slug.current}, text
+    },
+    "theme": 
+    *[_id=="pageContact"][0]{ 
+      theme
+      }
+}`;
