@@ -229,6 +229,9 @@ p.intro-lg,
   color: var(--primary-color);
   font-weight: 300;
   font-size: 1.5rem;
+  @include bp(768) {
+    font-size: 1.75rem;
+  }
   @include bp(1200) {
     font-size: 2rem;
   }

@@ -13,3 +13,11 @@
     color: var(--primary-color);
   }
 }
+
+.services-cta-btn-container {
+  @include bp(1024) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

@@ -92,7 +92,7 @@
             >
               {{ servicesCta }}
             </p>
-            <div class="flex--centred flex-col-12 flex-col-lg-4">
+            <div class="services-cta-btn-container flex-col-12 flex-col-lg-4">
               <cta-btn class="cta-primary" :slug="servicesCtaBtn.slug">{{
                 servicesCtaBtn.title
               }}</cta-btn>
@@ -189,7 +189,7 @@
             {{ philanthropyLabel }}
           </h6>
           <article
-            class="philanthropy-intro intro-lg col-12 col-lg-8 offset-lg-3"
+            class="philanthropy-intro intro-lg col-12 col-xl-8 offset-xl-3"
           >
             <block-content :blocks="philanthropyIntro"></block-content>
           </article>
@@ -201,7 +201,7 @@
               data-scroll-reveal
             >
               <figure
-                class="list-item-logo flex-col-3 flex-col-md-2 offset-md-1"
+                class="list-item-logo flex-col-3 flex-col-xl-2 offset-xl-1"
               >
                 <a v-if="item.href" :href="item.href" target="_blank">
                   <img
