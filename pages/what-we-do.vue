@@ -72,7 +72,7 @@
             <li
               v-for="(item, i) in servicesList"
               :key="i"
-              class="icon-lockup services flex-col-12 flex-col-md-4"
+              class="icon-lockup services flex-col-12 flex-col-lg-4"
               data-scroll-reveal
             >
               <figure

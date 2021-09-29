@@ -29,9 +29,9 @@
           </li>
         </ul>
       </div>
-      <div class="footer-contacts">
+      <div class="footer-contacts-container">
         <h6 class="section-label">Get in touch</h6>
-        <div class="footer-contacts-container">
+        <div class="footer-contacts-inner">
           <div
             v-for="location in contactDetails"
             :key="location.name"

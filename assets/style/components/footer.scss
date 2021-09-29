@@ -13,8 +13,11 @@ footer {
     right: 0;
     bottom: 0;
     @include bp(1024) {
-      width: 350px;
+      width: 250px;
       top: 0;
+    }
+    @include bp(1400) {
+      width: 350px;
     }
   }
   .texture-pull-right {
@@ -26,10 +29,20 @@ footer {
     width: 100px;
     bottom: 3rem;
     right: 12px;
+    a {
+      display: block;
+    }
     svg {
       fill: #fff;
     }
     @include bp(1024) {
+      top: 3rem;
+      bottom: auto;
+      left: 46px;
+      right: auto;
+      width: 140px;
+    }
+    @include bp(1400) {
       top: 4rem;
       bottom: auto;
       left: 16px;
@@ -52,7 +65,10 @@ footer {
   a {
     text-decoration: none;
     color: #fff;
-    font-size: 1.125rem;
+    font-size: 1rem;
+    @include bp(1200) {
+      font-size: 1.125rem;
+    }
     &:hover {
       color: var(--secondary-color);
       text-decoration: underline;
@@ -63,10 +79,15 @@ footer {
 .footer-main {
   position: relative;
   display: flex;
-  flex-direction: column;
-  width: 66.66%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 75%;
   @include footer-padding();
   padding-bottom: 10px;
+  @include bp(1200) {
+    width: 66.66%;
+  }
   h6 {
     color: var(--secondary-color);
     &:after {
@@ -83,7 +104,25 @@ footer {
     // margin-left: 2rem;
     list-style: none;
   }
+  .footer-nav {
+    flex-basis: 100%;
+    @include bp(768) {
+      flex-basis: 40%;
+    }
+    @include bp(1024) {
+      flex-basis: 100%;
+    }
+  }
   .footer-contacts-container {
+    flex-basis: 100%;
+    @include bp(768) {
+      flex-basis: 46%;
+    }
+    @include bp(1024) {
+      flex-basis: 100%;
+    }
+  }
+  .footer-contacts-inner {
     position: relative;
     @include bp(1024) {
       display: flex;
@@ -94,7 +133,10 @@ footer {
       a,
       p {
         color: #fff;
-        font-size: 1.125rem;
+        font-size: 1rem;
+        @include bp(1200) {
+          font-size: 1.125rem;
+        }
       }
       h6 {
         color: #fff;

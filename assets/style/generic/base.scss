@@ -465,14 +465,17 @@ html {
   width: 100%;
   max-width: 2000px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   justify-items: center;
   align-items: center;
-  gap: 40px 30px;
-  padding: 0 10px;
+  gap: 40px 50px;
+  padding: 0 20px;
   @include reveal-slide-up-fade();
-  @include bp(1024) {
+  @include bp(768) {
+    gap: 40px 40px;
     grid-template-columns: repeat(5, 1fr);
+  }
+  @include bp(1024) {
     grid-row-gap: 3rem;
   }
   @include bp(1200) {
@@ -495,11 +498,14 @@ html {
     object-fit: contain;
     margin: 0;
     img {
-      width: 70px;
+      max-width: 90%;
       @include bp(768) {
+        max-width: 100%;
+      }
+      @include bp(1024) {
         width: 100px;
       }
-      @include bp(1400) {
+      @include bp(1200) {
         width: 120px;
       }
       @include bp(1600) {
