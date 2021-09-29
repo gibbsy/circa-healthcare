@@ -13,7 +13,7 @@ footer {
     right: 0;
     bottom: 0;
     @include bp(1024) {
-      width: 250px;
+      width: 220px;
       top: 0;
     }
     @include bp(1400) {
@@ -85,6 +85,12 @@ footer {
   width: 75%;
   @include footer-padding();
   padding-bottom: 10px;
+  @include bp(768) {
+    width: 80%;
+  }
+  @include bp(1024) {
+    width: 75%;
+  }
   @include bp(1200) {
     width: 66.66%;
   }
@@ -107,7 +113,7 @@ footer {
   .footer-nav {
     flex-basis: 100%;
     @include bp(768) {
-      flex-basis: 40%;
+      flex-basis: 36%;
     }
     @include bp(1024) {
       flex-basis: 100%;
@@ -116,7 +122,7 @@ footer {
   .footer-contacts-container {
     flex-basis: 100%;
     @include bp(768) {
-      flex-basis: 46%;
+      flex-basis: 54%;
     }
     @include bp(1024) {
       flex-basis: 100%;
@@ -155,7 +161,13 @@ footer {
     li,
     a,
     p {
-      font-size: 1.125rem;
+      font-size: 0.875rem;
+      @include bp(768) {
+        font-size: 1rem;
+      }
+      @include bp(1200) {
+        font-size: 1.125rem;
+      }
       color: var(--secondary-color);
     }
     margin-top: auto;
