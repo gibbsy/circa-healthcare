@@ -105,7 +105,7 @@ export default {
     },
     showContact() {
       return (
-        this.containerId !== "contact" &&
+        this.containerId !== "contact-us" &&
         this.navOn === false &&
         this.showSite === true
       );
