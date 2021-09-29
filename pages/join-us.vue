@@ -63,7 +63,7 @@
           data-scroll-speed="-0.2"
         ></div>
       </div>
-      <div class="values-content content-block--extra-pad v-space-normal">
+      <div class="join-content content-block--extra-pad v-space-normal">
         <h6 data-scroll-reveal class="section-label reveal col-12">
           {{ valuesLabel }}
         </h6>
@@ -87,6 +87,7 @@
           </li>
         </ul>
         <h6
+          v-if="showVacancies"
           data-scroll-reveal
           class="section-label vacancies-label reveal col-12"
         >
@@ -95,7 +96,7 @@
         <!--    <div data-scroll-reveal class="vacancies-intro reveal col-12 col-md-8">
           <block-content :blocks="vacanciesIntro"></block-content>
         </div> -->
-        <ul class="vacancies-list-container row">
+        <ul v-if="showVacancies" class="vacancies-list-container row">
           <li
             v-for="(item, i) in jobVacancies"
             :key="i"
@@ -177,6 +178,14 @@ export default {
     return {
       ...pageData,
     };
+  },
+  computed: {
+    showVacancies() {
+      if (!this.jobVacancies) {
+        return false;
+      }
+      return this.jobVacancies.length > 0;
+    },
   },
   mounted() {
     this.init();
