@@ -1,7 +1,7 @@
 <template>
   <div class="cookie__panel">
     <p>
-      We use cookies to analyse traffic and improve your experience. Learn more
+      We use cookies to analyze traffic and improve your experience. Learn more
       in our
       <nuxt-link to="/legal/cookie-and-privacy-policy"
         >privacy policy.</nuxt-link

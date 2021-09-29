@@ -74,7 +74,9 @@
       <div class="footer-legals">
         <ul class="legal-links-menu">
           <li>
-            <p class="copyright">©2021 Circa Healthcare</p>
+            <p class="copyright">
+              ©2021 Circa Healthcare. All rights reserved.
+            </p>
           </li>
           <li v-for="link in footerLinks" :key="link.slug.current">
             <nuxt-link :to="`/${link.slug}`">{{ link.title }}</nuxt-link>
