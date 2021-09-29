@@ -29,7 +29,7 @@
         class="content-block partnerships-intro v-centered"
         :style="`--block-height: 100vh`"
       >
-        <div class="intro-text-lockup col-12 col-md-8 col-lg-7">
+        <div class="intro-text-lockup col-12 col-md-10 col-xl-7">
           <h6 data-scroll-reveal class="section-label full-width reveal">
             {{ introLabel }}
           </h6>
@@ -64,7 +64,7 @@
         ></div>
       </div>
       <div class="partners-content content-block--extra-pad v-space-normal">
-        <h6 data-scroll-reveal class="section-label reveal col-11">
+        <h6 data-scroll-reveal class="section-label reveal col-12">
           {{ partnerLabel }}
         </h6>
 

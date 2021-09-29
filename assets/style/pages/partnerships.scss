@@ -12,10 +12,10 @@
       margin-top: 0.5rem;
     }
     img {
-      @include bp(1200) {
-        width: 180px;
+      @include bp(768) {
+        width: 160px;
       }
-      @include bp(1400) {
+      @include bp(1200) {
         width: 180px;
       }
       @include bp(1600) {

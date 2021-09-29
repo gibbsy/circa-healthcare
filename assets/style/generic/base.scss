@@ -526,7 +526,7 @@ html {
 
 .horizontal-list-lockup {
   margin-bottom: 3rem;
-  @include bp(768) {
+  @include bp(1024) {
     display: flex;
   }
   &:last-child {
