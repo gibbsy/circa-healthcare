@@ -1,19 +1,29 @@
 <template>
-  <div class="cookie__panel">
+  <div class="cookie-panel">
     <p>
       We use cookies to analyze traffic and improve your experience. Learn more
       in our
-      <nuxt-link to="/cookie-and-privacy-policy">privacy policy.</nuxt-link>
+      <a @click.prevent="viewPolicy">cookie and privacy policy.</a>
     </p>
-    <a class="cta-link" @click.prevent="clickFn">Continue</a>
+    <a class="cta-link" @click.prevent="acceptFn">Continue</a>
   </div>
 </template>
 <script>
 export default {
   props: {
-    clickFn: {
+    acceptFn: {
       type: Function,
       default: () => console.log("Expected click function"),
+    },
+    navigateFn: {
+      type: Function,
+      default: () => console.log("Expected click function"),
+    },
+  },
+  methods: {
+    viewPolicy() {
+      this.navigateFn();
+      this.$router.push("/cookie-and-privacy-policy");
     },
   },
 };

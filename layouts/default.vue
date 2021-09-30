@@ -4,7 +4,8 @@
     <transition name="fade" appear>
       <cookie-panel
         v-show="!cookiesOk"
-        :click-fn="acceptCookies"
+        :accept-fn="acceptCookies"
+        :navigate-fn="onIntroPlayed"
       ></cookie-panel>
     </transition>
 
