@@ -221,7 +221,7 @@ $col-gap: 2rem;
       display: inline-block;
       text-transform: none;
       letter-spacing: 0;
-      width: 90%;
+      width: 100%;
       @include bp(1800) {
         width: 80%;
       }
