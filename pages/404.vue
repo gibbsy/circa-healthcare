@@ -17,7 +17,8 @@
 
           <div class="intro-text reveal" data-scroll-reveal>
             <nuxt-link to="/" class="cta-primary" data-scroll-reveal
-              >Go to home page</nuxt-link
+              ><span class="arrow"> <cta-arrow /> </span>Go to home
+              page</nuxt-link
             >
           </div>
         </div>
@@ -31,8 +32,10 @@ import { legalQuery as query } from "../data/queries";
 import sanityClient from "../sanityClient";
 import pageSetup from "~/mixins/pageSetup";
 import scrollAnimations from "~/mixins/scrollAnimations";
+import CtaArrow from "~/assets/cta_arrow_small.svg?inline";
 
 export default {
+  components: { CtaArrow },
   mixins: [pageSetup, scrollAnimations],
   async asyncData() {
     const pageData = await sanityClient.fetch(query);
