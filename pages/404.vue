@@ -1,52 +1,67 @@
 <template>
-  <div ref="scroll-legal" class="page-wrapper ancillary-page error-404">
-    <div id="sticky-logo-target"></div>
-    <transition name="fade" appear mode="out-in">
-      <div
-        ref="logo-peel"
-        class="circa-logo logo-corner-left"
-        aria-label="circa Logo"
-        data-scroll
-        data-scroll-sticky="true"
-        data-scroll-target="#sticky-logo-target"
-      >
-        <nuxt-link to="/">
-          <logo />
-        </nuxt-link>
-      </div>
-    </transition>
+  <div class="ancillary page-wrapper" :style="cssVars">
     <section
-      id="legals-wrapper"
-      class="generic__container legals__container"
-      data-scroll
+      id="ancillary"
+      class="ancillary-container section-container white-bg"
     >
-      <div
-        class="generic-texture-bg pull-right"
-        data-scroll
-        data-scroll-sticky="true"
-        data-scroll-target="#sticky-logo-target"
-      >
-        <div class="inner-texture"></div>
-      </div>
-
-      <transition name="fade" appear mode="out-in">
-        <div class="generic__content error-message">
-          <h2>Oops, we can't find that page.</h2>
-          <nuxt-link to="/" class="cta-link--arrow"
-            >Back to the home page</nuxt-link
-          >
+      <div class="texture-pull-right">
+        <div class="texture-wrapper">
+          <div :class="['inner-texture', theme.texture]"></div>
         </div>
-      </transition>
-    </section>
+      </div>
+      <div class="ancillary-content content-block--extra-pad">
+        <div class="intro-text-lockup col-12 col-xl-10">
+          <h1 data-scroll-reveal class="reveal">
+            Sorry, we can't find that page.
+          </h1>
 
-    <app-footer></app-footer>
+          <div class="intro-text reveal" data-scroll-reveal>
+            <nuxt-link to="/" class="cta-primary" data-scroll-reveal
+              >Go to home page</nuxt-link
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <corner-logo :show="showUi" :full-color="true" :delay="0.5"></corner-logo>
   </div>
 </template>
 <script>
-import Logo from "~/assets/circa_logo_nofill.svg?inline";
+import { legalQuery as query } from "../data/queries";
+import sanityClient from "../sanityClient";
+import pageSetup from "~/mixins/pageSetup";
+import scrollAnimations from "~/mixins/scrollAnimations";
+
 export default {
-  components: {
-    Logo,
+  mixins: [pageSetup, scrollAnimations],
+  async asyncData() {
+    const pageData = await sanityClient.fetch(query);
+    const { theme } = pageData;
+    return {
+      ...theme,
+    };
+  },
+  data() {
+    return {
+      enquiryPrefill: "",
+    };
+  },
+  mounted() {
+    this.enquiryPrefill = this.$route.params.enquiry;
+    console.log(this.$route.params);
+    this.$nextTick(this.init);
+  },
+  methods: {
+    init() {
+      this.splitText();
+      // this.$nextTick(() => this.initScrollAni());
+      setTimeout(() => {
+        this.initScrollAni();
+      }, 100);
+    },
   },
 };
 </script>
+<style lang="scss" scoped>
+@import "../assets/style/pages/ancillary";
+</style>
