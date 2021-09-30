@@ -5,11 +5,9 @@
       class="ancillary-container section-container white-bg"
     >
       <div class="texture-pull-right">
-        <div
-          :class="['inner-texture', theme.texture]"
-          data-scroll-parallax
-          data-scroll-speed="0.5"
-        ></div>
+        <div class="texture-wrapper">
+          <div :class="['inner-texture', theme.texture]"></div>
+        </div>
       </div>
       <div class="ancillary-content content-block--extra-pad">
         <div class="intro-text-lockup col-12 col-xl-10">

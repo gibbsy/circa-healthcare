@@ -2,16 +2,16 @@
   <div class="partnerships page-wrapper" :style="cssVars">
     <section class="page-hero-container x2-h full-color">
       <div
-        :class="['inner-texture', theme.texture]"
+        class="texture-wrapper parallax cover"
         data-scroll-parallax
-        data-scroll-speed="0.6"
-      ></div>
+        data-scroll-speed="0.5"
+      >
+        <div :class="['inner-texture', theme.texture]"></div>
+      </div>
       <div class="texture-pull-right reveal-slide-in" data-scroll-reveal>
-        <div
-          :class="['inner-texture', theme.texture]"
-          data-scroll-parallax
-          data-scroll-speed="0.5"
-        ></div>
+        <div class="texture-wrapper">
+          <div :class="['inner-texture', theme.texture]"></div>
+        </div>
       </div>
       <div
         class="partnerships-headline content-block title-reveal v-centered"
@@ -46,22 +46,18 @@
         data-scroll-reveal
         data-reveal-start="top center"
       >
-        <div
-          :class="['inner-texture', theme.texture]"
-          data-scroll-parallax
-          data-scroll-speed="0.5"
-        ></div>
+        <div class="texture-wrapper">
+          <div :class="['inner-texture', theme.texture]"></div>
+        </div>
       </div>
       <div
         class="texture-pull-right reveal-slide-in"
         data-scroll-reveal
         data-reveal-start="top center"
       >
-        <div
-          :class="['inner-texture', theme.texture]"
-          data-scroll-parallax
-          data-scroll-speed="-0.2"
-        ></div>
+        <div class="texture-wrapper">
+          <div :class="['inner-texture', theme.texture]"></div>
+        </div>
       </div>
       <div class="partners-content content-block--extra-pad v-space-normal">
         <h6 data-scroll-reveal class="section-label reveal col-12">

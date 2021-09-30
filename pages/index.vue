@@ -38,7 +38,9 @@
       :style="cssVars.intro"
     >
       <div class="texture-pull-left reveal-slide-in" data-scroll-reveal>
-        <div :class="['inner-texture', intro.introTheme.texture]"></div>
+        <div class="texture-wrapper">
+          <div :class="['inner-texture', intro.introTheme.texture]"></div>
+        </div>
       </div>
       <div
         class="texture-pull-right reveal-slide-in"
@@ -47,7 +49,9 @@
         data-scroll-speed="-0.2"
         data-scroll-direction="horizontal"
       >
-        <div :class="['inner-texture', intro.introTheme.texture]"></div>
+        <div class="texture-wrapper">
+          <div :class="['inner-texture', intro.introTheme.texture]"></div>
+        </div>
       </div>
       <div
         class="intro-content content-block v-centered reveal"
@@ -76,7 +80,9 @@
       :style="cssVars.about"
       data-scroll-reveal
     >
-      <div :class="['inner-texture', about.aboutTheme.texture]"></div>
+      <div class="texture-wrapper parallax cover">
+        <div :class="['inner-texture', about.aboutTheme.texture]"></div>
+      </div>
       <div
         id="about-stat-scroller"
         :class="[
@@ -132,7 +138,9 @@
             </div>
           </div>
           <div id="stats-tex-right" class="texture-pull-right">
-            <div :class="['inner-texture', about.aboutTheme.texture]"></div>
+            <div class="texture-wrapper">
+              <div :class="['inner-texture', about.aboutTheme.texture]"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -141,7 +149,9 @@
         :class="['why-circa-container', { 'scroll-ani': !isMobile }]"
       >
         <div id="why-circa-tex" class="texture-pull-left">
-          <div :class="['inner-texture', about.aboutTheme.texture]"></div>
+          <div class="texture-wrapper">
+            <div :class="['inner-texture', about.aboutTheme.texture]"></div>
+          </div>
         </div>
 
         <div
@@ -173,23 +183,15 @@
     </section>
     <section
       id="work"
-      class="work-container section-container white-bg"
+      class="work-container section-container img-promo white-bg img-right"
       :style="cssVars.work"
     >
       <div class="texture-pull-left reveal-slide-in" data-scroll-reveal>
-        <div
-          :class="['inner-texture', work.workTheme.texture]"
-          data-scroll-parallax
-          data-scroll-speed="0.5"
-        ></div>
+        <div class="texture-wrapper">
+          <div :class="['inner-texture', work.workTheme.texture]"></div>
+        </div>
       </div>
-      <div class="texture-pull-right reveal-slide-in" data-scroll-reveal>
-        <div
-          :class="['inner-texture', work.workTheme.texture]"
-          data-scroll-parallax
-          data-scroll-speed="0.3"
-        ></div>
-      </div>
+
       <div
         class="section-hero-image-wrapper work full-height reveal-slide-in"
         data-scroll-reveal
@@ -198,18 +200,19 @@
           data-scroll-parallax
           data-scroll-speed="0.1"
           class="section-hero-image work parallax-image"
-          :alt="work.workImage.title"
-          :style="{
-            backgroundImage:
-              imgRes.width > 1
-                ? `url('${urlFor(work.workImage)
-                    .width(imgRes.width)
-                    .auto('format')
-                    .quality(80)
-                    .url()}')`
-                : 'none',
-          }"
-        ></figure>
+        >
+          <nuxt-img
+            :sizes="imgSizes.promo"
+            :modifiers="{ crop: work.workImage.crop }"
+            :src="work.workImage.asset._ref"
+            :alt="work.workImage.title"
+          />
+        </figure>
+      </div>
+      <div class="texture-pull-right reveal-slide-in" data-scroll-reveal>
+        <div class="texture-wrapper">
+          <div :class="['inner-texture', work.workTheme.texture]"></div>
+        </div>
       </div>
       <div class="work-content v-space-wide">
         <div class="intro-text-lockup col-12 col-lg-8 col-xl-7">
@@ -234,23 +237,21 @@
     </section>
     <section
       id="what-we-do"
-      class="what-we-do-container section-container white-bg"
+      class="
+        what-we-do-container
+        section-container
+        img-promo
+        white-bg
+        img-right
+      "
       :style="cssVars.whatWeDo"
     >
       <div class="texture-pull-left reveal-slide-in" data-scroll-reveal>
-        <div
-          :class="['inner-texture', whatWeDo.whatWeDoTheme.texture]"
-          data-scroll-parallax
-          data-scroll-speed="0.5"
-        ></div>
+        <div class="texture-wrapper">
+          <div :class="['inner-texture', whatWeDo.whatWeDoTheme.texture]"></div>
+        </div>
       </div>
-      <div class="texture-pull-right reveal-slide-in" data-scroll-reveal>
-        <div
-          :class="['inner-texture', whatWeDo.whatWeDoTheme.texture]"
-          data-scroll-parallax
-          data-scroll-speed="0.5"
-        ></div>
-      </div>
+
       <div
         class="
           section-hero-image-wrapper
@@ -265,17 +266,19 @@
           data-scroll-speed="0.1"
           class="section-hero-image what-we-do parallax-image"
           :alt="whatWeDo.whatWeDoImage.title"
-          :style="{
-            backgroundImage:
-              imgRes.width > 1
-                ? `url('${urlFor(whatWeDo.whatWeDoImage)
-                    .width(imgRes.width)
-                    .auto('format')
-                    .quality(80)
-                    .url()}')`
-                : 'none',
-          }"
-        ></figure>
+        >
+          <nuxt-img
+            :sizes="imgSizes.promo"
+            :modifiers="{ crop: whatWeDo.whatWeDoImage.crop }"
+            :src="whatWeDo.whatWeDoImage.asset._ref"
+            :alt="whatWeDo.whatWeDoImage.title"
+          />
+        </figure>
+      </div>
+      <div class="texture-pull-right reveal-slide-in" data-scroll-reveal>
+        <div class="texture-wrapper">
+          <div :class="['inner-texture', whatWeDo.whatWeDoTheme.texture]"></div>
+        </div>
       </div>
       <div class="what-we-do-content v-space-wide">
         <div class="intro-text-lockup col-12 col-lg-8 col-xl-7">
@@ -325,19 +328,27 @@
       :style="cssVars.partnerships"
     >
       <div
-        :class="['inner-texture', partnerships.partnershipsTheme.texture]"
+        class="texture-wrapper parallax cover"
         data-scroll-parallax
         data-scroll-speed="0.2"
-      ></div>
-      <div class="texture-pull-left reveal-slide-in" data-scroll-reveal>
+      >
         <div
           :class="['inner-texture', partnerships.partnershipsTheme.texture]"
         ></div>
       </div>
+      <div class="texture-pull-left reveal-slide-in" data-scroll-reveal>
+        <div class="texture-wrapper">
+          <div
+            :class="['inner-texture', partnerships.partnershipsTheme.texture]"
+          ></div>
+        </div>
+      </div>
       <div class="texture-pull-right reveal-slide-in" data-scroll-reveal>
-        <div
-          :class="['inner-texture', partnerships.partnershipsTheme.texture]"
-        ></div>
+        <div class="texture-wrapper">
+          <div
+            :class="['inner-texture', partnerships.partnershipsTheme.texture]"
+          ></div>
+        </div>
       </div>
 
       <div class="partnerships-content">
@@ -362,10 +373,12 @@
       :style="cssVars.team"
     >
       <div
-        :class="['inner-texture', meetTheTeam.teamTheme.texture]"
+        class="texture-wrapper parallax cover"
         data-scroll-parallax
         data-scroll-speed="0.2"
-      ></div>
+      >
+        <div :class="['inner-texture', meetTheTeam.teamTheme.texture]"></div>
+      </div>
       <div
         class="section-hero-image-wrapper full-height pull-left"
         data-scroll-reveal
@@ -375,24 +388,24 @@
           data-scroll-speed="0.2"
           class="section-hero-image parallax-image"
           :alt="meetTheTeam.teamImage.title"
-          :style="{
-            backgroundImage:
-              imgRes.width > 1
-                ? `url('${urlFor(meetTheTeam.teamImage)
-                    .width(imgRes.width)
-                    .auto('format')
-                    .saturation(-100)
-                    .quality(80)
-                    .url()}')`
-                : 'none',
-          }"
-        ></figure>
+        >
+          <nuxt-img
+            :sizes="imgSizes.promo"
+            :modifiers="{ crop: meetTheTeam.teamImage.crop }"
+            :src="meetTheTeam.teamImage.asset._ref"
+            :alt="meetTheTeam.teamImage.title"
+          />
+        </figure>
       </div>
       <div class="texture-pull-left reveal-slide-in" data-scroll-reveal>
-        <div :class="['inner-texture', meetTheTeam.teamTheme.texture]"></div>
+        <div class="texture-wrapper">
+          <div :class="['inner-texture', meetTheTeam.teamTheme.texture]"></div>
+        </div>
       </div>
       <div class="texture-pull-right reveal-slide-in" data-scroll-reveal>
-        <div :class="['inner-texture', meetTheTeam.teamTheme.texture]"></div>
+        <div class="texture-wrapper">
+          <div :class="['inner-texture', meetTheTeam.teamTheme.texture]"></div>
+        </div>
       </div>
 
       <div class="team-content">
@@ -429,6 +442,8 @@ export default {
   },
   async asyncData() {
     const homeData = await sanityClient.fetch(query);
+    console.log(homeData);
+
     return {
       ...homeData.home,
       config: homeData.config[0],
@@ -536,6 +551,9 @@ export default {
     texSuffix() {
       return this.isMobile ? "" : "-lrg";
     },
+    imgSizes() {
+      return this.$store.state.imgSizes;
+    },
     cssVars() {
       return {
         intro: {
@@ -623,13 +641,14 @@ export default {
       const why = document.getElementById("why-circa");
       const whyContent = document.getElementById("why-circa-content");
       const whyTex = document.getElementById("why-circa-tex");
-
+      const whyDist = innerHeight;
+      console.log(whyContent.scrollHeight);
       const tlAbout = gsap.timeline({
         scrollTrigger: {
           trigger: "#about-stat-scroller",
           // trigger: "#about",
           start: "top top",
-          scrub: 0.2,
+          scrub: 0.1,
           pin: true,
           end: `${innerHeight}px`,
         },
@@ -653,7 +672,7 @@ export default {
       tlAbout.to(
         texRight,
         {
-          x: "+=20%",
+          x: "+=100%",
           ease: "sine.inOut",
         },
         0
@@ -662,17 +681,17 @@ export default {
         scrollTrigger: {
           trigger: why,
           start: "top top",
-          scrub: 0.2,
+          scrub: true,
           pin: true,
-          end: `${innerHeight * 1.5}px`,
+          end: `${whyDist}px`,
         },
       });
       tlWhy.fromTo(
         whyTex,
-        { x: "-=40%" },
+        { x: "-=100%" },
         {
           x: 0,
-          duration: 1,
+          duration: 0.5,
         },
         0
       );
@@ -681,7 +700,7 @@ export default {
         {
           y: "-=100%",
           ease: "none",
-          duration: 2,
+          duration: 1,
         },
         0
       );
@@ -691,17 +710,16 @@ export default {
       const width = window.innerWidth;
       const height = window.innerHeight;
       const dpr = window.devicePixelRatio;
-      const res = {};
-      if (width > 1440) {
-        res.width = 1920;
-        res.height = 1080;
-      } else if (width > 1024) {
-        res.width = 1440;
-        res.height = 900;
-      } else if (width >= 768) {
-        res.width = 800;
+      const res = { width: 400 };
+      if (width >= 768) {
+        res.width = 768;
       }
-      res.height = Math.round(height * 0.8);
+      if (width > 1440) {
+        res.width = 960;
+      }
+      if (width > 1920) {
+        res.width = 1080;
+      }
       if (this.isMobile) {
         // alert(width + " " + height);
         res.width = width;

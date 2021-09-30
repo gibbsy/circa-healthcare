@@ -5,12 +5,12 @@
       display: none;
     }
   }
-  .texture-pull-right {
+  /*   .texture-pull-right {
     right: -45%;
     @include bp(1400) {
       right: -40%;
     }
-  }
+  } */
   .case-study-content {
     padding-top: 7rem;
     @include bp(1024) {
@@ -121,5 +121,11 @@
       width: 100%;
     }
     padding-bottom: 5vh;
+  }
+}
+
+.work-back-container {
+  .texture-wrapper.parallax {
+    top: -70%;
   }
 }

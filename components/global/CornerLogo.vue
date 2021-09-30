@@ -8,7 +8,9 @@
     ]"
     aria-label="circa Logo"
   >
-    <div v-if="fullColor" :class="['inner-texture']"></div>
+    <div v-if="fullColor" class="texture-wrapper cover">
+      <div :class="['inner-texture']"></div>
+    </div>
     <nuxt-link to="/">
       <logo ref="logo-svg" />
     </nuxt-link>

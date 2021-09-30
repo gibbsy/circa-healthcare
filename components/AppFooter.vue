@@ -3,10 +3,12 @@
     <div class="logo-texture-lockup">
       <div :class="['texture-pull-right']">
         <div
-          class="inner-texture"
+          class="texture-wrapper parallax"
           data-scroll-parallax
           data-scroll-speed="0.5"
-        ></div>
+        >
+          <div class="inner-texture"></div>
+        </div>
       </div>
       <div class="footer-logo">
         <nuxt-link to="/">

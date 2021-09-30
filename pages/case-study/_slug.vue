@@ -6,18 +6,14 @@
       :style="cssVars.whatWeDo"
     >
       <div class="texture-pull-left reveal-slide-in" data-scroll-reveal>
-        <div
-          :class="['inner-texture', theme.texture]"
-          data-scroll-parallax
-          data-scroll-speed="0.5"
-        ></div>
+        <div class="texture-wrapper">
+          <div :class="['inner-texture', theme.texture]"></div>
+        </div>
       </div>
       <div class="texture-pull-right reveal-slide-in" data-scroll-reveal>
-        <div
-          :class="['inner-texture', theme.texture]"
-          data-scroll-parallax
-          data-scroll-speed="0.5"
-        ></div>
+        <div class="texture-wrapper">
+          <div :class="['inner-texture', theme.texture]"></div>
+        </div>
       </div>
 
       <div class="case-study-content content-block--extra-pad v-space-wide">
@@ -96,16 +92,13 @@
     </section>
     <section class="work-back-container section-container full-color cta-block">
       <div
-        :class="['inner-texture', theme.texture]"
+        class="texture-wrapper parallax cover"
         data-scroll-parallax
         data-scroll-speed="0.4"
-      ></div>
-      <!--    <div class="texture-pull-left">
+      >
         <div :class="['inner-texture', theme.texture]"></div>
       </div>
-      <div class="texture-pull-right">
-        <div :class="['inner-texture', theme.texture]"></div>
-      </div> -->
+
       <div class="team-cta content-block--extra-pad v-space-narrow centered">
         <cta-btn class="cta-primary" slug="/work">Back to all work</cta-btn>
       </div>
@@ -129,11 +122,6 @@ export default {
     console.log(pageData);
     const { theme, caseStudy } = pageData;
     return { ...theme, ...caseStudy };
-  },
-  computed: {
-    imgSizes() {
-      return this.$store.state.imgSizes;
-    },
   },
   mounted() {
     this.$nextTick(this.init);

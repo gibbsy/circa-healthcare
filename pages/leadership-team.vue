@@ -2,16 +2,16 @@
   <div class="team page-wrapper" :style="cssVars">
     <section class="page-hero-container v-centered full-color">
       <div
-        :class="['inner-texture', theme.texture]"
+        class="texture-wrapper parallax cover"
         data-scroll-parallax
-        data-scroll-speed="0.6"
-      ></div>
+        data-scroll-speed="0.5"
+      >
+        <div :class="['inner-texture', theme.texture]"></div>
+      </div>
       <div class="texture-pull-right reveal-slide-in" data-scroll-reveal>
-        <div
-          :class="['inner-texture', theme.texture]"
-          data-scroll-parallax
-          data-scroll-speed="0.5"
-        ></div>
+        <div class="texture-wrapper">
+          <div :class="['inner-texture', theme.texture]"></div>
+        </div>
       </div>
       <div
         class="team-headline content-block title-reveal"
@@ -32,22 +32,18 @@
         data-scroll-reveal
         data-reveal-start="top center"
       >
-        <div
-          :class="['inner-texture', theme.texture]"
-          data-scroll-parallax
-          data-scroll-speed="0.5"
-        ></div>
+        <div class="texture-wrapper">
+          <div :class="['inner-texture', theme.texture]"></div>
+        </div>
       </div>
       <div
         class="texture-pull-right reveal-slide-in"
         data-scroll-reveal
         data-reveal-start="top center"
       >
-        <div
-          :class="['inner-texture', theme.texture]"
-          data-scroll-parallax
-          data-scroll-speed="-0.2"
-        ></div>
+        <div class="texture-wrapper">
+          <div :class="['inner-texture', theme.texture]"></div>
+        </div>
       </div>
       <div class="team-content content-block--extra-pad v-space-normal">
         <h6 data-scroll-reveal class="section-label reveal col-12">
@@ -98,15 +94,21 @@
     </section>
     <section class="team-cta-container section-container full-color cta-block">
       <div
-        :class="['inner-texture', theme.texture]"
+        class="texture-wrapper parallax cover"
         data-scroll-parallax
-        data-scroll-speed="0.4"
-      ></div>
-      <div class="texture-pull-left">
+        data-scroll-speed="0.5"
+      >
         <div :class="['inner-texture', theme.texture]"></div>
       </div>
+      <div class="texture-pull-left">
+        <div class="texture-wrapper">
+          <div :class="['inner-texture', theme.texture]"></div>
+        </div>
+      </div>
       <div class="texture-pull-right">
-        <div :class="['inner-texture', theme.texture]"></div>
+        <div class="texture-wrapper">
+          <div :class="['inner-texture', theme.texture]"></div>
+        </div>
       </div>
       <div class="team-cta content-block--extra-pad v-space-narrow centered">
         <h3 class="reveal" data-scroll-reveal>{{ ctaHeadline }}</h3>

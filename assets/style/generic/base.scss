@@ -221,32 +221,90 @@ html {
   background: #fff;
 }
 
-.inner-texture {
+.texture-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--primary-color);
+
+  .inner-texture {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    // background-color: var(--primary-color);
+    // mix blend mode better support than bg-blend
+    background: var(--bg-texture);
+    mix-blend-mode: screen;
+    transform: translateZ(0);
+    will-change: transform;
+  }
+  &.parallax {
+    height: 150%;
+    top: -50%;
+    .cta-block & {
+      height: 150%;
+      top: -80%;
+    }
+  }
+  &.cover {
+    .inner-texture {
+      opacity: 0.5;
+    }
+  }
+}
+
+/* .inner-texture {
   position: absolute;
   width: 100%;
   height: 180%;
   left: 0;
   right: 0;
   top: -50%;
-  bottom: 0;
   background: var(--bg-texture);
   mix-blend-mode: screen;
   transform: translateZ(0);
   will-change: transform;
-}
+} */
 .texture-pull-left {
   position: absolute;
-  left: -90%;
+  left: 0;
   top: 0;
   @include clip-edge($edge: right, $height: 100vh);
-  width: 100%;
+  width: 10%;
   height: 100vh;
+  overflow: hidden;
   background-color: var(--primary-color);
-  // clip-path: url(#clip);
+
+  .texture-wrapper {
+    background-color: var(--primary-color);
+    .full-color & {
+      background-color: var(--secondary-color);
+    }
+  }
+}
+
+.texture-pull-right {
+  position: absolute;
+  right: 0;
+  top: auto;
+  bottom: 0;
+  @include clip-edge($edge: left, $height: 100vh);
+  width: 10%;
+  height: 100vh;
   will-change: transform;
   overflow: hidden;
-  .full-color & {
+  background-color: var(--secondary-color);
+  .texture-wrapper {
     background-color: var(--secondary-color);
+  }
+  .img-promo.white-bg.img-right & {
+    @include bp(1024) {
+      width: 5%;
+    }
   }
 }
 
@@ -257,26 +315,6 @@ html {
 .cta-block > .inner-texture {
   height: 200%;
   top: -100%;
-}
-
-.texture-pull-right {
-  position: absolute;
-  right: -40%;
-  top: auto;
-  bottom: 0;
-  @include clip-edge($edge: left, $height: 100vh);
-  width: 50%;
-  height: 100vh;
-  background-color: var(--secondary-color);
-  will-change: transform;
-  // clip-path: url(#clip);
-  overflow: hidden;
-  @include bp(1400) {
-    right: -36%;
-  }
-  .cta-block & {
-    right: -40%;
-  }
 }
 
 .flex--centred {
@@ -343,9 +381,15 @@ html {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    img {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
     &.parallax-image {
       top: -10%;
-      height: 120%;
+      height: 110%;
     }
   }
 }

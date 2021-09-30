@@ -106,9 +106,12 @@
   background: var(--primary-color);
   color: #fff;
   z-index: 11;
-  &.full-color > .inner-texture {
+  &.full-color .texture-wrapper.cover .inner-texture {
     opacity: 0.25;
     mix-blend-mode: difference;
+  }
+  .texture-wrapper.cover {
+    z-index: -1;
   }
 }
 
@@ -257,12 +260,13 @@
       svg {
         fill: #fff;
       }
-      .inner-texture {
-        @include abs100();
-        display: inline-block;
+      .texture-wrapper {
         opacity: 0.5;
         height: 100vh;
         @include clip-edge(right, 100vh);
+      }
+      .inner-texture {
+        display: block;
       }
     }
   }

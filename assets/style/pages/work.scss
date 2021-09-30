@@ -1,7 +1,7 @@
 .case-studies-container {
   .texture-pull-right {
     @include bp(1200) {
-      right: -5%;
+      width: 60%;
       @include clip-edge($edge: left, $height: 250vh);
       height: 250vh;
     }

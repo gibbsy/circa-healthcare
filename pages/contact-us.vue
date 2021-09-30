@@ -6,30 +6,19 @@
       :style="cssVars"
     >
       <div class="texture-pull-right">
-        <div
-          :class="['inner-texture', theme.texture]"
-          data-scroll-parallax
-          data-scroll-speed="0.5"
-        ></div>
+        <div class="texture-wrapper">
+          <div :class="['inner-texture', theme.texture]"></div>
+        </div>
       </div>
       <div class="section-hero-image-wrapper contact" data-scroll-reveal>
-        <figure
-          class="section-hero-image contact"
-          :style="{
-            backgroundImage:
-              imgRes.width > 1
-                ? `url('${urlFor(contactImage)
-                    .width(
-                      isMobile && imgRes.width < 1000
-                        ? imgRes.width
-                        : Math.floor(imgRes.width / 2)
-                    )
-                    .auto('format')
-                    .quality(80)
-                    .url()}')`
-                : 'none',
-          }"
-        ></figure>
+        <figure class="section-hero-image contact">
+          <nuxt-img
+            :sizes="imgSizes.promo"
+            :modifiers="{ crop: contactImage.crop }"
+            :src="contactImage.asset._ref"
+            :alt="contactImage.title"
+          />
+        </figure>
       </div>
       <div class="contact-content content-block">
         <div class="intro-text-lockup col-12 col-lg-7">

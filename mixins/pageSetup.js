@@ -24,6 +24,9 @@ export default {
     isMobile() {
       return this.$store.state.isMobile;
     },
+    imgSizes() {
+      return this.$store.state.imgSizes;
+    },
     texSuffix() {
       return this.isMobile ? "" : "-lrg";
     },

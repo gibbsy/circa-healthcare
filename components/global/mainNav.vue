@@ -3,7 +3,9 @@
     class="nav-full-screen-container section-container full-color"
     :style="cssVars"
   >
-    <div :class="['inner-texture']"></div>
+    <div class="texture-wrapper cover">
+      <div :class="['inner-texture']"></div>
+    </div>
     <corner-logo :full-color="true" :delay="1"></corner-logo>
     <div
       :class="[
@@ -12,11 +14,9 @@
         { 'is-inview': inView },
       ]"
     >
-      <div
-        class="inner-texture"
-        data-scroll-parallax
-        data-scroll-speed="0.5"
-      ></div>
+      <div class="texture-wrapper">
+        <div class="inner-texture"></div>
+      </div>
     </div>
     <div class="nav-content">
       <nav class="menu col-12 col-lg-4 offset-lg-1">
