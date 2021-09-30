@@ -311,6 +311,13 @@
     bottom: 0;
   }
 }
+.work-container,
+.what-we-do-container {
+  .texture-pull-left,
+  .texture-pull-right {
+    z-index: 1;
+  }
+}
 
 /* .team-container {
   .section-hero-image-wrapper {
