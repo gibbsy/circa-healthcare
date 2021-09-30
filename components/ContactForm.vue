@@ -22,7 +22,7 @@
             <select id="enquiry" v-model="enquiry" name="enquiry" required>
               <option disabled selected value="">Nature of enquiry</option>
               <option value="sales">Say hello</option>
-              <option value="support">New business</option>
+              <option value="support">Business enquiry</option>
               <option value="careers">Careers</option>
             </select>
           </div>
