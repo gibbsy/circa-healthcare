@@ -127,5 +127,8 @@
 .work-back-container {
   .texture-wrapper.parallax {
     top: -70%;
+    .is-mobile & {
+      top: 0;
+    }
   }
 }
