@@ -20,6 +20,9 @@
     gap: 6rem 1rem;
     grid-template-columns: 1fr 1fr 1fr;
   }
+  @include bp(2400) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .team-member {
@@ -55,6 +58,9 @@
   max-width: 320px;
   text-align: center;
   padding: 0 1rem;
+  @include bp(1920) {
+    max-width: 400px;
+  }
   .team-name {
     color: var(--secondary-color);
     margin-bottom: 0;

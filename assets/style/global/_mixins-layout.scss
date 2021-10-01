@@ -59,6 +59,9 @@
   @include bp(1400) {
     padding: 12vh 10%;
   }
+  @include bp(2600) {
+    padding: 18vh 10%;
+  }
 }
 @mixin extra-padding() {
   padding: 6rem 1.5rem;
@@ -71,6 +74,9 @@
 
   @include bp(1400) {
     padding: 20vh 10%;
+  }
+  @include bp(2600) {
+    padding: 24vh 10%;
   }
 }
 
@@ -86,6 +92,11 @@
   flex-direction: $flex;
   align-items: $align;
   justify-content: $justify;
+  max-width: 2400px;
+  .page-hero-container &,
+  .hero-container & {
+    max-width: 2800px;
+  }
   @if $padding== "standard" {
     @include standard-padding();
   }

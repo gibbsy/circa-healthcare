@@ -1,6 +1,6 @@
 .case-study-container {
   .texture-pull-left {
-    left: -64%;
+    width: 33%;
     @include bp(768) {
       display: none;
     }

@@ -26,7 +26,7 @@
       <scroll-prompt></scroll-prompt>
     </section>
     <corner-logo :show="showUi"></corner-logo>
-    <section class="team-list-container section-container white-bg">
+    <section class="team-list-container section-container white-bg xl-align-c">
       <div
         class="texture-pull-left reveal-slide-in"
         data-scroll-reveal
@@ -92,7 +92,15 @@
         </ul>
       </div>
     </section>
-    <section class="team-cta-container section-container full-color cta-block">
+    <section
+      class="
+        team-cta-container
+        section-container
+        full-color
+        cta-block
+        xl-align-c
+      "
+    >
       <div
         class="texture-wrapper parallax cover"
         data-scroll-parallax

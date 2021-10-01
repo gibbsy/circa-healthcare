@@ -40,7 +40,7 @@
       </div>
     </section>
     <corner-logo :show="showUi"></corner-logo>
-    <section class="values-container section-container white-bg">
+    <section class="values-container section-container white-bg xl-align-c">
       <div
         class="texture-pull-left reveal-slide-in"
         data-scroll-reveal
@@ -118,7 +118,15 @@
         </ul>
       </div>
     </section>
-    <section class="join-cta-container section-container full-color cta-block">
+    <section
+      class="
+        join-cta-container
+        section-container
+        full-color
+        cta-block
+        xl-align-c
+      "
+    >
       <div
         class="texture-wrapper cover parallax"
         data-scroll-parallax

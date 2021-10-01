@@ -23,6 +23,12 @@
   }
 }
 
+.contact-content {
+  @include bpMax(767) {
+    padding: 3rem 1.75rem;
+  }
+}
+
 .contacts-item {
   @include bp(1024) {
     margin-bottom: 2rem;

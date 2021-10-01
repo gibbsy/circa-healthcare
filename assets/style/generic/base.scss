@@ -73,6 +73,16 @@ html {
     background-color: var(--primary-color);
     color: #fff;
   }
+  &.xl-align-c {
+    @include bp(2400) {
+      align-items: center;
+    }
+  }
+  &.xl-justify-c {
+    @include bp(2400) {
+      justify-content: center;
+    }
+  }
 }
 
 .page-hero-container {
@@ -429,6 +439,7 @@ html {
       height: 4vw;
     }
     svg {
+      width: 1rem;
       fill: #fff;
     }
   }

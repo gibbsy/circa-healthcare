@@ -186,7 +186,14 @@
     </section>
     <section
       id="work"
-      class="work-container section-container img-promo white-bg img-right"
+      class="
+        work-container
+        section-container
+        img-promo
+        white-bg
+        img-right
+        v-centered
+      "
       :style="cssVars.work"
     >
       <div class="texture-pull-left reveal-slide-in" data-scroll-reveal>
@@ -246,6 +253,7 @@
         img-promo
         white-bg
         img-right
+        v-centered
       "
       :style="cssVars.whatWeDo"
     >
@@ -327,7 +335,7 @@
     </section>
     <section
       id="partnerships"
-      class="partnerships-container section-container full-color"
+      class="partnerships-container section-container full-color v-centered"
       :style="cssVars.partnerships"
     >
       <div
@@ -372,7 +380,7 @@
     </section>
     <section
       id="team"
-      class="team-container section-container full-color"
+      class="team-container section-container full-color v-centered"
       :style="cssVars.team"
     >
       <div

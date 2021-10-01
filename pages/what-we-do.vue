@@ -40,7 +40,7 @@
         </div>
       </section>
       <corner-logo :show="showUi"></corner-logo>
-      <section class="wwd-services section-container white-bg">
+      <section class="wwd-services section-container white-bg xl-align-c">
         <div
           class="texture-pull-left reveal-slide-in"
           data-scroll-reveal
@@ -96,7 +96,7 @@
           </div>
         </div>
       </section>
-      <section class="wwd-clients section-container full-color">
+      <section class="wwd-clients section-container full-color xl-align-c">
         <div
           class="texture-pull-left reveal-slide-in"
           data-scroll-reveal
@@ -147,7 +147,7 @@
           </div>
         </div>
       </section>
-      <section class="wwd-philanthropy section-container white-bg">
+      <section class="wwd-philanthropy section-container white-bg xl-align-c">
         <div
           class="texture-pull-left reveal-slide-in"
           data-scroll-reveal

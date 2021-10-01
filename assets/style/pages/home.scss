@@ -223,6 +223,7 @@
       @include bp(1200) {
         width: 30vw;
         min-width: 580px;
+        max-width: 960px;
         margin-left: 2rem;
       }
       h3 {
@@ -234,6 +235,10 @@
 
 .why-circa-container {
   @include content-block($padding: extra, $flex: column);
+  @include bp(2600) {
+    @include standard-padding();
+  }
+  max-width: auto;
   .texture-pull-left {
     display: none;
   }

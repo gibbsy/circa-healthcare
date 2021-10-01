@@ -10,12 +10,15 @@ $grid__bp-md: 768;
 $grid__bp-lg: 1024;
 $grid__bp-xl: 1200;
 $grid__bp-xxl: 1400;
+$grid__bp-huge: 2400;
 $map-grid-props: (
   "": 0,
   "-sm": $grid__bp-sm,
   "-md": $grid__bp-md,
   "-lg": $grid__bp-lg,
   "-xl": $grid__bp-xl,
+  "-xxl": $grid__bp-xxl,
+  "-huge": $grid__bp-huge,
 );
 
 // dynamically create a media query
@@ -37,6 +40,9 @@ $map-grid-props: (
         flex-basis: math.div(100, math.div($grid__cols, $i)) * 1%;
         @if $i < $grid__cols {
           padding-right: 1.5rem;
+          @include bp(1920) {
+            padding-right: 2rem;
+          }
         }
         &:last-child {
           padding-right: 0;
@@ -46,6 +52,12 @@ $map-grid-props: (
         width: math.div(100, math.div($grid__cols, $i)) * 1%;
         @if $i < $grid__cols {
           padding-right: 1.5rem;
+          @include bp(1920) {
+            padding-right: 2rem;
+          }
+          @include bp(2500) {
+            padding-right: 2.5rem;
+          }
         }
         &:last-child {
           padding-right: 0;

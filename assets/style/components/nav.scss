@@ -89,11 +89,11 @@
   }
   &.on button.hamburger {
     span:first-child {
-      transform: translate(0, 6px) rotate(45deg);
+      transform: translate(0, 0.375rem) rotate(45deg);
     }
     span:last-child {
       width: 1.75rem;
-      transform: translate(0, -6px) rotate(-45deg);
+      transform: translate(0, -0.375rem) rotate(-45deg);
       @include bp(1024) {
         width: 2rem;
       }
@@ -230,7 +230,8 @@
       fill: $black;
     }
   }
-  .inner-texture {
+  .inner-texture,
+  .texture-wrapper {
     display: none;
   }
   @include bp(768) {
@@ -261,6 +262,7 @@
         fill: #fff;
       }
       .texture-wrapper {
+        display: block;
         opacity: 0.5;
         height: 100vh;
         @include clip-edge(right, 100vh);

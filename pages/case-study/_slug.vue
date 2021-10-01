@@ -2,7 +2,7 @@
   <div class="case-study page-wrapper" :style="cssVars">
     <section
       id="case-study"
-      class="case-study-container section-container white-bg"
+      class="case-study-container section-container white-bg xl-align-c"
       :style="cssVars.whatWeDo"
     >
       <div class="texture-pull-left reveal-slide-in" data-scroll-reveal>
@@ -90,7 +90,15 @@
       </div>
       <corner-logo :show="showUi" :full-color="true"></corner-logo>
     </section>
-    <section class="work-back-container section-container full-color cta-block">
+    <section
+      class="
+        work-back-container
+        section-container
+        full-color
+        cta-block
+        xl-align-c
+      "
+    >
       <div
         class="texture-wrapper parallax cover"
         data-scroll-parallax
