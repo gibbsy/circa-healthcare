@@ -1,5 +1,5 @@
 <template>
-  <div :id="containerId" class="app-container">
+  <div :id="containerId" :class="['app-container', { 'is-mobile': isMobile }]">
     <Nuxt v-if="showSite === true" />
     <transition name="fade" appear>
       <cookie-panel

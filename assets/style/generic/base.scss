@@ -255,17 +255,9 @@ html {
   &.parallax {
     height: 150%;
     top: -50%;
-    .is-mobile & {
-      height: 100%;
-      top: 0;
-    }
     .cta-block & {
-      height: 150%;
+      height: 160%;
       top: -80%;
-      .is-mobile & {
-        height: 100%;
-        top: 0;
-      }
     }
   }
   &.cover {
@@ -273,6 +265,12 @@ html {
       opacity: 0.5;
     }
   }
+}
+// this should do it
+.is-mobile .texture-wrapper.parallax,
+.is-mobile .cta-block > .texture-wrapper.parallax {
+  height: 100%;
+  top: 0;
 }
 
 /* .inner-texture {
