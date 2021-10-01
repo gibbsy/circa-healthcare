@@ -21,7 +21,7 @@ export const homeQuery = /* groq */ `{
     workTheme, workLabel, workHeadline, workImage, workBody, workCta{title, "slug": route->slug.current} 
   },
   "whatWeDo": {
-    whatWeDoTheme, whatWeDoLabel, whatWeDoHeadline, whatWeDoBody, whatWeDoImage, whatWeDoList, whatWeDoCta{title, "slug": route->slug.current}
+    whatWeDoTheme, whatWeDoLabel, whatWeDoHeadline, whatWeDoBody, whatWeDoImage, whatWeDoCta{title, "slug": route->slug.current}
   },
   "partnerships": {
     partnershipsTheme, partnershipsLabel, partnershipsText, partnershipsCta{title, "slug": route->slug.current}

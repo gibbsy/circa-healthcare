@@ -64,17 +64,14 @@
             class="team-member reveal"
             data-scroll-reveal
           >
-            <figure
-              class="team-portrait"
-              :style="{
-                backgroundImage: `url('${urlFor(item.image)
-                  .width(500)
-                  .height(500)
-                  .auto('format')
-                  .quality(70)
-                  .url()}')`,
-              }"
-            ></figure>
+            <figure class="team-portrait">
+              <nuxt-img
+                :sizes="'xs:100vw sm:100vw md:220px lg:240px xl:300px'"
+                :modifiers="{ crop: item.image.crop }"
+                :src="item.image.asset._ref"
+                :alt="item.name"
+              />
+            </figure>
 
             <div class="team-member-details">
               <h5 class="team-name">

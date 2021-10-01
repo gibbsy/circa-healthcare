@@ -310,27 +310,6 @@
             whatWeDo.whatWeDoCta.title
           }}</cta-btn>
         </div>
-        <!--         <div class="icon-list-container row">
-          <div
-            v-for="(item, i) in whatWeDo.whatWeDoList"
-            :key="i"
-            class="icon-lockup services flex-col-12 flex-col-md-4"
-            data-scroll-reveal
-          >
-            <figure
-              class="icon-lockup-icon"
-              :style="{ backgroundImage: `url(${urlFor(item.icon)})` }"
-              data-scroll
-            ></figure>
-            <h3 class="icon-lockup-title">{{ item.title }}</h3>
-            <block-content :blocks="item.text"></block-content>
-          </div>
-        <div class="cta-centred-container">
-          <cta-btn class="cta-primary" :slug="whatWeDo.whatWeDoCta.slug">{{
-            whatWeDo.whatWeDoCta.title
-          }}</cta-btn>
-        </div>
-        </div> -->
       </div>
     </section>
     <section
