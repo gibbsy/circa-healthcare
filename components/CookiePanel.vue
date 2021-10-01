@@ -3,7 +3,7 @@
     <p>
       We use cookies to analyze traffic and improve your experience. Learn more
       in our
-      <a @click.prevent="viewPolicy">cookie and privacy policy.</a>
+      <a @click.prevent="viewPolicy">Cookie and Privacy Policy.</a>
     </p>
     <a class="cta-link" @click.prevent="acceptFn">Continue</a>
   </div>
