@@ -4,8 +4,10 @@
   align-items: center;
   top: 1rem;
   right: 1rem;
-  column-gap: 1.5rem;
   z-index: 20;
+  & > * + * {
+    margin-left: 1.5rem;
+  }
   @include bp(768) {
     top: 30px;
     right: 30px;

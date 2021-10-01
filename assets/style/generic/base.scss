@@ -488,7 +488,8 @@ html {
 
   .icon-lockup {
     list-style: none;
-    margin-bottom: 2rem;
+    // margin-bottom: 2rem;
+    // replaced by row gap
     @include reveal-slide-up-fade();
     @include stagger-children(
       $prop: transition,
