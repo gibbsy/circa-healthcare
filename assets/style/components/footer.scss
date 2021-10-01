@@ -131,7 +131,9 @@ footer {
     position: relative;
     @include bp(1024) {
       display: flex;
-      gap: 3rem;
+      & > * + * {
+        margin-left: 3rem;
+      }
     }
     .contacts-item {
       li,
@@ -160,8 +162,10 @@ footer {
     .legal-links-menu {
       @include bp(768) {
         display: flex;
-        gap: 1rem;
         margin-bottom: 0;
+        & > * + * {
+          margin-left: 1rem;
+        }
       }
     }
     li,
