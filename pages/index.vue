@@ -146,7 +146,10 @@
       </div>
       <div
         id="why-circa"
-        :class="['why-circa-container', { 'scroll-ani': !isMobile }]"
+        :class="[
+          'why-circa-container',
+          { 'scroll-ani': !isMobile, 'is-mobile': isMobile },
+        ]"
       >
         <div id="why-circa-tex" class="texture-pull-left">
           <div class="texture-wrapper">

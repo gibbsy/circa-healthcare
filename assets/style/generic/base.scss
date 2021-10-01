@@ -245,9 +245,17 @@ html {
   &.parallax {
     height: 150%;
     top: -50%;
+    .is-mobile & {
+      height: 100%;
+      top: 0;
+    }
     .cta-block & {
       height: 150%;
       top: -80%;
+      .is-mobile & {
+        height: 100%;
+        top: 0;
+      }
     }
   }
   &.cover {
@@ -310,11 +318,6 @@ html {
 
 .section-container.full-color > .inner-texture {
   opacity: 0.5;
-}
-
-.cta-block > .inner-texture {
-  height: 200%;
-  top: -100%;
 }
 
 .flex--centred {
