@@ -103,3 +103,9 @@ export const legalQuery = /* groq */ `
       theme
       }
 }`;
+
+export const defaultThemeQuery = /* groq */ `
+*[_id=="pageContact"][0]{ 
+      theme
+    }
+`;

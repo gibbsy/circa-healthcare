@@ -79,13 +79,7 @@ export default {
   css: ["@/assets/style/main.scss"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    { src: "@/plugins/sanity-blocks.js" },
-    {
-      src: "@/plugins/locomotive-scroll.js",
-      mode: "client",
-    },
-  ],
+  plugins: [{ src: "@/plugins/sanity-blocks.js" }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -125,32 +119,7 @@ export default {
   },
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    [
-      "@nuxtjs/gtm",
-      "nuxt-lazy-load",
-      {
-        // These are the default values
-        images: true,
-        videos: true,
-        audios: true,
-        iframes: true,
-        native: false,
-        polyfill: true,
-        directiveOnly: true,
-
-        // Default image must be in the static folder
-        defaultImage: "/images/default-image.jpg",
-
-        // To remove class set value to false
-        loadingClass: "isLoading",
-        loadedClass: "isLoaded",
-        appendClass: "lazyLoad",
-
-        observerConfig: {
-          // See IntersectionObserver documentation
-        },
-      },
-    ],
+    ["@nuxtjs/gtm"],
     "cookie-universal-nuxt",
     "@nuxtjs/robots",
     "@nuxtjs/sitemap",
@@ -169,7 +138,7 @@ export default {
   },
   generate: {
     routes: dynamicRoutes,
-    fallback: true,
+    fallback: "404.html",
   },
   build: {
     // transpile: ["gsap"],

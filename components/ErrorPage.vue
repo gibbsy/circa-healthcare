@@ -28,8 +28,8 @@
   </div>
 </template>
 <script>
-import { legalQuery as query } from "../data/queries";
-import sanityClient from "../sanityClient";
+/* import { defaultThemeQuery as query } from "../data/queries";
+import sanityClient from "../sanityClient"; */
 import pageSetup from "~/mixins/pageSetup";
 import scrollAnimations from "~/mixins/scrollAnimations";
 import CtaArrow from "~/assets/cta_arrow_small.svg?inline";
@@ -37,22 +37,24 @@ import CtaArrow from "~/assets/cta_arrow_small.svg?inline";
 export default {
   components: { CtaArrow },
   mixins: [pageSetup, scrollAnimations],
-  async asyncData() {
-    const pageData = await sanityClient.fetch(query);
-    const { theme } = pageData;
-    return {
-      ...theme,
-    };
+  props: {
+    theme: {
+      type: Object,
+      default: () => {},
+    },
   },
-  data() {
+  /*   data() {
     return {
-      enquiryPrefill: "",
+      theme: {},
     };
-  },
+  }, */
+  /*   async fetch() {
+    const themeData = await sanityClient.fetch(query);
+    const { theme } = themeData;
+    this.theme = theme;
+  }, */
   mounted() {
-    this.enquiryPrefill = this.$route.params.enquiry;
-    console.log(this.$route.params);
-    this.$nextTick(this.init);
+    this.init();
   },
   methods: {
     init() {

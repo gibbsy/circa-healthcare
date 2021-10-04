@@ -20,13 +20,9 @@
     "@sanity/image-url": "^0.140.22",
     "cookie-universal-nuxt": "^2.1.4",
     "core-js": "^3.9.1",
-    "countries-list": "^2.6.1",
-    "gsap": "^3.6.1",
     "is-mobile": "^3.0.0",
-    "locomotive-scroll": "^4.1.1",
     "normalize.css": "^8.0.1",
     "nuxt": "^2.15.3",
-    "nuxt-lazy-load": "^1.2.6",
     "sanity-blocks-vue-component": "^0.1.0"
   },
   "devDependencies": {
