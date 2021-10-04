@@ -161,7 +161,11 @@
           </div>
         </div>
 
-        <div id="why-label" class="headline-container" data-scroll-reveal>
+        <div
+          id="why-label"
+          class="headline-container col-lg-4"
+          data-scroll-reveal
+        >
           <h2>{{ whyCirca.whyLabel }}</h2>
         </div>
         <article
@@ -206,12 +210,10 @@
         class="section-hero-image-wrapper work full-height reveal-slide-in"
         data-scroll-reveal
       >
-        <figure
-          data-scroll-parallax
-          data-scroll-speed="0.1"
-          class="section-hero-image work parallax-image"
-        >
+        <figure class="section-hero-image work parallax-image">
           <nuxt-img
+            data-scroll-parallax
+            data-scroll-speed="0.2"
             :sizes="imgSizes.promo"
             :modifiers="{ crop: work.workImage.crop }"
             :src="work.workImage.asset._ref"
@@ -273,12 +275,12 @@
         data-scroll-reveal
       >
         <figure
-          data-scroll-parallax
-          data-scroll-speed="0.1"
           class="section-hero-image what-we-do parallax-image"
           :alt="whatWeDo.whatWeDoImage.title"
         >
           <nuxt-img
+            data-scroll-parallax
+            data-scroll-speed="0.2"
             :sizes="imgSizes.promo"
             :modifiers="{ crop: whatWeDo.whatWeDoImage.crop }"
             :src="whatWeDo.whatWeDoImage.asset._ref"
@@ -374,12 +376,12 @@
         data-scroll-reveal
       >
         <figure
-          data-scroll-parallax
-          data-scroll-speed="0.2"
           class="section-hero-image parallax-image"
           :alt="meetTheTeam.teamImage.title"
         >
           <nuxt-img
+            data-scroll-parallax
+            data-scroll-speed="0.2"
             :sizes="imgSizes.promo"
             :modifiers="{ crop: meetTheTeam.teamImage.crop }"
             :src="meetTheTeam.teamImage.asset._ref"

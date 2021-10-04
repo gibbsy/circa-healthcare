@@ -246,6 +246,9 @@
     margin-bottom: 2rem;
     opacity: 0;
     transition: opacity 0.6s ease;
+    h2 {
+      word-wrap: nowrap;
+    }
     &.is-inview {
       opacity: 1;
     }
@@ -263,10 +266,6 @@
       @include clip-edge($edge: right, $height: 100vh);
     }
   }
-}
-
-#why-test {
-  @include abs100();
 }
 
 .why-circa-content {

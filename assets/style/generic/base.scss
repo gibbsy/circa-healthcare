@@ -264,8 +264,6 @@ html {
     height: 100%;
     background: var(--primary-color) var(--bg-texture);
     background-blend-mode: screen;
-    transform: translate3d(0, 0, 0);
-    will-change: opacity;
     -webkit-backface-visibility: hidden;
     -webkit-transform-style: preserve-3d;
   }
@@ -406,6 +404,9 @@ html {
     &.parallax-image {
       top: -10%;
       height: 110%;
+      img {
+        will-change: transform;
+      }
     }
   }
 }
