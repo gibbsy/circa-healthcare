@@ -101,7 +101,7 @@
                     : ''
                 "
               /> -->
-              <nuxt-link :to="`case-study/${project.slug.current}`">
+              <nuxt-link :to="`/case-study/${project.slug.current}`">
                 <img
                   :src="
                     imgRes.width > 1
