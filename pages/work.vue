@@ -78,7 +78,7 @@
               <h2 class="project-title">{{ project.title }}</h2>
               <nuxt-link
                 class="cta-primary reveal"
-                :to="`case-study/${project.slug.current}`"
+                :to="`/case-study/${project.slug.current}`"
                 data-scroll-reveal
                 ><span class="arrow"> <cta-arrow /> </span>View case study
               </nuxt-link>
