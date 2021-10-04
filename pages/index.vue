@@ -161,12 +161,8 @@
           </div>
         </div>
 
-        <div
-          class="headline-container title-reveal"
-          data-splitting
-          data-scroll-reveal
-        >
-          <h2 class="copy-line">{{ whyCirca.whyLabel }}</h2>
+        <div id="why-label" class="headline-container" data-scroll-reveal>
+          <h2>{{ whyCirca.whyLabel }}</h2>
         </div>
         <article
           id="why-circa-content"
@@ -632,11 +628,8 @@ export default {
       const images = document.getElementById("about-images-container");
       const stats = document.getElementById("about-stats-container");
       const texRight = document.getElementById("stats-tex-right");
-      const why = document.getElementById("why-circa");
-      const whyContent = document.getElementById("why-circa-content");
-      const whyTex = document.getElementById("why-circa-tex");
-      const whyDist = innerHeight;
-      console.log(whyContent.scrollHeight);
+      // const whyDist = innerHeight;
+      // console.log(whyContent.scrollHeight);
       const tlAbout = gsap.timeline({
         scrollTrigger: {
           trigger: "#about-stat-scroller",
@@ -671,7 +664,37 @@ export default {
         },
         0
       );
-      const tlWhy = gsap.timeline({
+      const why = document.getElementById("why-circa");
+      const whyLabel = document.getElementById("why-label");
+      const whyTex = document.getElementById("why-circa-tex");
+      gsap.fromTo(
+        whyTex,
+        { x: "-=100%" },
+        {
+          x: 0,
+          scrollTrigger: {
+            trigger: why,
+            scrub: 0.2,
+            start: "top bottom",
+            end: "top 150px",
+            ease: "power2.out",
+          },
+        },
+        0
+      );
+      ScrollTrigger.create({
+        trigger: why,
+        start: "top top",
+        end: "bottom center",
+        pin: [whyTex],
+      });
+      ScrollTrigger.create({
+        trigger: why,
+        start: "top top",
+        end: "bottom center",
+        pin: [whyLabel],
+      });
+      /* const tlWhy = gsap.timeline({
         scrollTrigger: {
           trigger: why,
           start: "top top",
@@ -697,7 +720,7 @@ export default {
           duration: 1,
         },
         0
-      );
+      ); */
     },
 
     setImgRes() {

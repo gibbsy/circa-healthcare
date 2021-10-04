@@ -242,22 +242,31 @@
   .texture-pull-left {
     display: none;
   }
-  .headline-container {
+  #why-label {
     margin-bottom: 2rem;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    &.is-inview {
+      opacity: 1;
+    }
   }
   &.scroll-ani {
-    min-height: 150vh;
-    .headline-container {
+    // min-height: 150vh;
+    #why-label {
       margin-bottom: 0;
     }
     .texture-pull-left {
       display: inline-block;
       left: 0;
       width: 35%;
-      height: 200vh;
-      @include clip-edge($edge: right, $height: 200vh);
+      height: 100vh;
+      @include clip-edge($edge: right, $height: 100vh);
     }
   }
+}
+
+#why-test {
+  @include abs100();
 }
 
 .why-circa-content {
