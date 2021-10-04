@@ -1,11 +1,13 @@
 <template>
-  <div :id="containerId" :class="['app-container', { 'is-mobile': isMobile }]">
-    <Nuxt v-if="showSite === true" />
+  <div
+    :id="containerId"
+    :class="['app-container', 'error-page', { 'is-mobile': isMobile }]"
+  >
+    <error-page :theme="theme"></error-page>
     <transition name="fade" appear>
       <cookie-panel
         v-show="!cookiesOk"
         :accept-fn="acceptCookies"
-        :navigate-fn="onIntroPlayed"
       ></cookie-panel>
     </transition>
 
@@ -46,13 +48,6 @@
         :click-fn="navToggle"
       ></main-nav>
     </transition>
-    <transition name="fade">
-      <video-overlay
-        v-if="playIntro === true && introPlayed === false"
-        :vimeo-id="config.stingVideo"
-        :done-fn="onIntroPlayed"
-      ></video-overlay>
-    </transition>
   </div>
 </template>
 <script>
@@ -61,25 +56,50 @@ import sanityClient from "../sanityClient";
 import CtaArrow from "~/assets/cta_arrow_small.svg?inline";
 
 const query = /* groq */ `
-  *[_id=="global-config"][0]{
+{
+  "config": *[_id=="global-config"][0]{
   siteTitle, url, siteDescription,
   stingVideo,
   mainNavigation[]->{title, slug},
   contactDetails[]->{name, email, address, phone},
   socials[]{title, href},
   footerLinks[]->{title, "slug": slug.current}
-  }
+  },
+  "theme": *[_id=="pageContact"][0]{ 
+      theme
+    }
+}
 `;
 export default {
   components: { CtaArrow },
+
+  async asyncData() {
+    const pData = await sanityClient.fetch(query);
+    const { config, theme } = pData;
+    return {
+      config,
+      theme,
+    };
+  },
   data() {
     return {
       page: "",
       ready: false,
       playIntro: "",
-      showSite: false,
+      showSite: true,
       cookiesOk: true,
-      config: {},
+      /* theme: {
+        _type: "pageTheme",
+        primaryColor: {
+          title: "Dark Blue",
+          value: "#00304c",
+        },
+        secondaryColor: {
+          title: "Teal",
+          value: "#229fa0",
+        },
+        texture: "circuit",
+      }, */
       navOn: false,
       animating: false,
       scroller: [],
@@ -87,16 +107,9 @@ export default {
       routeTransitioning: false,
     };
   },
-
-  async fetch() {
-    this.config = await sanityClient.fetch(query);
-  },
   computed: {
     isMobile() {
       return this.$store.state.isMobile;
-    },
-    introPlayed() {
-      return this.$store.state.introPlayed;
     },
     mainNav() {
       return this.config.mainNavigation;
@@ -120,7 +133,6 @@ export default {
       setTimeout(() => {
         this.routeTransitioning = false;
       }, 1500);
-      console.log(value.name);
     },
   },
   beforeMount() {
@@ -131,12 +143,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$route.name);
-    if (this.$route.name === "index" && this.isMobile === false) {
-      this.playIntro = true;
-    } else {
-      this.showSite = true;
-    }
     gsap.config({ force3D: true });
     gsap.registerPlugin(ScrollTrigger);
     console.log("mounted");
@@ -144,7 +150,6 @@ export default {
       this.cookiesOk = this.$cookies.get("circa-accept-cookies");
       // this.cookiesOk = false;
     }, 3000);
-    this.initScrollWatcher();
   },
   methods: {
     acceptCookies() {
@@ -166,12 +171,7 @@ export default {
         this.closeNav();
       }
     },
-    onIntroPlayed() {
-      this.$store.commit("onIntroPlayed");
-      this.$nextTick(() => {
-        this.showSite = true;
-      });
-    },
+
     openNav() {
       this.navOn = true;
       this.animating = true;
@@ -185,25 +185,6 @@ export default {
       setTimeout(() => {
         this.animating = false;
       }, 1000);
-    },
-    initScrollWatcher() {
-      const that = this;
-      this.scroller = gsap.to(".contact-button-container", {
-        opacity: 0,
-        duration: 0.5,
-        onComplete: () => {},
-        scrollTrigger: {
-          onLeave() {
-            that.contactActive = false;
-          },
-          onEnterBack() {
-            that.contactActive = true;
-          },
-          start: "top top",
-          scrub: true,
-          end: 100,
-        },
-      });
     },
   },
 };

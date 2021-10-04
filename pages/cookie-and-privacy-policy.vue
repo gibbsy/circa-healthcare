@@ -51,7 +51,6 @@ export default {
   methods: {
     init() {
       this.splitText();
-      // this.$nextTick(() => this.initScrollAni());
       setTimeout(() => {
         this.initScrollAni();
       }, 100);

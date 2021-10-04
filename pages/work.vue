@@ -90,17 +90,6 @@
                 offset-md-1
               "
             >
-              <!-- <img
-                :src="
-                  imgRes.width > 1
-                    ? urlFor(project.hero)
-                        .width('200')
-                        .auto('format')
-                        .quality(80)
-                        .url()
-                    : ''
-                "
-              /> -->
               <nuxt-link :to="`/case-study/${project.slug.current}`">
                 <img
                   :src="

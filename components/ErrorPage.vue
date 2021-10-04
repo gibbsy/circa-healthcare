@@ -1,5 +1,5 @@
 <template>
-  <div class="ancillary page-wrapper" :style="cssVars">
+  <div class="ancillary page-wrapper 404" :style="cssVars">
     <section
       id="ancillary"
       class="ancillary-container section-container white-bg"
