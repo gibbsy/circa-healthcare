@@ -119,22 +119,16 @@ import scrollAnimations from "~/mixins/scrollAnimations";
 export default {
   name: "Contact",
   mixins: [pageSetup, scrollAnimations],
-  async asyncData({ params, error, payload }) {
-    if (payload) {
-      const { theme, project } = payload;
-      console.log("payload" + payload);
-      return { ...theme, ...project };
-    } else {
-      const query = `{
-        "theme": *[_id=="pageWork"][0]{theme},
-        "caseStudy": *[_type == "caseStudy" && slug.current == "${params.slug}"][0]
-        {title, hero{asset->}, client->{name}, product,  problem, solution, deliverables, projectImages[]{title, caption, asset->}}
-  }`;
-      const pageData = await sanityClient.fetch(query);
-      console.log(pageData);
-      const { theme, caseStudy } = pageData;
-      return { ...theme, ...caseStudy };
-    }
+  async asyncData({ params }) {
+    const query = `{
+      "theme": *[_id=="pageWork"][0]{theme},
+      "caseStudy": *[_type == "caseStudy" && slug.current == "${params.slug}"][0]
+      {title, hero{asset->}, client->{name}, product,  problem, solution, deliverables, projectImages[]{title, caption, asset->}}
+}`;
+    const pageData = await sanityClient.fetch(query);
+    console.log(pageData);
+    const { theme, caseStudy } = pageData;
+    return { ...theme, ...caseStudy };
   },
   mounted() {
     this.$nextTick(this.init);

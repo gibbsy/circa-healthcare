@@ -2,16 +2,14 @@ import sanityClient from "./sanityClient";
 const queryRoutes = `
 *[_id=="pageWork"][0]{ 
   theme,
-  work[]->{slug, title, hero{asset->}, client->{name}, product,  problem, solution, deliverables, projectImages[]{title, caption, asset->}},
+  work[]->{slug},
 }`;
 async function dynamicRoutes(callback) {
   const routes = await sanityClient.fetch(queryRoutes);
-  const { work, theme } = routes;
+  // const { work, theme } = routes;
+  const { work } = routes;
   const arr = work.map((project) => {
-    return {
-      route: `/case-study/${project.slug.current}`,
-      payload: { theme, project },
-    };
+    return `/case-study/${project.slug.current}`;
   });
   console.log(arr);
   callback(null, arr);
@@ -171,7 +169,7 @@ export default {
   },
   generate: {
     routes: dynamicRoutes,
-    fallback: true,
+    // fallback: true,
   },
   build: {
     // transpile: ["gsap"],
