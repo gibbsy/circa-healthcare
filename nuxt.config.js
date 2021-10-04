@@ -169,7 +169,7 @@ export default {
   },
   generate: {
     routes: dynamicRoutes,
-    // fallback: true,
+    fallback: true,
   },
   build: {
     // transpile: ["gsap"],
