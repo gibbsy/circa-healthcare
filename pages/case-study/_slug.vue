@@ -77,7 +77,6 @@
             data-scroll-reveal
             class="reveal"
           >
-            <!-- <img :src="urlFor(image).url()" :alt="image.title" /> -->
             <nuxt-img
               :sizes="imgSizes.content"
               :src="image.asset._id"

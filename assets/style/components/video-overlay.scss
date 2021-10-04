@@ -1,11 +1,11 @@
-.intro__video-modal {
+.intro-video-modal {
   @include abs100();
   position: fixed;
   z-index: 100;
   background-color: #fff;
 }
 
-.intro__close-btn {
+.intro-close-btn {
   width: 4rem;
   height: 4rem;
   padding: 1rem;
@@ -35,7 +35,7 @@
   }
 }
 
-.intro__sound-btn {
+.intro-sound-btn {
   position: absolute;
   width: 4rem;
   height: 4rem;
@@ -98,4 +98,9 @@
       opacity: 1;
     }
   }
+}
+
+.loading-msg {
+  @include abs100();
+  color: #000;
 }

@@ -49,7 +49,7 @@
     <transition name="fade">
       <video-overlay
         v-if="playIntro === true && introPlayed === false"
-        :vimeo-id="'615840707'"
+        :vimeo-id="config.stingVideo"
         :done-fn="onIntroPlayed"
       ></video-overlay>
     </transition>
@@ -64,6 +64,7 @@ import CtaArrow from "~/assets/cta_arrow_small.svg?inline";
 const query = /* groq */ `
   *[_id=="global-config"][0]{
   siteTitle, url, siteDescription,
+  stingVideo,
   mainNavigation[]->{title, slug},
   contactDetails[]->{name, email, address, phone},
   socials[]{title, href},

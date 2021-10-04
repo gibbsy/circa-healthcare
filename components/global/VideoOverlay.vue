@@ -1,18 +1,17 @@
 <template>
-  <div ref="modal" class="intro__video-modal">
-    <div class="content__video_wrapper autoplay wallpaper">
+  <div ref="modal" class="intro-video-modal">
+    <div class="content-video_wrapper autoplay wallpaper">
       <div
         ref="innerContainer"
-        class="content__video_wrapper_inner autoplay wallpaper"
+        class="content-video-wrapper-inner autoplay wallpaper"
       >
-        <div id="intro-vid" ref="player" class="content__video wallpaper"></div>
+        <div id="intro-vid" ref="player" class="content-video wallpaper"></div>
       </div>
-      <div class="video__overlay"></div>
     </div>
     <transition name="fade" appear>
       <div v-if="started" class="nav-primary-fixed">
         <button
-          class="intro__close-btn"
+          class="intro-close-btn"
           aria-label="Close overlay"
           @click.prevent="doneFn"
         >
@@ -24,13 +23,21 @@
     <transition name="fade" appear>
       <button
         v-if="started"
-        class="intro__sound-btn"
+        class="intro-sound-btn"
         @click.prevent="soundToggle"
       >
         <speaker-icon class="speaker-icon"></speaker-icon>
         <span class="audio-on" :class="{ on: !muted }"></span>
         <span class="audio-off" :class="{ on: muted }"></span>
       </button>
+    </transition>
+    <transition name="fade" appear>
+      <div
+        v-if="showMsg === true && started === false"
+        class="loading-msg flex--centred"
+      >
+        <p>Please wait, loading.</p>
+      </div>
     </transition>
   </div>
 </template>
@@ -64,6 +71,8 @@ export default {
       initialized: false,
       started: false,
       muted: true,
+      timeout: "",
+      showMsg: true,
     };
   },
   computed: {
@@ -108,16 +117,25 @@ export default {
         // on "start" not firing on ipad chrome - must be to do with autoplay
         this.player.on("timeupdate", this.onStart);
         this.player.on("ended", this.onEnded);
+        this.timeout = setTimeout(() => {
+          if (!this.started) {
+            this.onEnded();
+          }
+        }, 6000);
       }
     },
     onStart() {
       if (!this.started) {
+        clearTimeout(this.timeout);
         this.readyFn();
         this.started = true;
+        this.showMsg = false;
       }
       this.player.off("timeupdate", this.onStart);
     },
     onEnded() {
+      this.player.off("timeupdate", this.onStart);
+      this.player.off("ended", this.onEnded);
       this.doneFn();
     },
     soundToggle() {

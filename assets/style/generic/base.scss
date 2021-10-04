@@ -9,6 +9,9 @@
   --slate: #477e9f;
   --midnight: #000846;
   --brown: #b05120;
+  // ==========================================================================
+  // Textures
+  // ==========================================================================
   --tex-beehive: url("~/assets/tex-beehive.jpg") repeat 0/130px;
   --tex-fossil: url("~/assets/tex-fossil.jpg") repeat 0/175px;
   --tex-fusion: url("~/assets/tex-fusion.jpg") repeat 0/300px;
@@ -17,7 +20,22 @@
   --tex-herringbone: url("~/assets/tex-herringbone.jpg") repeat 0/300px;
   --tex-leaf: url("~/assets/tex-leaf.jpg") repeat 0/130px;
   --tex-waves: url("~/assets/tex-waves.jpg") repeat 0/120px;
-  --tex-beehive-lrg: url("~/assets/tex-beehive-lrg.jpg") repeat 0/540px auto;
+  //
+  // ==========================================================================
+
+  --tex-beehive-lrg: url("~/assets/tex-beehive.jpg") repeat 0/130px;
+  --tex-fossil-lrg: url("~/assets/tex-fossil.jpg") repeat 0/175px;
+  --tex-fusion-lrg: url("~/assets/tex-fusion.jpg") repeat 0/300px;
+  --tex-cells-lrg: url("~/assets/tex-cells.jpg") repeat 0/180px;
+  --tex-circuit-lrg: url("~/assets/tex-circuit.jpg") repeat 0/150px;
+  --tex-herringbone-lrg: url("~/assets/tex-herringbone.jpg") repeat 0/300px;
+  --tex-leaf-lrg: url("~/assets/tex-leaf.jpg") repeat 0/130px;
+  --tex-waves-lrg: url("~/assets/tex-waves.jpg") repeat 0/120px;
+
+  // ==========================================================================
+  // Larger res tex
+  // ==========================================================================
+  /*   --tex-beehive-lrg: url("~/assets/tex-beehive-lrg.jpg") repeat 0/540px auto;
   --tex-fossil-lrg: url("~/assets/tex-fossil-lrg.jpg") repeat 0/480px auto;
   --tex-fusion-lrg: url("~/assets/tex-fusion-lrg.jpg") repeat 0/600px auto;
   --tex-cells-lrg: url("~/assets/tex-cells-lrg.jpg") repeat 0/480px auto;
@@ -25,7 +43,9 @@
   --tex-herringbone-lrg: url("~/assets/tex-herringbone-lrg.jpg") repeat 0/640px
     auto;
   --tex-leaf-lrg: url("~/assets/tex-leaf-lrg.jpg") repeat 0/540px auto;
-  --tex-waves-lrg: url("~/assets/tex-waves-lrg.jpg") repeat 0/480px;
+  --tex-waves-lrg: url("~/assets/tex-waves-lrg.jpg") repeat 0/480px; */
+
+  // ==========================================================================
   --default-texture: var(--tex-beehive);
   --bg-texture: var(--default-texture);
   --default-primary: var(--dark-blue);
@@ -34,9 +54,6 @@
   --secondary-color: var(--default-secondary);
 }
 
-// ==========================================================================
-// grid
-// ==========================================================================
 body {
   width: 100%;
   min-height: 100vh;
@@ -273,18 +290,6 @@ html {
   top: 0;
 }
 
-/* .inner-texture {
-  position: absolute;
-  width: 100%;
-  height: 180%;
-  left: 0;
-  right: 0;
-  top: -50%;
-  background: var(--bg-texture);
-  mix-blend-mode: screen;
-  transform: translateZ(0);
-  will-change: transform;
-} */
 .texture-pull-left {
   position: absolute;
   left: 0;

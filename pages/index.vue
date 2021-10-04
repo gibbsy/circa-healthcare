@@ -13,7 +13,11 @@
         data-scroll-start="top top"
       >
         <transition name="fade" appear>
-          <HeroVideo :vimeo-id="hero.heroVideo" :ready-fn="onLoad"></HeroVideo>
+          <HeroVideo
+            :vimeo-id="hero.heroVideo"
+            :ready-fn="onLoad"
+            :poster="hero.heroPoster"
+          ></HeroVideo>
         </transition>
       </div>
       <div

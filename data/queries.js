@@ -6,7 +6,7 @@ export const homeQuery = /* groq */ `{
   "config": *[_id=="global-config"],
   "home": *[_type=="homepage"][0]{
   "hero": {
-    heroVideo, mainHeadline
+    heroVideo, heroPoster, mainHeadline
     },
   "intro": {
     introTheme, intro, introCta{title, "slug": route->slug.current}   
