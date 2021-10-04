@@ -1,24 +1,25 @@
-/* import sanityClient from "./sanityClient";
+import sanityClient from "./sanityClient";
 const queryRoutes = `
 *[_id=="pageWork"][0]{ 
+  theme,
   work[]->{slug, title, hero{asset->}, client->{name}, product,  problem, solution, deliverables, projectImages[]{title, caption, asset->}},
 }`;
-async function dynamicRoutes() {
+async function dynamicRoutes(callback) {
   const routes = await sanityClient.fetch(queryRoutes);
-  const { work } = routes;
+  const { work, theme } = routes;
   const arr = work.map((project) => {
     return {
       route: `/case-study/${project.slug.current}`,
-      payload: project,
+      payload: { theme, project },
     };
   });
   console.log(arr);
-  return arr;
-} */
+  callback(null, arr);
+}
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: "static",
-  ssr: false,
+  // ssr: false,
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: "Circa Healthcare | A Strategic Healthcare Communications Agency",
@@ -168,7 +169,10 @@ export default {
     Disallow: "/legal",
     Sitemap: "https://www.circa-healthcare.co.uk/sitemap.xml",
   },
-
+  generate: {
+    routes: dynamicRoutes,
+    fallback: true,
+  },
   build: {
     // transpile: ["gsap"],
     extend: (config) => {
@@ -194,15 +198,12 @@ export default {
         ],
       });
     },
-    generate: {
-      // routes: dynamicRoutes,
-      fallback: false,
-    },
+
     terser: {
       // https://github.com/terser/terser#compress-options
       terserOptions: {
         compress: {
-          drop_console: true,
+          drop_console: false,
         },
       },
     },

@@ -1,5 +1,13 @@
 <template>
   <div ref="modal" class="intro-video-modal">
+    <transition name="fade" appear>
+      <div
+        v-if="showMsg === true && started === false"
+        class="loading-msg flex--centred"
+      >
+        <p>Please wait, loading.</p>
+      </div>
+    </transition>
     <div class="content-video_wrapper autoplay wallpaper">
       <div
         ref="innerContainer"
@@ -30,14 +38,6 @@
         <span class="audio-on" :class="{ on: !muted }"></span>
         <span class="audio-off" :class="{ on: muted }"></span>
       </button>
-    </transition>
-    <transition name="fade" appear>
-      <div
-        v-if="showMsg === true && started === false"
-        class="loading-msg flex--centred"
-      >
-        <p>Please wait, loading.</p>
-      </div>
     </transition>
   </div>
 </template>
