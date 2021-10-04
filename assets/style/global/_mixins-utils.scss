@@ -45,7 +45,7 @@
 }
 
 @mixin clip-edge($edge, $height: 100vh) {
-  $hCalc: $height * 0.36397023426;
+  $hCalc: $height * 0.364;
   @if $edge== "left" {
     clip-path: polygon(#{$hCalc} 0, 100% 0, 100% 100%, 0 100%);
   } @else if $edge== "right" {
