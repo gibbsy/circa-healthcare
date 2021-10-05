@@ -91,20 +91,12 @@
               "
             >
               <nuxt-link :to="`/case-study/${project.slug.current}`">
-                <img
-                  :src="
-                    imgRes.width > 1
-                      ? urlFor(project.hero)
-                          .width(
-                            isMobile && imgRes.width < 1000
-                              ? imgRes.width
-                              : Math.floor(imgRes.width / 2)
-                          )
-                          .auto('format')
-                          .quality(80)
-                          .url()
-                      : ''
-                  "
+                <nuxt-img
+                  class="inner-image"
+                  :sizes="imgSizes.hero"
+                  :src="project.hero.asset._ref"
+                  :alt="project.client.name"
+                  quality="70"
                 />
               </nuxt-link>
             </figure>
