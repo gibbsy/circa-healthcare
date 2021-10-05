@@ -65,18 +65,11 @@
             :key="i"
             class="client-logo flex--centred"
           >
-            <img
-              :src="
-                imgRes.width > 1
-                  ? urlFor(client.logo)
-                      .width('200')
-                      .auto('format')
-                      .saturation(-100)
-                      .quality(80)
-                      .url()
-                  : ''
-              "
+            <nuxt-img
+              :sizes="imgSizes.clients"
+              :src="client.logo.asset._ref"
               :alt="client.name"
+              quality="80"
             />
           </figure>
         </div>
