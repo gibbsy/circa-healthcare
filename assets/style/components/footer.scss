@@ -54,6 +54,11 @@ footer {
       left: 32px;
       width: 180px;
     }
+    @include bp(2400) {
+      top: 64px;
+      left: 12px;
+      width: 240px;
+    }
   }
 }
 
@@ -89,6 +94,7 @@ footer {
   flex-wrap: wrap;
   justify-content: space-between;
   width: 75%;
+  max-width: 1700px;
   @include footer-padding();
   padding-bottom: 10px;
   @include bp(768) {

@@ -170,7 +170,7 @@
         </div>
         <article
           id="why-circa-content"
-          class="why-circa-content col-12 offset-lg-4 col-lg-6"
+          class="why-circa-content col-12 offset-lg-4 offset-huge-5 col-lg-6"
         >
           <div
             v-for="(section, i) in whyCirca.whySections"
@@ -401,7 +401,9 @@
       </div>
 
       <div class="team-content">
-        <div class="intro-text-lockup col-12 col-lg-6 offset-lg-6">
+        <div
+          class="intro-text-lockup col-12 col-lg-6 offset-lg-6 offset-huge-8"
+        >
           <h6 class="section-label reveal" data-scroll-reveal>
             {{ meetTheTeam.teamLabel }}
           </h6>

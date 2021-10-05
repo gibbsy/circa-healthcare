@@ -264,6 +264,9 @@
       width: 35%;
       height: 100vh;
       @include clip-edge($edge: right, $height: 100vh);
+      @include bp(2400) {
+        width: 42.5%;
+      }
     }
   }
 }
