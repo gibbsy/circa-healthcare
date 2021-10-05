@@ -41,7 +41,7 @@ export default {
       { name: "theme-color", content: "#1a1a1a" },
     ],
     link: [
-      { rel: "canonical", href: "https://www.circa-healthcare.co.uk" },
+      { rel: "canonical", href: "https://www.circahealthcare.com" },
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       {
         rel: "apple-touch-icon",
@@ -123,13 +123,13 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: ["cookie-universal-nuxt", "@nuxtjs/robots", "@nuxtjs/sitemap"],
   sitemap: {
-    hostname: "https://www.circa-healthcare.co.uk",
+    hostname: "https://www.circahealthcare.com",
     routes: dynamicRoutes,
   },
   robots: {
     UserAgent: "*",
     Disallow: "/cookie-and-privacy-policy",
-    Sitemap: "https://www.circa-healthcare.co.uk/sitemap.xml",
+    Sitemap: "https://www.circahealthcare.com/sitemap.xml",
   },
   generate: {
     routes: dynamicRoutes,
