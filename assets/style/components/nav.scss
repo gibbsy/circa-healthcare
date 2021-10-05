@@ -230,6 +230,9 @@
     fill: $white;
     .page-wrapper.ancillary & {
       fill: var(--secondary-color);
+      @include bp(768) {
+        fill: #fff;
+      }
     }
     @include bp(768) {
       fill: $black;
