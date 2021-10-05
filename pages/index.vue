@@ -420,13 +420,10 @@
 </template>
 
 <script>
-import imageUrlBuilder from "@sanity/image-url";
 import sanityClient from "../sanityClient";
 import { homeQuery as query } from "../data/queries";
 import scrollAnimations from "~/mixins/scrollAnimations";
 import copyline from "~/components/span.vue";
-
-const urlBuilder = imageUrlBuilder(sanityClient);
 
 export default {
   mixins: [scrollAnimations],
@@ -445,11 +442,9 @@ export default {
   },
   data() {
     return {
-      resizeTimeout: 0,
       showUi: false,
       showPrompt: false,
       ready: false,
-      imgRes: { width: 1, height: 1, dpr: 1 },
       serializers: {
         marks: {
           span: copyline,
@@ -590,7 +585,6 @@ export default {
   },
   mounted() {
     console.log(this.isMobile);
-    this.setImgRes();
     document.documentElement.style.setProperty(
       "--primary-color",
       "var(--default-primary)"
@@ -602,9 +596,6 @@ export default {
     this.$nextTick(() => this.init());
   },
   methods: {
-    urlFor(source) {
-      return urlBuilder.image(source);
-    },
     init() {
       this.splitText();
       setTimeout(() => {
@@ -630,12 +621,9 @@ export default {
       const images = document.getElementById("about-images-container");
       const stats = document.getElementById("about-stats-container");
       const texRight = document.getElementById("stats-tex-right");
-      // const whyDist = innerHeight;
-      // console.log(whyContent.scrollHeight);
       const tlAbout = gsap.timeline({
         scrollTrigger: {
           trigger: "#about-stat-scroller",
-          // trigger: "#about",
           start: "top top",
           scrub: 0.1,
           pin: true,
@@ -696,57 +684,7 @@ export default {
         end: "bottom center",
         pin: [whyLabel],
       });
-      /* const tlWhy = gsap.timeline({
-        scrollTrigger: {
-          trigger: why,
-          start: "top top",
-          scrub: true,
-          pin: true,
-          end: `${whyDist}px`,
-        },
-      });
-      tlWhy.fromTo(
-        whyTex,
-        { x: "-=100%" },
-        {
-          x: 0,
-          duration: 0.5,
-        },
-        0
-      );
-      tlWhy.to(
-        whyContent,
-        {
-          y: "-=100%",
-          ease: "none",
-          duration: 1,
-        },
-        0
-      ); */
     },
-
-    setImgRes() {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-      const dpr = window.devicePixelRatio;
-      const res = { width: 400 };
-      if (width >= 768) {
-        res.width = 768;
-      }
-      if (width > 1440) {
-        res.width = 960;
-      }
-      if (width > 1920) {
-        res.width = 1080;
-      }
-      if (this.isMobile) {
-        // alert(width + " " + height);
-        res.width = width;
-        res.height = height;
-      }
-      this.imgRes = { ...res, dpr };
-    },
-
     splitText() {
       Splitting({
         target: "[data-splitting]",

@@ -66,7 +66,7 @@
           >
             <figure class="team-portrait">
               <nuxt-img
-                :sizes="'xs:100vw sm:100vw md:220px lg:240px xl:300px'"
+                :sizes="'xs:100vw sm:100vw md:220px lg:240px xl:300px hd:500px'"
                 :modifiers="{ crop: item.image.crop }"
                 :src="item.image.asset._ref"
                 :alt="item.name"

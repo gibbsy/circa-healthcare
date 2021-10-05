@@ -21,8 +21,8 @@
           <div class="select-container">
             <select id="enquiry" v-model="enquiry" name="enquiry" required>
               <option disabled selected value="">Nature of enquiry</option>
-              <option value="sales">Say hello</option>
-              <option value="support">Business enquiry</option>
+              <option value="hello">Say hello</option>
+              <option value="business enquiry">Business enquiry</option>
               <option value="careers">Careers</option>
             </select>
           </div>

@@ -8,7 +8,7 @@ export const state = () => ({
     promo: "xs:100vw sm:100vw md:100vw lg:640px xl:960px xxl:1080px hd:1920px",
     poster: "xs:100vw lg:640px xl:960px xxl:1280px",
     scroller: "xs:100vw lg:500px xxl:600px hd:800px",
-    clients: "xs:200px xxl:280px hd:300px",
+    clients: "xs:200px xxl:280px hd:400px",
   },
   defaultTheme: {},
 });

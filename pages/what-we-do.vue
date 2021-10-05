@@ -1,10 +1,6 @@
 <template>
   <transition name="fade" appear>
-    <div
-      v-if="cssVars.hasOwnProperty('--primary-color')"
-      class="what-we-do page-wrapper"
-      :style="cssVars"
-    >
+    <div class="what-we-do page-wrapper" :style="cssVars">
       <section class="page-hero-container x2-h full-color">
         <div
           class="texture-wrapper parallax cover"
@@ -71,11 +67,9 @@
               class="icon-lockup services flex-col-12 flex-col-lg-4"
               data-scroll-reveal
             >
-              <figure
-                class="icon-lockup-icon"
-                :style="{ backgroundImage: `url(${urlFor(item.icon)})` }"
-                data-scroll
-              ></figure>
+              <figure class="icon-lockup-icon">
+                <nuxt-img :src="item.icon.asset._ref" />
+              </figure>
               <h3 class="icon-lockup-title">{{ item.title }}</h3>
               <block-content :blocks="item.text"></block-content>
             </li>
@@ -185,32 +179,19 @@
                 class="list-item-logo flex-col-3 flex-col-xl-2 offset-xl-1"
               >
                 <a v-if="item.href" :href="item.href" target="_blank">
-                  <img
-                    :src="
-                      imgRes.width > 1
-                        ? urlFor(item.logo)
-                            .width('200')
-                            .auto('format')
-                            .saturation(-100)
-                            .quality(80)
-                            .url()
-                        : ''
-                    "
+                  <nuxt-img
+                    :sizes="imgSizes.clients"
+                    :src="item.logo.asset._ref"
                     :alt="item.name"
-                /></a>
-                <img
+                    quality="80"
+                  />
+                </a>
+                <nuxt-img
                   v-else
-                  :src="
-                    imgRes.width > 1
-                      ? urlFor(item.logo)
-                          .width('200')
-                          .auto('format')
-                          .saturation(-100)
-                          .quality(80)
-                          .url()
-                      : ''
-                  "
+                  :sizes="imgSizes.clients"
+                  :src="item.logo.asset._ref"
                   :alt="item.name"
+                  quality="80"
                 />
               </figure>
               <div class="list-item-text flex-col-12 flex-col-lg-7">

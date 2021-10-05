@@ -73,32 +73,18 @@
           >
             <figure class="list-item-logo col-6 flex-col-md-3">
               <a v-if="item.href" :href="item.href" target="_blank">
-                <img
-                  :src="
-                    imgRes.width > 1
-                      ? urlFor(item.logo)
-                          .width('200')
-                          .auto('format')
-                          .saturation(-100)
-                          .quality(80)
-                          .url()
-                      : ''
-                  "
+                <nuxt-img
+                  :sizes="imgSizes.clients"
+                  :src="item.logo.asset._ref"
                   :alt="item.name"
+                  quality="80"
               /></a>
-              <img
+              <nuxt-img
                 v-else
-                :src="
-                  imgRes.width > 1
-                    ? urlFor(item.logo)
-                        .width('200')
-                        .auto('format')
-                        .saturation(-100)
-                        .quality(80)
-                        .url()
-                    : ''
-                "
+                :sizes="imgSizes.clients"
+                :src="item.logo.asset._ref"
                 :alt="item.name"
+                quality="80"
               />
             </figure>
             <div class="list-item-text flex-col-12 flex-col-lg-7">

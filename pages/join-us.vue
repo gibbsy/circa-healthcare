@@ -71,11 +71,9 @@
             class="icon-lockup flex-col-12 flex-col-md-6"
             data-scroll-reveal
           >
-            <figure
-              class="icon-lockup-icon"
-              :style="{ backgroundImage: `url(${urlFor(item.icon)})` }"
-              data-scroll
-            ></figure>
+            <figure class="icon-lockup-icon">
+              <nuxt-img :src="item.icon.asset._ref" />
+            </figure>
             <div class="icon-lockup-text">
               <h3 class="icon-lockup-title">{{ item.title }}</h3>
               <block-content :blocks="item.text"></block-content>
@@ -138,23 +136,15 @@
         class="section-hero-image-wrapper reveal-slide-in"
         data-scroll-reveal
       >
-        <figure
-          class="section-hero-image"
-          :style="{
-            backgroundImage:
-              imgRes.width > 1
-                ? `url('${urlFor(ctaImage)
-                    .width(
-                      isMobile && imgRes.width < 1000
-                        ? imgRes.width
-                        : Math.floor(imgRes.width / 2)
-                    )
-                    .auto('format')
-                    .quality(80)
-                    .url()}')`
-                : 'none',
-          }"
-        ></figure>
+        <figure class="section-hero-image">
+          <nuxt-img
+            :sizes="imgSizes.promo"
+            :modifiers="{ crop: ctaImage.crop }"
+            :src="ctaImage.asset._ref"
+            :alt="ctaImage.title"
+            quality="70"
+          />
+        </figure>
       </div>
 
       <div class="join-cta content-block v-space-narrow v-centered">

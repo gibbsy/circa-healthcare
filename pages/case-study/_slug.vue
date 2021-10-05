@@ -127,7 +127,6 @@ export default {
     const pageData = await sanityClient.fetch(query).catch((err) => {
       console.log(err);
     });
-    console.log(pageData);
     if (pageData.caseStudy === null) {
       redirect(404, "/404.html");
     }
