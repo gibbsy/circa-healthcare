@@ -161,6 +161,11 @@ footer {
           font-size: 1.125rem;
         }
       }
+      @include bpMax(1200) {
+        * + * {
+          margin-top: 0.5rem;
+        }
+      }
       h6 {
         color: #fff;
         font-weight: 500;
