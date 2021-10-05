@@ -119,14 +119,19 @@ import scrollAnimations from "~/mixins/scrollAnimations";
 export default {
   name: "Contact",
   mixins: [pageSetup, scrollAnimations],
-  async asyncData({ params }) {
+  async asyncData({ params, redirect }) {
     const query = `{
       "theme": *[_id=="pageWork"][0]{theme},
       "caseStudy": *[_type == "caseStudy" && slug.current == "${params.slug}"][0]
       {title, hero{asset->}, client->{name}, product,  problem, solution, deliverables, projectImages[]{title, caption, asset->}}
 }`;
-    const pageData = await sanityClient.fetch(query);
+    const pageData = await sanityClient.fetch(query).catch((err) => {
+      console.log(err);
+    });
     console.log(pageData);
+    if (pageData.caseStudy === null) {
+      redirect(404, "/404.html");
+    }
     const { theme, caseStudy } = pageData;
     return { ...theme, ...caseStudy };
   },
