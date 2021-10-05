@@ -109,23 +109,20 @@
               ref="about-images-container"
               class="about-images-container"
             >
-              <div
+              <figure
                 v-for="img in about.aboutImages"
                 :key="img.title"
                 class="about-img"
               >
-                <figure
+                <nuxt-img
                   class="inner-image"
-                  :style="{
-                    backgroundImage: `url('${urlFor(img.asset)
-                      .width(500)
-                      .height(500)
-                      .auto('format')
-                      .quality(80)
-                      .url()}')`,
-                  }"
-                ></figure>
-              </div>
+                  :sizes="imgSizes.scroller"
+                  :modifiers="{ crop: img.crop }"
+                  :src="img.asset._ref"
+                  :alt="img.title"
+                  quality="70"
+                />
+              </figure>
             </div>
             <div id="about-stats-container" class="about-stats-container">
               <div
