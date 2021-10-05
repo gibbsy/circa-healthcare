@@ -218,6 +218,7 @@
             :modifiers="{ crop: work.workImage.crop }"
             :src="work.workImage.asset._ref"
             :alt="work.workImage.title"
+            quality="70"
           />
         </figure>
       </div>
@@ -285,6 +286,7 @@
             :modifiers="{ crop: whatWeDo.whatWeDoImage.crop }"
             :src="whatWeDo.whatWeDoImage.asset._ref"
             :alt="whatWeDo.whatWeDoImage.title"
+            quality="70"
           />
         </figure>
       </div>
@@ -386,6 +388,7 @@
             :modifiers="{ crop: meetTheTeam.teamImage.crop }"
             :src="meetTheTeam.teamImage.asset._ref"
             :alt="meetTheTeam.teamImage.title"
+            quality="60"
           />
         </figure>
       </div>

@@ -79,7 +79,10 @@ export default {
   css: ["@/assets/style/main.scss"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [{ src: "@/plugins/sanity-blocks.js" }],
+  plugins: [
+    { src: "~/plugins/vue-gtag" },
+    { src: "@/plugins/sanity-blocks.js" },
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -118,22 +121,14 @@ export default {
     // hoistUseStatements: true, // Hoists the "@use" imports. Applies only to "sass", "scss" and "less". Default: false.
   },
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    ["@nuxtjs/gtm"],
-    "cookie-universal-nuxt",
-    "@nuxtjs/robots",
-    "@nuxtjs/sitemap",
-  ],
-  gtm: {
-    id: "GTM-M76Q9KJ",
-  },
+  modules: ["cookie-universal-nuxt", "@nuxtjs/robots", "@nuxtjs/sitemap"],
   sitemap: {
     hostname: "https://www.circa-healthcare.co.uk",
-    routes: ["/legal/cookie-and-privacy-policy"],
+    routes: dynamicRoutes,
   },
   robots: {
     UserAgent: "*",
-    Disallow: "/legal",
+    Disallow: "/cookie-and-privacy-policy",
     Sitemap: "https://www.circa-healthcare.co.uk/sitemap.xml",
   },
   generate: {
@@ -170,7 +165,7 @@ export default {
       // https://github.com/terser/terser#compress-options
       terserOptions: {
         compress: {
-          drop_console: false,
+          drop_console: true,
         },
       },
     },

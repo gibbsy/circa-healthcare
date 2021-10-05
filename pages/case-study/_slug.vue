@@ -80,7 +80,6 @@
             <nuxt-img
               :sizes="imgSizes.content"
               :src="image.asset._id"
-              loading="lazy"
               quality="50"
             />
             <figcaption v-if="image.caption">{{ image.caption }}</figcaption>

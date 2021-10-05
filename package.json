@@ -13,7 +13,6 @@
     "lint": "npm run lint:js"
   },
   "dependencies": {
-    "@nuxtjs/gtm": "^2.4.0",
     "@nuxtjs/robots": "^2.5.0",
     "@nuxtjs/sitemap": "^2.4.0",
     "@sanity/client": "^2.10.5",
@@ -23,7 +22,8 @@
     "is-mobile": "^3.0.0",
     "normalize.css": "^8.0.1",
     "nuxt": "^2.15.3",
-    "sanity-blocks-vue-component": "^0.1.0"
+    "sanity-blocks-vue-component": "^0.1.0",
+    "vue-gtag": "^1.16.1"
   },
   "devDependencies": {
     "@nuxt/image": "^0.6.0",
