@@ -13,7 +13,12 @@
       <div :class="['contact-button-container', { hidden: !contactActive }]">
         <nuxt-link
           to="/contact-us"
-          :class="['cta-primary', 'btn-contact', { on: showContact }]"
+          :class="[
+            'cta-primary',
+            'btn-contact',
+            { on: showContact },
+            { 'full-color': fullColor },
+          ]"
         >
           <span class="arrow"> <cta-arrow /> </span>
           Get in touch</nuxt-link
@@ -114,6 +119,9 @@ export default {
         this.navOn === false &&
         this.showSite === true
       );
+    },
+    fullColor() {
+      return this.$store.state.fullColor;
     },
   },
   watch: {

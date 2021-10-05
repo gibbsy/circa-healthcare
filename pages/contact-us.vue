@@ -93,6 +93,7 @@ export default {
     };
   },
   mounted() {
+    this.$store.commit("setFullColor", false);
     this.enquiryPrefill = this.$route.params.enquiry;
     console.log(this.$route.params);
     this.$nextTick(this.init);

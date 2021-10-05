@@ -122,6 +122,7 @@ export default {
     };
   },
   mounted() {
+    this.$store.commit("setFullColor", true);
     this.init();
   },
   methods: {

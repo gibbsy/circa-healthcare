@@ -38,14 +38,8 @@ export default {
       ...theme,
     };
   },
-  data() {
-    return {
-      enquiryPrefill: "",
-    };
-  },
   mounted() {
-    this.enquiryPrefill = this.$route.params.enquiry;
-    console.log(this.$route.params);
+    this.$store.commit("setFullColor", false);
     this.$nextTick(this.init);
   },
   methods: {

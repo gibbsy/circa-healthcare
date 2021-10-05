@@ -42,6 +42,18 @@
           fill: var(--primary-color);
         }
       }
+      &.full-color {
+        &:hover {
+          background-color: #fff;
+          color: var(--primary-color);
+          .arrow {
+            background-color: var(--primary-color);
+          }
+          svg {
+            fill: #fff;
+          }
+        }
+      }
     }
   }
   button.hamburger {

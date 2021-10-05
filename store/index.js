@@ -11,6 +11,7 @@ export const state = () => ({
     clients: "xs:200px xxl:280px hd:400px",
   },
   defaultTheme: {},
+  fullColor: false,
 });
 
 export const mutations = {
@@ -19,6 +20,9 @@ export const mutations = {
   },
   setMobile(state, val) {
     state.isMobile = val;
+  },
+  setFullColor(state, val) {
+    state.fullColor = val;
   },
   setTheme(state, payload) {
     state.defaultTheme = payload;

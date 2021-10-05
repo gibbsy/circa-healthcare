@@ -585,6 +585,7 @@ export default {
   },
   mounted() {
     console.log(this.isMobile);
+    this.$store.commit("setFullColor", false);
     document.documentElement.style.setProperty(
       "--primary-color",
       "var(--default-primary)"

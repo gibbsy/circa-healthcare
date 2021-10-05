@@ -139,6 +139,7 @@ export default {
     };
   },
   mounted() {
+    this.$store.commit("setFullColor", true);
     this.$nextTick(this.init);
   },
   methods: {

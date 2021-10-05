@@ -134,6 +134,7 @@ export default {
     return { ...theme, ...caseStudy };
   },
   mounted() {
+    this.$store.commit("setFullColor", false);
     this.$nextTick(this.init);
   },
   methods: {
