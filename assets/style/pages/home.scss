@@ -173,9 +173,6 @@
   top: 40%;
   left: 0;
   width: auto;
-  @include bp(1600) {
-    top: 45%;
-  }
 
   .is-mobile & {
     position: relative;
