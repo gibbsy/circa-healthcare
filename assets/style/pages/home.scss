@@ -234,7 +234,7 @@
 }
 
 .why-circa-container {
-  @include content-block($padding: extra, $flex: column);
+  @include content-block($padding: standard, $flex: column);
   @include bp(2600) {
     @include standard-padding();
   }
@@ -247,7 +247,7 @@
     opacity: 0;
     transition: opacity 0.6s ease;
     h2 {
-      word-wrap: nowrap;
+      white-space: nowrap;
     }
     &.is-inview {
       opacity: 1;

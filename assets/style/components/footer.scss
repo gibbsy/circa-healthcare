@@ -15,6 +15,7 @@ footer {
     @include bp(1024) {
       width: 220px;
       top: 0;
+      bottom: auto;
     }
     @include bp(1400) {
       width: 350px;
@@ -27,7 +28,7 @@ footer {
   .footer-logo {
     position: absolute;
     width: 100px;
-    bottom: 3rem;
+    bottom: 48px;
     right: 12px;
     a {
       display: block;
@@ -37,17 +38,20 @@ footer {
       fill: #fff;
     }
     @include bp(1024) {
-      top: 3rem;
+      top: 48px;
       bottom: auto;
       left: 45px;
       right: auto;
       width: 140px;
     }
     @include bp(1400) {
-      top: 4rem;
-      bottom: auto;
+      top: 64px;
       left: 16px;
-      right: auto;
+      width: 180px;
+    }
+    @include bp(1920) {
+      top: 64px;
+      left: 32px;
       width: 180px;
     }
   }
