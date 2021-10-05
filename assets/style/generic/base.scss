@@ -618,27 +618,3 @@ html {
     margin: 0;
   }
 }
-
-.contacts-container {
-  h3,
-  li,
-  a,
-  p {
-    font-size: 1.125rem;
-    line-height: 1.375;
-    @include bp(1200) {
-      font-size: 1.25rem;
-    }
-  }
-  .email {
-    display: inline-block;
-    padding-bottom: 0.25rem;
-  }
-  h6 {
-    color: var(--secondary-color);
-    font-weight: 700;
-  }
-  .infos {
-    margin-bottom: 2rem;
-  }
-}

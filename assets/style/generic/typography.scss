@@ -298,3 +298,53 @@ p.callout,
     color: var(--primary-color);
   }
 }
+
+.infos a,
+.contacts-item a {
+  display: block;
+  text-decoration: none;
+  font-weight: 500;
+  .nav-content & {
+    display: inline-block;
+  }
+}
+
+.contacts-container {
+  h3,
+  li,
+  a,
+  p {
+    font-size: 1.125rem;
+    line-height: 1.375;
+    @include bp(1200) {
+      font-size: 1.25rem;
+    }
+  }
+  .email {
+    padding-bottom: 0.25rem;
+  }
+  h6 {
+    color: var(--secondary-color);
+    font-weight: 700;
+  }
+  .infos {
+    margin-bottom: 2rem;
+  }
+}
+
+a[href^="tel"] {
+  text-decoration: inherit;
+  color: inherit;
+  &:visited {
+    text-decoration: inherit;
+    color: inherit;
+  }
+  &:hover {
+    text-decoration: inherit;
+    color: inherit;
+  }
+  &:focus {
+    text-decoration: inherit;
+    color: inherit;
+  }
+}

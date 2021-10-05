@@ -42,7 +42,7 @@
             <h6>{{ location.name }}</h6>
             <div class="infos">
               <a :href="`mailto:${location.email}`">{{ location.email }}</a>
-              <p>{{ location.phone }}</p>
+              <a :href="`tel:${location.phone}`">{{ location.phone }}</a>
             </div>
           </div>
           <div class="contacts-item">

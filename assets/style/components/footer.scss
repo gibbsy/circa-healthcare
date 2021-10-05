@@ -84,6 +84,12 @@ footer {
       color: var(--secondary-color);
       text-decoration: underline;
     }
+    &:visited {
+      color: inherit;
+    }
+    &:focus {
+      color: var(--secondary-color);
+    }
   }
 }
 

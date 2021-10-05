@@ -143,6 +143,9 @@ export default {
       setTimeout(() => {
         this.initScrollAni();
       }, 100);
+      setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 2000);
     },
   },
 };

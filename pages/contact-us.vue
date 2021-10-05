@@ -51,7 +51,7 @@
               <a class="email" :href="`mailto:${location.email}`">{{
                 location.email
               }}</a>
-              <p>{{ location.phone }}</p>
+              <a :href="`tel:${location.phone}`">{{ location.phone }}</a>
               <div class="address">
                 <block-content :blocks="location.address"></block-content>
               </div>
