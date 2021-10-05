@@ -1,15 +1,10 @@
 <template>
-  <div class="ancillary page-wrapper" :style="cssVars">
+  <div class="ancillary page-wrapper">
     <section
       id="ancillary"
       class="ancillary-container section-container white-bg"
     >
-      <div class="texture-pull-right">
-        <div class="texture-wrapper">
-          <div :class="['inner-texture', theme.texture]"></div>
-        </div>
-      </div>
-      <div class="ancillary-content content-block--extra-pad">
+      <div class="ancillary-content content-block--extra-pad error-content">
         <div class="intro-text-lockup col-12 col-xl-10">
           <h1 data-scroll-reveal class="reveal">
             Sorry, we can't find that page.
@@ -24,32 +19,21 @@
         </div>
       </div>
     </section>
-    <corner-logo :show="showUi" :full-color="true" :delay="0.5"></corner-logo>
+    <corner-logo :show="true" :full-color="true" :delay="0.5"></corner-logo>
   </div>
 </template>
 <script>
-import { legalQuery as query } from "../data/queries";
-import sanityClient from "../sanityClient";
-import pageSetup from "~/mixins/pageSetup";
-import scrollAnimations from "~/mixins/scrollAnimations";
 import CtaArrow from "~/assets/cta_arrow_small.svg?inline";
+import scrollAnimations from "~/mixins/scrollAnimations";
+
 export default {
   components: { CtaArrow },
-  mixins: [pageSetup, scrollAnimations],
-  async asyncData() {
-    const pageData = await sanityClient.fetch(query);
-    const { theme } = pageData;
-    return {
-      ...theme,
-    };
-  },
+  mixins: [scrollAnimations],
   mounted() {
-    this.$nextTick(this.init);
+    this.init();
   },
   methods: {
     init() {
-      this.splitText();
-      // this.$nextTick(() => this.initScrollAni());
       setTimeout(() => {
         this.initScrollAni();
       }, 100);
@@ -58,5 +42,8 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "../assets/style/pages/ancillary";
+.error-content {
+  min-height: 70vh;
+  justify-content: center;
+}
 </style>

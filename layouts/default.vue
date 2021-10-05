@@ -64,6 +64,7 @@ const query = /* groq */ `
   *[_id=="global-config"][0]{
   siteTitle, url, siteDescription,
   stingVideo,
+  defaultTheme,
   mainNavigation[]->{title, slug},
   contactDetails[]->{name, email, address, phone},
   socials[]{title, href},
@@ -98,6 +99,9 @@ export default {
     introPlayed() {
       return this.$store.state.introPlayed;
     },
+    texSuffix() {
+      return this.isMobile ? "" : "-lrg";
+    },
     mainNav() {
       return this.config.mainNavigation;
     },
@@ -121,6 +125,25 @@ export default {
         this.routeTransitioning = false;
       }, 1500);
       console.log(value.name);
+    },
+    config(obj) {
+      console.log(obj);
+      if (obj.defaultTheme !== undefined) {
+        const theme = obj.defaultTheme;
+        this.$store.commit("setTheme", theme);
+        document.documentElement.style.setProperty(
+          "--primary-color",
+          theme.primaryColor.value
+        );
+        document.documentElement.style.setProperty(
+          "--secondary-color",
+          theme.secondaryColor.value
+        );
+        document.documentElement.style.setProperty(
+          "--bg-texture",
+          `var(--tex-${theme.texture}${this.texSuffix})`
+        );
+      }
     },
   },
   beforeMount() {

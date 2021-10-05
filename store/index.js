@@ -7,6 +7,7 @@ export const state = () => ({
     promo: "xs:100vw sm:100vw md:100vw lg:640px xl:960px xxl:1080px hd:1920px",
     poster: "xs:100vw lg:640px xl:960px xxl:1280px",
   },
+  defaultTheme: {},
 });
 
 export const mutations = {
@@ -15,5 +16,8 @@ export const mutations = {
   },
   setMobile(state, val) {
     state.isMobile = val;
+  },
+  setTheme(state, payload) {
+    state.defaultTheme = payload;
   },
 };
