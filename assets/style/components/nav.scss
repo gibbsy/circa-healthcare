@@ -196,13 +196,18 @@
     display: none;
     @include bp(768) {
       display: inline-block;
-      a {
-        font-size: 1rem;
-        @include bp(1024) {
-          font-size: 1.75rem;
-        }
-        @include bp(1600) {
-          font-size: 2rem;
+      .nav-contacts-item .infos {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: flex-start;
+        a {
+          font-size: 1rem;
+          @include bp(1024) {
+            font-size: 1.75rem;
+          }
+          @include bp(1600) {
+            font-size: 2rem;
+          }
         }
       }
     }
