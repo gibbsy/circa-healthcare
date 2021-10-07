@@ -206,7 +206,7 @@ export default {
       const fileUpload = document.getElementById("cv-upload");
       if (typeof fileUpload.files !== "undefined") {
         const size = parseFloat(fileUpload.files[0].size / 1024).toFixed(2);
-        if (size >= 100) {
+        if (size >= 999) {
           this.errors.push(
             "Max upload is 1MB, please choose a smaller file to upload."
           );
