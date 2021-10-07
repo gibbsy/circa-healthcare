@@ -89,7 +89,7 @@
               type="file"
               name="cv"
               class="cv-upload"
-              accept=".doc, .pdf, image/*"
+              accept=".doc, .pdf"
             />
           </div>
         </transition>
@@ -195,6 +195,14 @@ export default {
       if (!this.email.valid) {
         this.errors.push("Please enter a valid email address.");
         return;
+      }
+      const fileUpload = document.getElementById("cv");
+      if (typeof fileUpload.files !== "undefined") {
+        const size = parseFloat(fileUpload.files[0].size / 1024).toFixed(2);
+        if (size >= 2000) {
+          alert("Max upload is 2MB, please choose a smaller file to upload.");
+          return;
+        }
       }
       this.submitting = true;
       const myForm = document.getElementById("contact-form");
