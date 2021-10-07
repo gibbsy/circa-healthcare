@@ -85,7 +85,7 @@
           >
             <label for="cv">Upload CV</label>
             <input
-              id="cv"
+              id="cv-upload"
               type="file"
               name="cv"
               class="cv-upload"
@@ -111,6 +111,13 @@
           >
         </div>
       </fieldset>
+      <transition name="quick-fade" mode="out-in">
+        <div v-if="errors.length" class="submit-row error">
+          <p v-for="error in errors" :key="error">
+            <strong>{{ error }}</strong>
+          </p>
+        </div>
+      </transition>
       <transition name="quick-fade" mode="out-in">
         <div v-if="submitted && errors.length" class="submit-row error">
           <p>
@@ -196,7 +203,7 @@ export default {
         this.errors.push("Please enter a valid email address.");
         return;
       }
-      const fileUpload = document.getElementById("cv");
+      const fileUpload = document.getElementById("cv-upload");
       if (typeof fileUpload.files !== "undefined") {
         const size = parseFloat(fileUpload.files[0].size / 1024).toFixed(2);
         if (size >= 100) {
