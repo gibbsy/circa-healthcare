@@ -1,4 +1,14 @@
+// import imageUrlBuilder from "@sanity/image-url";
 import sanityClient from "./sanityClient";
+// const urlBuilder = imageUrlBuilder(sanityClient);
+
+/* function urlFor(source) {
+  return urlBuilder.image(source);
+}
+ */
+const title = "Circa Healthcare | A Strategic Healthcare Communications Agency";
+const description =
+  "We’re an award-winning creative agency that creates beautifully intelligent communications for farm, food and wellness clients all over the world.";
 const queryRoutes = `
 *[_id=="pageWork"][0]{ 
   theme,
@@ -20,7 +30,7 @@ export default {
   // ssr: false,
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: "Circa Healthcare | A Strategic Healthcare Communications Agency",
+    title,
     htmlAttrs: {
       lang: "en",
     },
@@ -34,8 +44,72 @@ export default {
       {
         hid: "description",
         name: "description",
-        content:
-          "We’re an award-winning creative agency that creates beautifully intelligent communications for farm, food and wellness clients all over the world.",
+        content: description,
+      },
+      {
+        property: "og:locale",
+        content: "en_GB",
+        hid: "og:locale",
+      },
+      {
+        property: "og:type",
+        content: "website",
+        hid: "og:type",
+      },
+      {
+        property: "og:url",
+        content: "https://www.circahealthcare.com",
+        hid: "og:url",
+      },
+      {
+        property: "og:site_name",
+        content: "Circa Healthcare",
+        hid: "og:site_name",
+      },
+      {
+        property: "og:image",
+        content: "https://www.circahealthcare.com/circa_thumbnail_large.jpg",
+        hid: "og:image",
+      },
+      {
+        property: "og:image:width",
+        content: "1200",
+        hid: "og:image_width",
+      },
+      {
+        property: "og:image:height",
+        content: "630",
+        hid: "og:image_width",
+      },
+      {
+        property: "og:title",
+        content: title,
+        hid: "og:title",
+      },
+      {
+        property: "og:description",
+        content: description,
+        hid: "og:description",
+      },
+      {
+        property: "twitter:card",
+        content: "summary_large_image",
+        hid: "twitter:card",
+      },
+      {
+        property: "twitter:title",
+        content: title,
+        hid: "twitter:title",
+      },
+      {
+        property: "twitter:description",
+        content: description,
+        hid: "twitter:description",
+      },
+      {
+        property: "twitter:image",
+        content: "https://www.circahealthcare.com/circa_thumbnail_large.jpg",
+        hid: "twitter:image",
       },
       { name: "msapplication-TileColor", content: "#ffffff" },
       { name: "theme-color", content: "#1a1a1a" },
