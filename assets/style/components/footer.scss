@@ -80,8 +80,9 @@ footer {
     @include bp(1200) {
       font-size: 1.125rem;
     }
-    &:hover {
-      color: var(--secondary-color);
+    &:hover,
+    &.nuxt-link-exact-active {
+      color: var(--secondary-color) !important;
       text-decoration: underline;
     }
     &:visited {

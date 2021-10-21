@@ -11,6 +11,7 @@ export const state = () => ({
     clients: "xs:200px xxl:280px hd:400px",
   },
   defaultTheme: {},
+  siteHead: {},
   fullColor: false,
 });
 
@@ -26,5 +27,8 @@ export const mutations = {
   },
   setTheme(state, payload) {
     state.defaultTheme = payload;
+  },
+  saveConfig(state, payload) {
+    state.siteConfig = payload;
   },
 };

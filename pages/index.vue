@@ -420,10 +420,12 @@
 </template>
 
 <script>
+import imageUrlBuilder from "@sanity/image-url";
 import sanityClient from "../sanityClient";
 import { homeQuery as query } from "../data/queries";
 import scrollAnimations from "~/mixins/scrollAnimations";
 import copyline from "~/components/span.vue";
+const urlBuilder = imageUrlBuilder(sanityClient);
 
 export default {
   mixins: [scrollAnimations],
@@ -437,7 +439,6 @@ export default {
 
     return {
       ...homeData.home,
-      config: homeData.config[0],
     };
   },
   data() {
@@ -453,85 +454,94 @@ export default {
     };
   },
   head() {
-    const { title, description } = this.config;
+    const { siteTitle, siteDescription } = this.siteConfig;
     return {
-      title,
+      siteTitle,
       meta: [
         {
           hid: "description",
           name: "description",
-          content: description,
+          content: siteDescription,
         },
         {
           property: "og:locale",
           content: "en_GB",
-          vmid: "og:locale",
+          hid: "og:locale",
         },
         {
           property: "og:type",
           content: "website",
-          vmid: "og:type",
+          hid: "og:type",
         },
         {
           property: "og:url",
           content: "https://www.circahealthcare.com",
-          vmid: "og:url",
+          hid: "og:url",
         },
         {
           property: "og:site_name",
           content: "Circa Healthcare",
-          vmid: "og:site_name",
+          hid: "og:site_name",
         },
         {
           property: "og:image",
-          content: "https://www.circahealthcare.com/circa_thumbnail_large.jpg",
-          vmid: "og:image",
+          content: this.urlFor(this.siteConfig.ogImage.asset)
+            .width(1200)
+            .height(630)
+            .url(),
+          hid: "og:image",
         },
         {
           property: "og:image:width",
           content: "1200",
-          vmid: "og:image_width",
+          hid: "og:image_width",
         },
         {
           property: "og:image:height",
           content: "630",
-          vmid: "og:image_width",
+          hid: "og:image_width",
         },
         {
           property: "og:title",
-          content: title,
-          vmid: "og:title",
+          content: siteTitle,
+          hid: "og:title",
         },
         {
           property: "og:description",
-          content: description,
-          vmid: "og:description",
+          content: siteDescription,
+          hid: "og:description",
         },
         {
           property: "twitter:card",
           content: "summary_large_image",
-          vmid: "twitter:card",
+          hid: "twitter:card",
         },
         {
           property: "twitter:title",
-          content: title,
-          vmid: "twitter:title",
+          content: siteTitle,
+          hid: "twitter:title",
         },
         {
           property: "twitter:description",
-          content: description,
-          vmid: "twitter:description",
+          content: siteDescription,
+          hid: "twitter:description",
         },
         {
           property: "twitter:image",
-          content: "https://www.circahealthcare.com/circa_thumbnail_large.jpg",
-          vmid: "twitter:image",
+          content: this.urlFor(this.siteConfig.ogImage.asset)
+            .width(1200)
+            .height(630)
+            .url(),
+          hid: "twitter:image",
         },
       ],
     };
   },
 
   computed: {
+    siteConfig() {
+      return this.$store.state.siteConfig;
+    },
     isMobile() {
       return this.$store.state.isMobile;
     },
@@ -597,6 +607,9 @@ export default {
     this.$nextTick(() => this.init());
   },
   methods: {
+    urlFor(source) {
+      return urlBuilder.image(source);
+    },
     init() {
       this.splitText();
       setTimeout(() => {

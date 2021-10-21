@@ -67,7 +67,7 @@ import CtaArrow from "~/assets/cta_arrow_small.svg?inline";
 
 const query = /* groq */ `
   *[_id=="global-config"][0]{
-  siteTitle, url, siteDescription,
+  siteTitle, url, siteDescription, ogImage,
   stingVideo,
   defaultTheme,
   mainNavigation[]->{title, slug},
@@ -139,6 +139,7 @@ export default {
       if (obj.defaultTheme !== undefined) {
         const theme = obj.defaultTheme;
         this.$store.commit("setTheme", theme);
+        this.$store.commit("saveConfig", obj);
         document.documentElement.style.setProperty(
           "--primary-color",
           theme.primaryColor.value
