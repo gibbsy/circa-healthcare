@@ -90,7 +90,7 @@
               name="cv"
               class="cv-upload"
               accept=".doc, .pdf"
-              required="false"
+              :disabled="enquiry !== 'careers'"
             />
           </div>
         </transition>
@@ -204,14 +204,16 @@ export default {
         this.errors.push("Please enter a valid email address.");
         return;
       }
-      const fileUpload = document.getElementById("cv-upload");
-      if (typeof fileUpload.files !== "undefined") {
-        const size = parseFloat(fileUpload.files[0].size / 1024).toFixed(2);
-        if (size >= 999) {
-          this.errors.push(
-            "Max upload is 1MB, please choose a smaller file to upload."
-          );
-          return;
+      if (this.enquiry === "careers") {
+        const fileUpload = document.getElementById("cv-upload");
+        if (typeof fileUpload.files !== "undefined") {
+          const size = parseFloat(fileUpload.files[0].size / 1024).toFixed(2);
+          if (size >= 999) {
+            this.errors.push(
+              "Max upload is 1MB, please choose a smaller file to upload."
+            );
+            return;
+          }
         }
       }
       this.submitting = true;
