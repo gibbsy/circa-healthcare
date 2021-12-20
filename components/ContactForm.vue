@@ -113,9 +113,9 @@
         </div>
       </fieldset>
       <transition name="quick-fade" mode="out-in">
-        <div v-if="errors.length" class="submit-row error">
-          <p v-for="error in errors" :key="error">
-            <strong>{{ error }}</strong>
+        <div v-if="warnings.length" class="submit-row error">
+          <p v-for="warning in warnings" :key="warning">
+            <strong>{{ warning }}</strong>
           </p>
         </div>
       </transition>
@@ -164,6 +164,7 @@ export default {
   data() {
     return {
       errors: [],
+      warnings: [],
       firstname: null,
       lastname: null,
       email: { value: null, valid: false },
@@ -201,7 +202,7 @@ export default {
       e.preventDefault();
       console.log("submit");
       if (!this.email.valid) {
-        this.errors.push("Please enter a valid email address.");
+        this.warnings.push("Please enter a valid email address.");
         return;
       }
       if (this.enquiry === "careers") {
@@ -211,7 +212,7 @@ export default {
         if (fileUpload.files.length > 0) {
           const size = parseFloat(fileUpload.files[0].size / 1024).toFixed(2);
           if (size >= 999) {
-            this.errors.push(
+            this.warnings.push(
               "Max upload is 1MB, please choose a smaller file to upload."
             );
             return;
@@ -231,6 +232,7 @@ export default {
           }, 100);
         })
         .catch((error) => {
+          this.submitted = true;
           this.errors.push(error);
         });
     },
