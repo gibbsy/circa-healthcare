@@ -206,7 +206,8 @@ export default {
       }
       if (this.enquiry === "careers") {
         const fileUpload = document.getElementById("cv-upload");
-        console.log(fileUpload);
+        console.log(fileUpload.files);
+        console.log(typeof fileUpload.files);
         if (typeof fileUpload.files !== "undefined") {
           const size = parseFloat(fileUpload.files[0].size / 1024).toFixed(2);
           if (size >= 999) {
