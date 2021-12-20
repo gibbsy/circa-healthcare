@@ -90,6 +90,7 @@
               name="cv"
               class="cv-upload"
               accept=".doc, .pdf"
+              required="false"
             />
           </div>
         </transition>
