@@ -228,6 +228,7 @@ export default {
       })
         .then(() => {
           setTimeout(() => {
+            this.warnings = [];
             this.submitted = true;
           }, 100);
         })
