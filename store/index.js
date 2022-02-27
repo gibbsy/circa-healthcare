@@ -1,6 +1,6 @@
 export const state = () => ({
   isMobile: undefined,
-  introPlayed: false,
+  introPlayed: true,
   imgSizes: {
     hero: "xs:100vw sm:100vw md:100vw lg:50vw xl:50vw xxl:50vw hd:50vw",
     content:

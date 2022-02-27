@@ -15,14 +15,16 @@ export default {
       type: Function,
       default: () => console.log("Expected click function"),
     },
-    navigateFn: {
+    // Legacy function from when there was a video overlay intro on the site
+    // Triggered a function to hide the video overlay.
+    /* navigateFn: {
       type: Function,
       default: () => console.log("Expected click function"),
-    },
+    }, */
   },
   methods: {
     viewPolicy() {
-      this.navigateFn();
+      // this.navigateFn();
       this.$router.push("/cookie-and-privacy-policy");
     },
   },

@@ -5,7 +5,6 @@
       <cookie-panel
         v-show="!cookiesOk"
         :accept-fn="acceptCookies"
-        :navigate-fn="onIntroPlayed"
       ></cookie-panel>
     </transition>
 
@@ -51,13 +50,13 @@
         :click-fn="navToggle"
       ></main-nav>
     </transition>
-    <transition name="fade">
+    <!--  <transition name="fade">
       <video-overlay
         v-if="playIntro === true && introPlayed === false"
         :vimeo-id="config.stingVideo"
         :done-fn="onIntroPlayed"
       ></video-overlay>
-    </transition>
+    </transition> -->
   </div>
 </template>
 <script>
@@ -82,7 +81,7 @@ export default {
     return {
       page: "",
       ready: false,
-      playIntro: "",
+      playIntro: false,
       showSite: false,
       cookiesOk: true,
       config: {},
@@ -163,20 +162,23 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$route.name);
-    if (this.$route.name === "index" && this.isMobile === false) {
-      this.playIntro = true;
-    } else {
-      this.showSite = true;
-    }
+    // Remove intro video overlay
+    // console.log(this.$route.name);
+    // if (this.$route.name === "index" && this.isMobile === false) {
+    //   this.playIntro = true;
+    // } else {
+    // this.showSite = true;
+    // }
     gsap.config({ force3D: true });
     gsap.registerPlugin(ScrollTrigger);
-    console.log("mounted");
     window.setTimeout(() => {
       this.cookiesOk = this.$cookies.get("circa-accept-cookies");
       // this.cookiesOk = false;
     }, 3000);
     this.initScrollWatcher();
+    this.$nextTick(() => {
+      this.showSite = true;
+    });
   },
   methods: {
     acceptCookies() {
@@ -198,12 +200,12 @@ export default {
         this.closeNav();
       }
     },
-    onIntroPlayed() {
+    /* onIntroPlayed() {
       this.$store.commit("onIntroPlayed");
       this.$nextTick(() => {
         this.showSite = true;
       });
-    },
+    }, */
     openNav() {
       this.navOn = true;
       this.animating = true;
