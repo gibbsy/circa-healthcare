@@ -61,7 +61,7 @@ export const clientsQuery = /* groq */ `
 export const teamQuery = /* groq */ `
 *[_id=="pageTeam"][0]{ 
   theme, title, heroHeadline, introLabel, introSubhead, introBody,
-  teamMembers[]->{name, qualifications, jobTitle, linkedin, image}, ctaHeadline, ctaBtn{title,external, url, "slug": route->slug.current},
+  teamMembers[]->{name, qualifications, jobTitle, linkedin, image}, ctaHeadline, ctaBtn{title, external, url, "slug": route->slug.current},
   metadata{title, description, "slug": slug->slug.current}
 }`;
 
