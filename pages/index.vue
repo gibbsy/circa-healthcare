@@ -65,7 +65,7 @@
           <div data-scroll-reveal>
             <block-content :blocks="intro.intro"></block-content>
           </div>
-          <cta-btn class="cta-primary" :slug="intro.introCta.slug">{{
+          <cta-btn :slug="intro.introCta.slug">{{
             intro.introCta.title
           }}</cta-btn>
         </article>
@@ -179,7 +179,7 @@
             <h3>{{ section.title }}</h3>
             <block-content :blocks="section.text"></block-content>
           </div>
-          <cta-btn class="cta-primary" :slug="whyCirca.whyCta.slug">{{
+          <cta-btn :slug="whyCirca.whyCta.slug">{{
             whyCirca.whyCta.title
           }}</cta-btn>
         </article>
@@ -239,9 +239,7 @@
           <div class="intro-text reveal" data-scroll-reveal>
             <block-content :blocks="work.workBody"></block-content>
           </div>
-          <cta-btn class="cta-primary" :slug="work.workCta.slug">{{
-            work.workCta.title
-          }}</cta-btn>
+          <cta-btn :slug="work.workCta.slug">{{ work.workCta.title }}</cta-btn>
         </div>
       </div>
     </section>
@@ -307,7 +305,7 @@
           <div class="intro-text reveal" data-scroll-reveal>
             <block-content :blocks="whatWeDo.whatWeDoBody"></block-content>
           </div>
-          <cta-btn class="cta-primary" :slug="whatWeDo.whatWeDoCta.slug">{{
+          <cta-btn :slug="whatWeDo.whatWeDoCta.slug">{{
             whatWeDo.whatWeDoCta.title
           }}</cta-btn>
         </div>
@@ -350,11 +348,9 @@
           <p data-scroll-reveal class="callout reveal">
             {{ partnerships.partnershipsText }}
           </p>
-          <cta-btn
-            class="cta-primary"
-            :slug="partnerships.partnershipsCta.slug"
-            >{{ partnerships.partnershipsCta.title }}</cta-btn
-          >
+          <cta-btn :slug="partnerships.partnershipsCta.slug">{{
+            partnerships.partnershipsCta.title
+          }}</cta-btn>
         </div>
       </div>
     </section>
@@ -410,7 +406,7 @@
           <p data-scroll-reveal class="callout reveal">
             {{ meetTheTeam.teamText }}
           </p>
-          <cta-btn class="cta-primary" :slug="meetTheTeam.teamCta.slug">{{
+          <cta-btn :slug="meetTheTeam.teamCta.slug">{{
             meetTheTeam.teamCta.title
           }}</cta-btn>
         </div>

@@ -36,6 +36,12 @@
           <div data-scroll-reveal class="reveal">
             <block-content :blocks="introBody"></block-content>
           </div>
+          <cta-btn
+            :external="ctaBtn.external"
+            :url="ctaBtn.url"
+            :slug="ctaBtn.slug"
+            >{{ ctaBtn.title }}</cta-btn
+          >
         </div>
       </div>
     </section>
@@ -151,9 +157,12 @@
         <p class="callout col-12 col-lg-8 reveal" data-scroll-reveal>
           {{ ctaText }}
         </p>
-        <cta-btn class="cta-primary" :slug="ctaBtn.slug">{{
-          ctaBtn.title
-        }}</cta-btn>
+        <cta-btn
+          :external="ctaBtn.external"
+          :url="ctaBtn.url"
+          :slug="ctaBtn.slug"
+          >{{ ctaBtn.title }}</cta-btn
+        >
       </div>
     </section>
   </div>

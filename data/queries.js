@@ -75,7 +75,7 @@ export const partnershipsQuery = /* groq */ `
 export const joinUsQuery = /* groq */ `
 *[_id=="pageJoinUs"][0]{ 
   theme, title, heroHeadline, introLabel, introBody,
-  valuesLabel, valuesList[]{title, icon, text},vacanciesLabel,vacanciesIntro, jobVacancies[]->{title, location, "pdf": jobDescription.asset->url}, ctaText, ctaImage, ctaBtn{title, "slug": route->slug.current},
+  valuesLabel, valuesList[]{title, icon, text},vacanciesLabel,vacanciesIntro, jobVacancies[]->{title, location, "pdf": jobDescription.asset->url}, ctaText, ctaImage, ctaBtn{title, external, url, "slug": route->slug.current},
   metadata{title, description, "slug": slug->slug.current}
 }`;
 
