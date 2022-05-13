@@ -8,25 +8,25 @@ export const homeQuery = /* groq */ `{
     heroVideo, heroPoster, mainHeadline
     },
   "intro": {
-    introTheme, intro, introCta{title, "slug": route->slug.current}   
+    introTheme, intro, introCta{title, external, url, "slug": route->slug.current}   
   },
   "about": {
    aboutTheme, aboutHeadline, aboutImages, aboutStats[]
   },
   "whyCirca": {
-    whyLabel, whySections[]{title, text}, whyCta{title, "slug": route->slug.current} 
+    whyLabel, whySections[]{title, text}, whyCta{title, external, url, "slug": route->slug.current} 
   },
   "work": {
-    workTheme, workLabel, workHeadline, workImage, workBody, workCta{title, "slug": route->slug.current} 
+    workTheme, workLabel, workHeadline, workImage, workBody, workCta{title, external, url, "slug": route->slug.current} 
   },
   "whatWeDo": {
-    whatWeDoTheme, whatWeDoLabel, whatWeDoHeadline, whatWeDoBody, whatWeDoImage, whatWeDoCta{title, "slug": route->slug.current}
+    whatWeDoTheme, whatWeDoLabel, whatWeDoHeadline, whatWeDoBody, whatWeDoImage, whatWeDoCta{title, external, url, "slug": route->slug.current}
   },
   "partnerships": {
-    partnershipsTheme, partnershipsLabel, partnershipsText, partnershipsCta{title, "slug": route->slug.current}
+    partnershipsTheme, partnershipsLabel, partnershipsText, partnershipsCta{title, external, url, "slug": route->slug.current}
   },
   "meetTheTeam": {
-    teamTheme, teamLabel, teamText, teamCta{title, "slug": route->slug.current}, teamImage
+    teamTheme, teamLabel, teamText, teamCta{title, external, url, "slug": route->slug.current}, teamImage
   }
   }
 }`;
@@ -53,7 +53,7 @@ export const clientsQuery = /* groq */ `
 {
   "pageContent":  *[_id=="pageClients"][0]{ 
   theme, title, heroHeadline, introLabel, introSubhead, introBody, clientList[]->{name, website, logo, logoWhite},
-  ctaHeadline, ctaBtn{title, "slug": route->slug.current},
+  ctaHeadline, ctaBtn{title, external, url, "slug": route->slug.current},
   metadata{title, description, "slug": slug->slug.current}
   }
 }`;
@@ -61,7 +61,7 @@ export const clientsQuery = /* groq */ `
 export const teamQuery = /* groq */ `
 *[_id=="pageTeam"][0]{ 
   theme, title, heroHeadline, introLabel, introSubhead, introBody,
-  teamMembers[]->{name, qualifications, jobTitle, linkedin, image}, ctaHeadline, ctaBtn{title, "slug": route->slug.current},
+  teamMembers[]->{name, qualifications, jobTitle, linkedin, image}, ctaHeadline, ctaBtn{title,external, url, "slug": route->slug.current},
   metadata{title, description, "slug": slug->slug.current}
 }`;
 

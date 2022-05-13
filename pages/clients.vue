@@ -103,9 +103,12 @@
       </div>
       <div class="clients-cta content-block--extra-pad v-space-narrow centered">
         <h3 class="reveal semibold" data-scroll-reveal>{{ ctaHeadline }}</h3>
-        <cta-btn class="cta-primary" :slug="ctaBtn.slug">{{
-          ctaBtn.title
-        }}</cta-btn>
+        <cta-btn
+          :external="ctaBtn.external"
+          :url="ctaBtn.url"
+          :slug="ctaBtn.slug"
+          >{{ ctaBtn.title }}</cta-btn
+        >
       </div>
     </section>
   </div>

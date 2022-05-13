@@ -83,9 +83,12 @@
               {{ servicesCta }}
             </p>
             <div class="services-cta-btn-container flex-col-12 flex-col-lg-4">
-              <cta-btn class="cta-primary" :slug="servicesCtaBtn.slug">{{
-                servicesCtaBtn.title
-              }}</cta-btn>
+              <cta-btn
+                :external="servicesCtaBtn.external"
+                :url="servicesCtaBtn.url"
+                :slug="servicesCtaBtn.slug"
+                >{{ servicesCtaBtn.title }}</cta-btn
+              >
             </div>
           </div>
         </div>
@@ -128,9 +131,12 @@
             </figure>
           </div>
           <div class="cta-centred-container">
-            <cta-btn class="cta-primary" :slug="clientsCta.slug">{{
-              clientsCta.title
-            }}</cta-btn>
+            <cta-btn
+              :external="clientsCta.external"
+              :url="clientsCta.url"
+              :slug="clientsCta.slug"
+              >{{ clientsCta.title }}</cta-btn
+            >
           </div>
         </div>
       </section>

@@ -106,7 +106,7 @@
       </div>
 
       <div class="team-cta content-block--extra-pad v-space-narrow centered">
-        <cta-btn class="cta-primary" slug="/work">Back to all work</cta-btn>
+        <cta-btn slug="/work">Back to all work</cta-btn>
       </div>
     </section>
   </div>
